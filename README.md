@@ -65,3 +65,10 @@ Run a second exporter (note: the HTTPPORT must be different)
 ```
 mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 8001 -l mqaprod2.log
 ```
+
+### Available metrics
+| mqa_active_users_total | Gauge | Total active users connected to the appliance | appliance, connection |
+
+| mqa_environmental_fan_sensors_fan_speed_rpm | Gauge | The speed of the fan in revolutions per minute (RPM) | appliance, fanID, readingStatus |
+| mqa_environmental_fan_sensors_fan_speed_lower_critical_threshold_rpm | Gauge | The lowest allowable reading of the fan speed sensor | appliance, fanID, readingStatus |
+
