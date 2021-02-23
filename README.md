@@ -4,21 +4,23 @@ This project provide a Prometheus Exporter for the IBM MQ Appliance.
 ## Prerequisites
 The following are prerequisites to run the exporter:
 1. Prometheus (https://prometheus.io/download/)
-2. Python 3.x (https://www.python.org/downloads/)
-3. Prometheus Python client library
+2. Grafana (https://grafana.com/get/?plcmt=top-nav&cta=downloads)
+3. Python 3.x (https://www.python.org/downloads/)
+4. Prometheus Python client library
     ```
       pip install prometheus-client
     ```
-4. Python Requests library
+5. Python Requests library
     ```
       pip install requests
     ```
-5. MQ Appliance REST API must be enabled
+6. MQ Appliance REST API must be enabled
 
 ## Getting Started
 You must run a separate exporter for each MQ Appliance you want to collect metrics for.
 
-mqa_metrics.py is the name of the module to run an exporter
+mqa_metrics.py is the name of the module to run an exporter. Only basic authentication is
+currently supported.
 
 ```
 Usage: mqa_metrics.py [-h] -a APPLIANCE -i IP [-hp HTTPPORT] [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] -p PORT
