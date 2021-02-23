@@ -1,6 +1,8 @@
 # mqa-prometheus
 This project provide a Prometheus Exporter for the IBM MQ Appliance. 
 
+![IBM MQ Appliance](/images/IBM_MQ_Appliance.png)
+
 ## Prerequisites
 The following are prerequisites to run the exporter:
 1. Prometheus (https://prometheus.io/download/)
