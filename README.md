@@ -67,18 +67,18 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 ```
 
 ### Available metrics
-**Active Users
+**Active Users**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_active_users_total | Gauge | Total active users connected to the appliance | appliance, connection |
 
-**Environmental Sensors
+**Environmental Sensors**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_environmental_fan_sensors_fan_speed_rpm | Gauge | The speed of the fan in revolutions per minute (RPM) | appliance, fanID, readingStatus |
 | mqa_environmental_fan_sensors_fan_speed_lower_critical_threshold_rpm | Gauge | The lowest allowable reading of the fan speed sensor | appliance, fanID, readingStatus |
 
-**Environmental Fan Sensors
+**Environmental Fan Sensors**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_environmental_sensors_system_temperature_celsius | Gauge | Ambient temperature | appliance |
@@ -93,7 +93,7 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_environmental_sensors_5_voltage | Gauge | 5 voltage | appliance |
 | mqa_environmental_sensors_12_voltage | Gauge | 12 voltage | appliance |
 
-**Ethernet Counters
+**Ethernet Counters**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_ethernet_counters_in_unicast_packets_total | Counter | The number of unicast packets received on this interface | appliance, name |
@@ -123,7 +123,7 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_ethernet_counters_in_pause_frames_total | Counter | The number of pause frames received | appliance, name |
 | mqa_ethernet_counters_out_pause_frames_total | Counter | The number of pause frames transmitted | appliance, name |
 
-**File System
+**File System**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_file_system_encrypted_bytes_free | Gauge | Free, or unused and available, encrypted storage space on the appliance | appliance |
@@ -133,12 +133,12 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_file_system_internal_bytes_free | Gauge | Free, or unused and available, internal storage space on the appliance | appliance |
 | mqa_file_system_internal_bytes_total | Counter | Total internal storage space on the appliance | appliance |
 
-**MQ Appliance Information
+**MQ Appliance Information**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_info | Info | MQ Appliance information | appliance, bootcount, bootuptime, build, builddate, deliverytype, installdate, installeddpos, level, machinetype, modeltype, runningdpos, serial, time, timezone, type, tzspec, uptime, version, watchdogbuild, xmlaccelerator |
 
-**MQ Resources
+**MQ Resources**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_mq_resources_storage_bytes_total | Counter | The total storage in bytes available for IBM MQ data | appliance |
@@ -148,7 +148,7 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_mq_resources_trace_storage_bytes_total | Counter | The total storage in bytes available for IBM MQ trace | appliance |
 | mqa_mq_resources_trace_storage_bytes_used | Gauge | The amount of IBM MQ trace storage in bytes in use | appliance |
 
-**Network Interface
+**Network Interface**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_network_interface_rx_bytes_total | Counter | The amount of data successfully received on the interface, which includes MAC framing overhead | appliance, adminStatus, name, operStatus |
@@ -160,7 +160,7 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_network_interface_tx_errors_total | Counter | The number of packets that were not successfully transmitted due to errors on the network or in the hardware | appliance, adminStatus, name, operStatus |
 | mqa_network_interface_tx_drops_total | Counter | The number of packets that were not transmitted because the network layer was generating packets faster than the physical network could accept them | appliance, adminStatus, name, operStatus |
 
-**Queue Manager
+**Queue Manager**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_queue_manager_cpu_usage | Gauge | The instantaneous CPU usage by the queue manager as a percentage of the CPU load | appliance, drRole, drStatus, haRole, haStatus, qm, status |
@@ -168,13 +168,13 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_queue_manager_fs_bytes_used | Gauge | The amount of file system in bytes that is currently in use by the queue manager | appliance, drRole, drStatus, haRole, haStatus, qm, status |
 | mqa_queue_manager_fs_bytes_allocated | Gauge | The amount of file system in bytes allocated for the queue manager | appliance, drRole, drStatus, haRole, haStatus, qm, status |
 
-**Raid SSD
+**Raid SSD**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_raid_ssd_bytes_written_total | Counter | The total data in bytes written to the drive since manufacture | appliance, diskNumber, serialNumber |
 | mqa_raid_ssd_life_left | Gauge | Estimate of the remaining drive lifetime | appliance, diskNumber, serialNumber |
 
-**System CPU
+**System CPU**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_system_cpu_usage | Gauge | The instantaneous CPU usage as a percentage of the CPU load | appliance |
@@ -182,7 +182,7 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_system_cpu_load_avg_5m | Gauge | The average CPU load over 5 minutes | appliance |
 | mqa_system_cpu_load_avg_15m | Gauge | The average CPU load over 15 minutes | appliance |
 
-**System Memory
+**System Memory**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_system_memory_memory_usage | Gauge | The instantaneous memory usage as a percentage of the total memory | appliance |
@@ -190,7 +190,7 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_system_memory_memory_bytes_used | Gauge | The amount of memory in bytes that is currently in use. The used memory equals the amount of total memory minus the amount of free memory. The used memory does not include any hold memory | appliance |
 | mqa_system_memory_memory_bytes_free | Gauge | The amount of memory in bytes that is currently not in use and is therefore available. The free memory value includes any hold memory that is not currently in use | appliance |
 
-**TCP Connections
+**TCP Connections**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_tcp_connections_established | Gauge | The number of TCP connections in the established state. Connections in this state have completed all handshakes and can transfer data in either direction | appliance |
@@ -203,5 +203,5 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_tcp_connections_close_wait | Gauge | The number of TCP connections in the close-wait state. Connections in this state are waiting for a connection termination request from the local user | appliance |
 | mqa_tcp_connections_last_ack | Gauge |The number of TCP connections in the last-ack state. Connections in this state are waiting for an acknowledgment of the connection termination request previously sent to the remote TCP (which includes an acknowledgment of its connection termination request) | appliance |
 | mqa_tcp_connections_listen | Gauge | The number of TCP connections in the listen state. Connections in the listen state are waiting for a connection request from any remote TCP and port | appliance |
-| mqa_tcp_connections_closing | Gauge | The number of TCP connections in the closing state. Connections in this state are waiting for a connection termination request acknowledgment from the remote TCP seconds
+| mqa_tcp_connections_closing | Gauge | The number of TCP connections in the closing state. Connections in this state are waiting for a connection termination request acknowledgment from the remote TCP seconds | appliance |
 
