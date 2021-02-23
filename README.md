@@ -6,20 +6,20 @@ The following are prerequisites to run the exporter:
 1. Prometheus (https://prometheus.io/download/)
 2. Python 3.x (https://www.python.org/downloads/)
 3. Prometheus Python client library
-    ---
+    ```
       pip install prometheus-client
-    ---
+    ```
 4. Python Requests library
-    ---
+    ```
       pip install requests
-    ---
+    ```
 
 ## Getting Started
 You must run a separate exporter for each MQ Appliance you want to collect metrics for.
 
 mqa_metrics.py is the name of the module to run an exporter
 
----
+```
 Usage: mqa_metrics.py [-h] -a APPLIANCE -i IP [-hp HTTPPORT] [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] -p PORT
                       [-t TIMEOUT] -u USER [-x PW]
 
@@ -42,7 +42,7 @@ optional arguments:
                         Timeout in seconds to perform the REST API call (default: 15)
   -u USER, --user USER  User to login to the appliance
   -x PW, --pw PW        Password to login to the appliance
----
+```
 
 ### Sample commands
 mqa_metrics.py -a MQA2002PROD1 -i 192.168.28.250 -p 5554 -u admin -hp 8000
