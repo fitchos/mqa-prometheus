@@ -51,7 +51,10 @@ Run an exporter with logging output to STDOUT and password being prompted on the
     mqa_metrics.py -a MQA2002PROD1 -i 192.168.28.250 -p 5554 -u admin -hp 8000
     ```
 Run an exporter with logging output to a file using all logging defaults
-mqa_metrics.py -a MQA2002PROD1 -i 192.168.28.250 -p 5554 -u admin -x mypassword -hp 8000 -l mqa2002prod1.log 
-
+    ```
+    mqa_metrics.py -a MQA2002PROD1 -i 192.168.28.250 -p 5554 -u admin -x mypassword -hp 8000 -l mqa2002prod1.log 
+    ```
 Run a second exporter (note: the HTTPPORT must be different)
-mqa_metrics.py -a MQA2002PROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 8001 -l mqa2002prod2.log 
+    ```
+    mqa_metrics.py -a MQA2002PROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 8001 -l mqa2002prod2.log
+    ```
