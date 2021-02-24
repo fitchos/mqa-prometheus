@@ -54,7 +54,7 @@ def main():
     parser.add_argument('-ln', '--lognumbers', type=int, default=10, help = 'Number of logs in a rotation (defaults to 10)')
     parser.add_argument('-ls', '--logsize', type=int, default=10485760, help = 'Size of logs in bytes (defaults to 10MB - 10485760)')
     parser.add_argument('-p', '--port', type=str, required=True, help = 'Port number of the appliance REST API')
-    parser.add_argument('-t', '--timeout', type=str, required=False, default=15, help = 'Timeout in seconds to perform the REST API call (default: 15)')
+    parser.add_argument('-t', '--timeout', type=int, required=False, default=15, help = 'Timeout in seconds to perform the REST API call (default: 15)')
     parser.add_argument('-u', '--user', type=str, required=True, help = 'User to login to the appliance')
     parser.add_argument('-x', '--pw', type=str, required=False, help = 'Password to login to the appliance')
 
