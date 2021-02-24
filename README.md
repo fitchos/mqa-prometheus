@@ -1,5 +1,5 @@
 # mqa-prometheus
-This project provide a Prometheus Exporter for the IBM MQ Appliance. 
+This project provides a Prometheus Exporter for the IBM MQ Appliance. 
 
 ![IBM MQ Appliance](/images/IBM_MQ_Appliance.png)
 
