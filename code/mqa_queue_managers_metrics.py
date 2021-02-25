@@ -56,7 +56,7 @@ class MQAQueueManagersMetrics(object):
             g.add_metric([self.appliance, qm['Name']], qm['TotalFs'] * 1048576)
             yield g
 
-            i = InfoMetricFamily('mqa_queue_manager', 'MQ Appliance queue managers information')
+            i = InfoMetricFamily('mqa_queue_manager', 'MQ Appliance queue manager information')
             i.add_metric(['appliance', 'qm', 'status', 'haRole', 'haStatus', 'drRole', 'drStatus'], 
                           {'appliance': self.appliance, 
                           'qm': qm['Name'], 

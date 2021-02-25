@@ -4,7 +4,7 @@ This project provides a Prometheus Exporter for the IBM MQ Appliance.
 ![IBM MQ Appliance](/images/IBM_MQ_Appliance.png)
 
 ## WARNING
-The Main branch is the development branch which may not be stable!
+The main branch is the development branch which may not be stable!
 
 ## Prerequisites
 The following are prerequisites to run the exporter:
@@ -172,10 +172,15 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 **Queue Manager**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_queue_manager_cpu_usage | Gauge | The instantaneous CPU usage by the queue manager as a percentage of the CPU load | appliance, drRole, drStatus, haRole, haStatus, qm, status |
-| mqa_queue_manager_memory_bytes_used | Gauge | The amount of memory in bytes that is currently in use by the queue manager | appliance, drRole, drStatus, haRole, haStatus, qm, status |
-| mqa_queue_manager_fs_bytes_used | Gauge | The amount of file system in bytes that is currently in use by the queue manager | appliance, drRole, drStatus, haRole, haStatus, qm, status |
-| mqa_queue_manager_fs_bytes_allocated | Gauge | The amount of file system in bytes allocated for the queue manager | appliance, drRole, drStatus, haRole, haStatus, qm, status |
+| mqa_queue_manager_cpu_usage | Gauge | The instantaneous CPU usage by the queue manager as a percentage of the CPU load | appliance, qm |
+| mqa_queue_manager_memory_bytes_used | Gauge | The amount of memory in bytes that is currently in use by the queue manager | appliance, qm |
+| mqa_queue_manager_fs_bytes_used | Gauge | The amount of file system in bytes that is currently in use by the queue manager | appliance, qm |
+| mqa_queue_manager_fs_bytes_allocated | Gauge | The amount of file system in bytes allocated for the queue manager | appliance, qm |
+
+**Queue Manager Information**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_queue_manager_info | Info | MQ Appliance queue manager information | appliance, qm, status, haRole, haStatus, drRole, drStatus |
 
 **Raid SSD**
 | Metric | Type | Description | Labels |
