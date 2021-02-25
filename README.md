@@ -3,20 +3,27 @@ This project provides a Prometheus Exporter for the IBM MQ Appliance.
 
 ![IBM MQ Appliance](/images/IBM_MQ_Appliance.png)
 
+## WARNING
+The Main branch is the development branch which may not be stable!
+
 ## Prerequisites
 The following are prerequisites to run the exporter:
 1. Prometheus (https://prometheus.io/download/)
 2. Grafana (https://grafana.com/get/?plcmt=top-nav&cta=downloads)
-3. Python 3.x (https://www.python.org/downloads/)
-4. Prometheus Python client library
+3. Grafana Clock plugin
+    ```
+      grafana-cli plugins install grafana-clock-panel
+    ```
+4. Python 3.x (https://www.python.org/downloads/)
+5. Prometheus Python client library
     ```
       pip install prometheus-client
     ```
-5. Python Requests library
+6. Python Requests library
     ```
       pip install requests
     ```
-6. MQ Appliance REST API must be enabled
+7. MQ Appliance REST API must be enabled
 
 ## Getting Started
 You must run a separate exporter for each MQ Appliance you want to collect metrics for.

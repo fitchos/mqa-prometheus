@@ -19,7 +19,7 @@ import json
 
 from datetime import datetime
 from mqalib import call_rest_api
-from prometheus_client.core import GaugeMetricFamily
+from prometheus_client.core import GaugeMetricFamily, InfoMetricFamily
 
 class MQAQueueManagersMetrics(object):
     """MQ Appliance queue managers metrics collector"""
@@ -40,18 +40,29 @@ class MQAQueueManagersMetrics(object):
         # Update Prometheus metrics
         for qm in data['QueueManagersStatus']:
 
-            g = GaugeMetricFamily('mqa_queue_manager_cpu_usage', 'The instantaneous CPU usage by the queue manager as a percentage of the CPU load', labels=['appliance', 'qm', 'status', 'haRole', 'haStatus', 'drRole', 'drStatus'])
-            g.add_metric([self.appliance, qm['Name'], qm['Status'], qm['HaRole'], qm['HaStatus'], qm['DrRole'], qm['DrStatus']], qm['CpuUsage'])
+            g = GaugeMetricFamily('mqa_queue_manager_cpu_usage', 'The instantaneous CPU usage by the queue manager as a percentage of the CPU load', labels=['appliance', 'qm'])
+            g.add_metric([self.appliance, qm['Name']], qm['CpuUsage'])
             yield g
 
-            g = GaugeMetricFamily('mqa_queue_manager_memory_bytes_used', 'The amount of memory in bytes that is currently in use by the queue manager', labels=['appliance', 'qm', 'status', 'haRole', 'haStatus', 'drRole', 'drStatus'])
-            g.add_metric([self.appliance, qm['Name'], qm['Status'], qm['HaRole'], qm['HaStatus'], qm['DrRole'], qm['DrStatus']], qm['UsedMemory'] * 1048576)
+            g = GaugeMetricFamily('mqa_queue_manager_memory_bytes_used', 'The amount of memory in bytes that is currently in use by the queue manager', labels=['appliance', 'qm'])
+            g.add_metric([self.appliance, qm['Name']], qm['UsedMemory'] * 1048576)
             yield g
 
-            g = GaugeMetricFamily('mqa_queue_manager_fs_bytes_used', 'The amount of file system in bytes that is currently in use by the queue manager', labels=['appliance', 'qm', 'status', 'haRole', 'haStatus', 'drRole', 'drStatus'])
-            g.add_metric([self.appliance, qm['Name'], qm['Status'], qm['HaRole'], qm['HaStatus'], qm['DrRole'], qm['DrStatus']], qm['UsedFs'] * 1048576)
+            g = GaugeMetricFamily('mqa_queue_manager_fs_bytes_used', 'The amount of file system in bytes that is currently in use by the queue manager', labels=['appliance', 'qm'])
+            g.add_metric([self.appliance, qm['Name']], qm['UsedFs'] * 1048576)
             yield g
 
-            g = GaugeMetricFamily('mqa_queue_manager_fs_bytes_allocated', 'The amount of file system in bytes allocated for the queue manager', labels=['appliance', 'qm', 'status', 'haRole', 'haStatus', 'drRole', 'drStatus'])
-            g.add_metric([self.appliance, qm['Name'], qm['Status'], qm['HaRole'], qm['HaStatus'], qm['DrRole'], qm['DrStatus']], qm['TotalFs'] * 1048576)
+            g = GaugeMetricFamily('mqa_queue_manager_fs_bytes_allocated', 'The amount of file system in bytes allocated for the queue manager', labels=['appliance', 'qm'])
+            g.add_metric([self.appliance, qm['Name']], qm['TotalFs'] * 1048576)
             yield g
+
+            i = InfoMetricFamily('mqa_queue_manager', 'MQ Appliance queue managers information')
+            i.add_metric(['appliance', 'qm', 'status', 'haRole', 'haStatus', 'drRole', 'drStatus'], 
+                          {'appliance': self.appliance, 
+                          'qm': qm['Name'], 
+                          'status': qm['Status'],
+                          'haRole': 'Unknown' if qm['HaRole'] == '' else qm['HaRole'],
+                          'haStatus': 'Unknown' if qm['HaStatus'] == '' else qm['HaStatus'],
+                          'drRole': 'Unknown' if qm['DrRole'] == '' else qm['DrRole'], 
+                          'drStatus': 'Unknown' if qm['DrStatus'] == '' else qm['DrStatus']})
+            yield i
