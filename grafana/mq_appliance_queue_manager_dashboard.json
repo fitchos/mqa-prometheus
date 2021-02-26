@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 8,
-  "iteration": 1614357109686,
+  "iteration": 1614359454314,
   "links": [],
   "panels": [
     {
@@ -445,6 +445,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "CPU usage for both the appliance and the queue manager",
       "fieldConfig": {
         "defaults": {
@@ -550,6 +551,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "Rate of increase and decrease of CPU usage",
       "fieldConfig": {
         "defaults": {
@@ -771,6 +773,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "Amount of memory used over time for both the appliance and the queue manager",
       "fieldConfig": {
         "defaults": {
@@ -877,6 +880,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "Rate of increase and decrease of memory used",
       "fieldConfig": {
         "defaults": {
@@ -1152,6 +1156,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "File system usage over time",
       "fieldConfig": {
         "defaults": {
@@ -1178,6 +1183,7 @@
         "min": true,
         "rightSide": true,
         "show": true,
+        "sideWidth": null,
         "total": false,
         "values": true
       },
@@ -1259,6 +1265,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "Rate of increase and decrease of file system used",
       "fieldConfig": {
         "defaults": {
@@ -1486,5 +1493,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 75
+  "version": 78
 }
