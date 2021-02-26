@@ -1280,10 +1280,11 @@
       "dashes": false,
       "datasource": null,
       "decimals": 2,
-      "description": "CPU Usage overtime.",
+      "description": "CPU usage overtime.",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -1352,7 +1353,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -5589,5 +5590,5 @@
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 113
+  "version": 115
 }
