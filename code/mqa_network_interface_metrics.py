@@ -19,7 +19,7 @@ import json
 
 from datetime import datetime
 from mqalib import call_rest_api
-from prometheus_client.core import CounterMetricFamily
+from prometheus_client.core import CounterMetricFamily, InfoMetricFamily
 
 class MQANetworkInterfaceMetrics(object):
     """MQ Appliance network interface metrics collector"""
@@ -71,3 +71,19 @@ class MQANetworkInterfaceMetrics(object):
             c = CounterMetricFamily('mqa_network_interface_tx_drops_total', 'The number of packets that were not transmitted because the network layer was generating packets faster than the physical network could accept them', labels=['appliance', 'name', 'adminStatus', 'operStatus'])
             c.add_metric([self.appliance, ni['Name'], ni['AdminStatus'], ni['OperStatus']], ni['TxDrops2'])
             yield c
+
+            i = InfoMetricFamily('mqa_network_interface', 'MQ Appliance network interface information')
+            i.add_metric(['appliance', 'interfaceIndex', 'interfaceType', 'name', 'adminStatus', 'operStatus', 'ipType', 'ip', 'prefixLength', 'macAddress', 'mtu'], 
+                      {'appliance': self.appliance, 
+                      'interfaceIndex': str(ni['InterfaceIndex']),
+                      'interfaceType': ni['InterfaceType'],
+                      'name': ni['Name'], 
+                      'adminStatus': ni['AdminStatus'], 
+                      'operStatus': ni['OperStatus'], 
+                      'ipType': ni['IPType'], 
+                      'ip': ni['IP'], 
+                      'prefixLength': str(ni['PrefixLength']), 
+                      'macAddress': ni['MACAddress'], 
+                      'mtu': str(ni['MTU'])})
+            yield i
+
