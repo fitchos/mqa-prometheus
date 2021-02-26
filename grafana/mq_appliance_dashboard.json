@@ -2387,7 +2387,7 @@
       "targets": [
         {
           "expr": "mqa_tcp_connections_established{appliance=\"$appliance\"}",
-          "instant": true,
+          "instant": false,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Connections",
@@ -2504,7 +2504,7 @@
       "targets": [
         {
           "expr": "mqa_tcp_connections_listen{appliance=\"$appliance\"}",
-          "instant": true,
+          "instant": false,
           "interval": "",
           "legendFormat": "Listeners",
           "refId": "A"
@@ -4689,5 +4689,5 @@
   "timezone": "",
   "title": "MQ Appliance - Hardware",
   "uid": "tTNQ95sGk",
-  "version": 90
+  "version": 91
 }
