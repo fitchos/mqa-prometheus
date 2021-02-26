@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1614359305732,
+  "iteration": 1614359506457,
   "links": [],
   "panels": [
     {
@@ -1274,13 +1274,113 @@
       }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 2,
+      "description": "CPU Usage overtime.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "hiddenSeries": false,
+      "id": 169,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.7",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "mqa_system_cpu_usage{appliance=\"$appliance\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "CPU Usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 12
       },
       "id": 145,
       "panels": [
@@ -1312,7 +1412,7 @@
             "h": 5,
             "w": 2,
             "x": 0,
-            "y": 3
+            "y": 8
           },
           "id": 147,
           "options": {
@@ -1415,7 +1515,7 @@
             "h": 5,
             "w": 13,
             "x": 2,
-            "y": 3
+            "y": 8
           },
           "id": 149,
           "options": {
@@ -1474,7 +1574,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 13
       },
       "id": 81,
       "panels": [
@@ -1657,7 +1757,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 14
       },
       "id": 163,
       "panels": [],
@@ -1831,7 +1931,7 @@
         "h": 8,
         "w": 14,
         "x": 0,
-        "y": 10
+        "y": 15
       },
       "id": 165,
       "options": {
@@ -1921,7 +2021,7 @@
         "h": 8,
         "w": 10,
         "x": 14,
-        "y": 10
+        "y": 15
       },
       "hiddenSeries": false,
       "id": 167,
@@ -2007,7 +2107,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 23
       },
       "id": 6,
       "panels": [],
@@ -2044,7 +2144,7 @@
         "h": 5,
         "w": 2,
         "x": 0,
-        "y": 19
+        "y": 24
       },
       "id": 26,
       "options": {
@@ -2098,7 +2198,7 @@
         "h": 5,
         "w": 5,
         "x": 2,
-        "y": 19
+        "y": 24
       },
       "id": 31,
       "options": {
@@ -2165,7 +2265,7 @@
         "h": 5,
         "w": 5,
         "x": 7,
-        "y": 19
+        "y": 24
       },
       "id": 28,
       "options": {
@@ -2221,7 +2321,7 @@
         "h": 5,
         "w": 5,
         "x": 12,
-        "y": 19
+        "y": 24
       },
       "id": 30,
       "options": {
@@ -2260,7 +2360,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 29
       },
       "id": 10,
       "panels": [],
@@ -2386,7 +2486,7 @@
         "h": 6,
         "w": 17,
         "x": 0,
-        "y": 25
+        "y": 30
       },
       "id": 151,
       "options": {
@@ -2483,7 +2583,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 31
+        "y": 36
       },
       "hiddenSeries": false,
       "id": 77,
@@ -2582,7 +2682,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 31
+        "y": 36
       },
       "hiddenSeries": false,
       "id": 79,
@@ -2705,7 +2805,7 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 39
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 73,
@@ -2823,7 +2923,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 39
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 75,
@@ -2912,7 +3012,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 49
       },
       "id": 153,
       "panels": [],
@@ -3010,7 +3110,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 45
+        "y": 50
       },
       "id": 155,
       "options": {
@@ -3091,7 +3191,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 45
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 157,
@@ -3191,7 +3291,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 53
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 159,
@@ -3291,7 +3391,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 53
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 161,
@@ -3377,7 +3477,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 61
+        "y": 66
       },
       "id": 119,
       "panels": [
@@ -4064,7 +4164,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 62
+        "y": 67
       },
       "id": 53,
       "panels": [
@@ -4586,7 +4686,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 63
+        "y": 68
       },
       "id": 8,
       "panels": [
@@ -5276,7 +5376,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 69
       },
       "id": 16,
       "panels": [
@@ -5482,12 +5582,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 107
+  "version": 113
 }
