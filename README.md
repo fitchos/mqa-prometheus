@@ -142,6 +142,18 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_file_system_internal_bytes_free | Gauge | Free, or unused and available, internal storage space on the appliance | appliance |
 | mqa_file_system_internal_bytes_total | Counter | Total internal storage space on the appliance | appliance |
 
+**Log Targets**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_log_target_events_processed_total | Counter | The number of events that this log target processed | appliance, name |
+| mqa_log_target_events_dropped_total | Counter | The number of events that this log target dropped because there are too many pending events | appliance, name |
+| mqa_log_target_events_pending_total | Counter | The number of pending events for this log target. These events are waiting to be stored at the destination | appliance, name |
+
+**Log Targets Information**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_log_target_info | Info | MQ Appliance log target information | appliance, name, status, errorInfo, requestedMemory |
+
 **MQ Appliance Information**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
@@ -168,6 +180,11 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 | mqa_network_interface_tx_packets_total | Counter | The number of packets successfully transmitted on the interface | appliance, adminStatus, name, operStatus |
 | mqa_network_interface_tx_errors_total | Counter | The number of packets that were not successfully transmitted due to errors on the network or in the hardware | appliance, adminStatus, name, operStatus |
 | mqa_network_interface_tx_drops_total | Counter | The number of packets that were not transmitted because the network layer was generating packets faster than the physical network could accept them | appliance, adminStatus, name, operStatus |
+
+**Network Interface Information**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_network_interface_info | Info | MQ Appliance network interface information | appliance, interfaceIndex, interfaceType, name, adminStatus, operStatus, ipType, ip, prefixLength, macAddress, mtu |
 
 **Queue Manager**
 | Metric | Type | Description | Labels |

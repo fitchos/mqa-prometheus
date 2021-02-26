@@ -32,7 +32,7 @@ def call_rest_api(api_call, ip, port, auth, timeout):
             data = json.loads(response.text)
 
             if 'result' in data:
-                logging.error('REST API call to gather \'' + api_call  + '\' failed --> ' + data['result'])
+                logging.warning('REST API call to gather \'' + api_call  + '\' failed --> ' + data['result'])
                 return ''
         else:
             logging.error('REST API call to gather \'' + api_call  + '\' failed --> HTTP status code is ' + str(response.status_code) + ' (' + response.reason + ')')

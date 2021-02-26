@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 8,
-  "iteration": 1614279605227,
+  "iteration": 1614357109686,
   "links": [],
   "panels": [
     {
@@ -1452,9 +1452,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "QM1",
-          "value": "QM1"
+          "selected": false,
+          "text": "QM2",
+          "value": "QM2"
         },
         "datasource": "Prometheus",
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
