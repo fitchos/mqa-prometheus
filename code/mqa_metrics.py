@@ -68,6 +68,9 @@ def main():
     # Process command line options
     args = parser.parse_args()
 
+    if args.log != None:
+        args.log = args.log.replace('\\', '/')
+
     # Prompt for the password
     while args.pw == None:
         try:
