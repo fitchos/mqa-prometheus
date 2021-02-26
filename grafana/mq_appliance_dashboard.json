@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1614357069085,
+  "iteration": 1614358160499,
   "links": [],
   "panels": [
     {
@@ -1828,7 +1828,7 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 11,
+        "w": 14,
         "x": 0,
         "y": 5
       },
@@ -1869,18 +1869,24 @@
               "Time": 3,
               "Value": 7,
               "appliance": 4,
-              "errorInfo": 8,
+              "errorInfo": 11,
+              "eventsDropped": 10,
+              "eventsPending": 9,
+              "eventsProcessed": 8,
               "href": 1,
               "instance": 5,
               "job": 6,
               "name": 0,
-              "requestedMemory": 9,
+              "requestedMemory": 12,
               "status": 2
             },
             "renameByName": {
               "drRole": "DR Role",
               "drStatus": "DR Status",
               "errorInfo": "Error",
+              "eventsDropped": "Events Dropped",
+              "eventsPending": "Events Pending",
+              "eventsProcessed": "Events Processed",
               "haRole": "HA Role",
               "haStatus": "HA Status",
               "href": "HRef",
@@ -1900,7 +1906,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Log targets events processed.",
+      "decimals": 2,
+      "description": "Rate of log targets events processed.",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1911,8 +1918,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 8,
-        "w": 13,
-        "x": 11,
+        "w": 10,
+        "x": 14,
         "y": 5
       },
       "hiddenSeries": false,
@@ -1945,7 +1952,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mqa_log_target_events_processed_total{appliance=\"$appliance\"}",
+          "expr": "rate(mqa_log_target_events_processed_total{appliance=\"$appliance\"}[1m])",
           "interval": "",
           "legendFormat": "{{name}}",
           "refId": "A"
@@ -1955,7 +1962,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Events Processed",
+      "title": "Events Processed Rate",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3068,6 +3075,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "CPU usage for all queue managers.",
       "fieldConfig": {
         "defaults": {
@@ -3167,6 +3175,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "Memory usage for all queue managers.",
       "fieldConfig": {
         "defaults": {
@@ -3266,6 +3275,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "description": "File system usage for all queue managers.",
       "fieldConfig": {
         "defaults": {
@@ -5478,5 +5488,5 @@
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 102
+  "version": 105
 }

@@ -60,12 +60,15 @@ class MQALogTargetsMetrics(object):
             yield c
 
             i = InfoMetricFamily('mqa_log_target', 'MQ Appliance log target information')
-            i.add_metric(['appliance', 'name', 'href', 'status', 'errorInfo', 'requestedMemory'], 
+            i.add_metric(['appliance', 'name', 'href', 'status', 'errorInfo', 'eventsProcessed', 'eventsDropped', 'eventsPending', 'requestedMemory'], 
                       {'appliance': self.appliance, 
                       'name': lt['LogTarget']['value'],
                       'href': lt['LogTarget']['href'],
                       'status': lt['Status'], 
                       'errorInfo': lt['ErrorInfo'], 
+                      'eventsProcessed': str(lt['EventsProcessed']), 
+                      'eventsDropped': str(lt['EventsDropped']), 
+                      'eventsPending': str(lt['EventsPending']), 
                       'requestedMemory': str(lt['RequestedMemory'])})
             yield i
              

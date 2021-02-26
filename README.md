@@ -152,7 +152,7 @@ mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 
 **Log Targets Information**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_log_target_info | Info | MQ Appliance log target information | appliance, name, status, errorInfo, requestedMemory |
+| mqa_log_target_info | Info | MQ Appliance log target information | appliance, name, status, errorInfo, eventsProcessed, eventsDropped, eventsPending,requestedMemory |
 
 **MQ Appliance Information**
 | Metric | Type | Description | Labels |
