@@ -38,8 +38,16 @@ class MQAFailureNotificationMetrics(object):
         if data == '':
             return
 
+        failureNotifications = []
+
+        if type(data['FailureNotificationStatus2']) is dict:
+            failureNotifications.append(data['FailureNotificationStatus2'])
+        else:
+            failureNotifications = data['FailureNotificationStatus2']
+
+
         # Update Prometheus metrics
-        for fn in data['FailureNotificationStatus2']:
+        for fn in failureNotifications:
 
             i = InfoMetricFamily('mqa_failure_notification', 'MQ Appliance failure notification')
             i.add_metric(['appliance', 'date', 'reason', 'uploadStatus', 'location'], 
