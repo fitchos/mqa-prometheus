@@ -17,6 +17,7 @@
 import json
 import logging
 import requests
+import os
 import sys
 
 from datetime import datetime
@@ -65,3 +66,18 @@ def get_password(prompt='password: '):
 def get_version():
 
     return 'v0.3'
+
+def resolve_directory(args):
+    """Resolve the directory to use"""
+
+    directory = args.directory
+    if os.getenv('MQA_EXPORTER_DIRECTORY') is not None:
+        directory = os.getenv('MQA_EXPORTER_DIRECTORY')
+    if directory != '':
+        directory = directory.replace('\\', '/')
+        if not directory.endswith('/'):
+            directory += '/'
+
+    return directory
+
+

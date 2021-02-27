@@ -27,13 +27,14 @@ import sys
 
 from mqalib import get_password
 from mqalib import get_version
+from mqalib import resolve_directory
 
 
 def main():
 
     # Build parser to handle the command line options
     parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter Start Utility - ' + get_version())
-    parser.add_argument('-d', '--directory', type=str, required=False, default='', help = 'Path to directory for log and PID files (defaults to current directory')
+    parser.add_argument('-d', '--directory', type=str, required=False, default='', help = 'Path to directory for log and PID files (defaults to current directory)')
     parser.add_argument('-f', '--file',  type=str, required=True, help = 'Name of the file with the exporters configuration (CSV)') 
     parser.add_argument('-ln', '--lognumbers', type=int, required=False, default=10, help = 'Number of logs in a rotation (defaults to 10)')
     parser.add_argument('-ls', '--logsize', type=int, required=False, default=10485760, help = 'Size of logs in bytes (defaults to 10MB - 10485760)')
@@ -47,11 +48,7 @@ def main():
 
     # Process command line options
     args = parser.parse_args()
-
-    args.directory = args.directory.replace('\\', '/')
-    if args.directory != '':
-        if not args.directory.endswith('/'):
-            args.directory += '/'
+    args.directory = resolve_directory(args)
 
     # Prompt for the password
     if args.pw == None:
@@ -86,7 +83,7 @@ def main():
 
             exporter_count += 1
 
-        print('Started ' + str(exporter_count) + ' exporters.')
+        print('Started ' + str(exporter_count) + ' exporter(s).')
 
 if __name__ == '__main__':
     main()

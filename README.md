@@ -35,7 +35,7 @@ currently supported.
 Usage: mqa_metrics.py [-h] -a APPLIANCE -i IP [-hp HTTPPORT] [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] -p PORT
                       [-t TIMEOUT] -u USER [-x PW]
 
-MQ Appliance Prometheus Exporter
+MQ Appliance Prometheus Exporter - vx.x
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -73,6 +73,94 @@ Run a second exporter (note: the HTTPPORT must be different)
 
 ```
 mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 8001 -l mqaprod2.log
+```
+
+### Utilities to manage exporters
+Three utilities are available to:
+
+1. Start multiple exporters using a CSV file
+2. List the exporters currently running
+3. Stop one or more exporters
+
+**Note: Environment variable MQA_EXPORTER_DIRECTORY can be set to a directory name**
+      **and avoid having to specify the -d parameter on the commands**
+
+#### Starting multiple exporters
+To start multiple exporters build a CSV (comma delimited) file with the following information:
+
+- appliance name
+- IP or DNS name of the appliance
+- Port number of the REST API
+- Port number to serve the metrics to Prometheus
+- Timeout value for the REST API calls to the appliance
+
+To start the exporters, use the mqa_start_exporters utility
+
+```
+Usage: mqa_start_exporters.py [-h] [-d DIRECTORY] -f FILE [-ln LOGNUMBERS] [-ls LOGSIZE] -u USER [-x PW]
+
+MQ Appliance Prometheus Exporter Start Utility - vx.x
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DIRECTORY, --directory DIRECTORY
+                        Path to directory for log and PID files (defaults to current directory
+  -f FILE, --file FILE  Name of the file with the exporters configuration (CSV)
+  -ln LOGNUMBERS, --lognumbers LOGNUMBERS
+                        Number of logs in a rotation (defaults to 10)
+  -ls LOGSIZE, --logsize LOGSIZE
+                        Size of logs in bytes (defaults to 10MB - 10485760)
+  -u USER, --user USER  User to login to the appliance
+  -x PW, --pw PW        Password to login to the appliance
+```
+
+#### Sample command to start a list of exporters
+```
+mqa_start_exporters.py -f my_exporter_list.csv -d \temp -u admin 
+```
+
+#### Listing exporters currently running
+To list the exporters currently running, use the mqa_list_exporters utility
+
+```
+Usage: mqa_list_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY]
+
+MQ Appliance Prometheus Exporter List Utility - v0.3
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -a APPLIANCE, --appliance APPLIANCE
+                        Name of the appliance
+  -d DIRECTORY, --directory DIRECTORY
+                        Path to directory for PID files (defaults to current directory)
+```
+
+#### Sample commands to list exporters running
+```
+mqa_list_exporters.py -d \temp
+mqa_list_exporters.py -d \temp -a my_appliance
+```
+
+#### Stopping one or more exporters
+To stop one or more exporters, use the mqa_stop_exporters utility
+
+```
+usage: mqa_stop_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY]
+
+MQ Appliance Prometheus Exporter Stop Utility - v0.3
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -a APPLIANCE, --appliance APPLIANCE
+                        Name of the appliance
+  -d DIRECTORY, --directory DIRECTORY
+                        Path to directory for PID files (defaults to current directory)
+```
+
+#### Sample commands to stop one or more exporters
+```
+mqa_stop_exporters.py -d \temp
+mqa_list_exporters.py -d \temp -a my_appliance
 ```
 
 ### Available metrics

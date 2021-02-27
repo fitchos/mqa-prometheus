@@ -25,6 +25,7 @@ import os
 import signal
 
 from mqalib import get_version
+from mqalib import resolve_directory
 
 
 def main():
@@ -36,16 +37,11 @@ def main():
 
     # Process command line options
     args = parser.parse_args()
-
-    args.directory = args.directory.replace('\\', '/')
-    if args.directory != '':
-        if not args.directory.endswith('/'):
-            args.directory += '/'
+    args.directory = resolve_directory(args)
 
     print('MQ Appliance Prometheus Exporter Stop Utility - ' + get_version())
 
     # Search for exporters by looking at pid files
-    exporter_count = 0
     exporter_count_stopped = 0
     exporter_count_not_stopped = 0
     for file in glob.glob(args.directory + args.appliance + '.pid'):
@@ -58,15 +54,13 @@ def main():
             print('Exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\' with PID ' + pid + ' has been stopped')
             exporter_count_stopped += 1
         except Exception as err:
-            print('Error occurred while trying to stop exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\'')
+            print('Error occurred while trying to stop the exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\'')
             print('The error is: ' + str(err))
             exporter_count_not_stopped += 1
 
-        exporter_count += 1
-
-    if exporter_count == 0:
-        print('No exporter found, it does not appear that any exporters are currently running or')
-        print('you may be not be looking at the correct directory for the PID files!')
+    if exporter_count_stopped == 0 and exporter_count_not_stopped == 0:
+        print('No exporter found or the specific exporter(s) are not running, or')
+        print('you may be NOT be looking at the correct directory for the PID files!')
     else:
         print(str(exporter_count_stopped) + ' exporter(s) have been stopped.')
         print(str(exporter_count_not_stopped) + ' exporter(s) have NOT been stopped.')

@@ -25,6 +25,7 @@ import glob
 import os
 
 from mqalib import get_version
+from mqalib import resolve_directory
 
 
 def main():
@@ -36,11 +37,7 @@ def main():
 
     # Process command line options
     args = parser.parse_args()
-
-    args.directory = args.directory.replace('\\', '/')
-    if args.directory != '':
-        if not args.directory.endswith('/'):
-            args.directory += '/'
+    args.directory = resolve_directory(args)
 
     print('MQ Appliance Prometheus Exporter List Utility - ' + get_version())
 
@@ -55,8 +52,8 @@ def main():
         exporter_count += 1
 
     if exporter_count == 0:
-        print('No exporter found, it does not appear that any exporters are currently running or')
-        print('you may be not be looking at the correct directory for the PID files!')
+        print('No exporter found or the specific exporter(s) are not running, or')
+        print('you may be NOT be looking at the correct directory for the PID files!')
     else:
         print(str(exporter_count) + ' exporter(s) are currently running.')
 
