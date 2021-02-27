@@ -21,14 +21,12 @@ for the MQ Appliance.
 
 import argparse
 import csv
-import logging
-import os
 import shlex
 import subprocess
 import sys
-import time
 
 from getpass import getpass
+from mqalib import get_password
 
 
 def main():
@@ -36,7 +34,7 @@ def main():
     # Build parser to handle the command line options
     parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter Start Utility')
     parser.add_argument('-f', '--file',  type=str, required=True, help = 'Name of the file with the exporters configuration (CSV)') 
-    parser.add_argument('-lp', '--logpath', type=str, required=False, default='', help = 'Directory path to store logs and PID files (defaults to current directory')
+    parser.add_argument('-lp', '--logpath', type=str, required=False, default='', help = 'Directory path to store log and PID files (defaults to current directory')
     parser.add_argument('-ln', '--lognumbers', type=int, required=False, default=10, help = 'Number of logs in a rotation (defaults to 10)')
     parser.add_argument('-ls', '--logsize', type=int, required=False, default=10485760, help = 'Size of logs in bytes (defaults to 10MB - 10485760)')
     parser.add_argument('-u', '--user', type=str, required=True, help = 'User to login to the appliance')
@@ -53,32 +51,37 @@ def main():
     args.logpath = args.logpath.replace('\\', '/')
 
     # Prompt for the password
-    while args.pw == None:
-        try:
-            pw = getpass('password: ')
-            pw = pw.strip()
-            if len(pw) > 0:
-                args.pw = pw
-        except Exception as e:
-            print('Error occurred while getting password: ' + e)
-            sys.exit(1)
+    if args.pw == None:
+        args.pw = get_password()
 
     print('MQ Appliance Prometheus Exporter Start Utility')
 
-    # Process the file of exporters configuration
-    with open(args.file) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        line_count = 0
-        for row in csv_reader:
-            command = shlex.split('python mqa_metrics.py -a ' + row[0] + ' -i ' + row[1] + ' -p ' + row[2] + ' -l ' + args.logpath + row[0] + '_exporter.log' +  ' -ls ' + str(args.logsize) + ' -ln ' + str(args.lognumbers) + ' -u ' + args.user + ' -x ' + args.pw + ' -hp ' + row[3] + ' -t ' + row[4])                    
+    # Process the exporters configuration file (CSV)
+    with open(args.file) as csvfile:
+        csvreader = csv.reader(csvfile, delimiter=',')
+        linecount = 0
+        for row in csvreader:
+            command = shlex.split('python mqa_metrics.py -a ' + row[0] + 
+                                                       ' -i ' + row[1] + 
+                                                       ' -p ' + row[2] + 
+                                                       ' -l ' + args.logpath + row[0] + '_exporter.log' +  
+                                                       ' -ls ' + str(args.logsize) + 
+                                                       ' -ln ' + str(args.lognumbers) + 
+                                                       ' -u ' + args.user + 
+                                                       ' -x ' + args.pw + 
+                                                       ' -hp ' + row[3] + 
+                                                       ' -t ' + row[4])                    
             
             process = subprocess.Popen(command)
             print('Started exporter for appliance \'' + row[0] + '\' on HTTP port ' + str(row[3]) + ', PID is ' + str(process.pid))
-            with open(args.logpath + row[0] + '.pid', 'w') as pid_file:
-                pid_file.write(str(process.pid))
-            line_count += 1
 
-        print('Started ' + str(line_count) + ' exporters.')
+            # Write pid to file
+            with open(args.logpath + row[0] + '.pid', 'w') as pidfile:
+                pidfile.write(str(process.pid))
+
+            linecount += 1
+
+        print('Started ' + str(linecount) + ' exporters.')
 
 if __name__ == '__main__':
     main()

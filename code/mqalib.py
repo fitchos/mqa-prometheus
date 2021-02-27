@@ -17,8 +17,10 @@
 import json
 import logging
 import requests
+import sys
 
 from datetime import datetime
+from getpass import getpass
 
 def call_rest_api(api_call, ip, port, auth, timeout):
     """Perform a REST API call"""
@@ -44,3 +46,18 @@ def call_rest_api(api_call, ip, port, auth, timeout):
     logging.info('REST API call to gather \'' + api_call  + '\' completed.')
 
     return data
+
+def get_password(prompt='password: '):
+    """Get a password from the command line"""
+
+    while True:
+        try:
+            pw = getpass(prompt)
+            pw = pw.strip()
+            if len(pw) > 0:
+                break
+        except Exception as e:
+            print('Error occurred while getting password: ' + str(e))
+            sys.exit(1)
+
+    return pw

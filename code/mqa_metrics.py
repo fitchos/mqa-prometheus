@@ -72,15 +72,8 @@ def main():
         args.log = args.log.replace('\\', '/')
 
     # Prompt for the password
-    while args.pw == None:
-        try:
-            pw = getpass('password: ')
-            pw = pw.strip()
-            if len(pw) > 0:
-                args.pw = pw
-        except Exception as e:
-            print('Error occurred while getting password: ' + e)
-            sys.exit(1)
+    if args.pw == None:
+        args.pw = get_password()
 
     # Configure the logger
     if args.log is None:
