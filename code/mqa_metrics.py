@@ -24,7 +24,6 @@ import logging
 import sys
 import time
 
-from getpass import getpass
 from logging.handlers import RotatingFileHandler
 from mqa_active_users_metrics import MQAActiveUsersMetrics
 from mqa_environmental_fan_sensors_metrics import MQAEnvironmentalFanSensorsMetrics
@@ -41,6 +40,8 @@ from mqa_raid_ssd_metrics import MQARaidSsdMetrics
 from mqa_system_cpu_metrics import MQASystemCpuMetrics
 from mqa_system_memory_metrics import MQASystemMemoryMetrics
 from mqa_tcp_summary_metrics import MQATCPSummaryMetrics
+from mqalib import get_password
+from mqalib import get_version
 from prometheus_client import start_http_server, REGISTRY
 from requests import packages
 
@@ -48,7 +49,7 @@ from requests import packages
 def main():
 
     # Build parser to handle the command line options
-    parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter')
+    parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter - ' + get_version())
     parser.add_argument('-a', '--appliance',  type=str, required=True, help = 'Name of the appliance') 
     parser.add_argument('-i', '--ip', type=str, required=True, help = 'IP address of the appliance REST API')
     parser.add_argument('-hp', '--httpPort', type=int, default=8000, help = 'Port number of the exported HTTP server (default: 8000)')
@@ -87,7 +88,7 @@ def main():
             format="%(asctime)s - %(levelname)s - %(message)s",
             datefmt='%Y-%m-%dT%H:%M:%S')
 
-    logging.info('MQ Appliance Prometheus Exporter started on HTTP port ' + str(args.httpPort))
+    logging.info('MQ Appliance Prometheus Exporter ' + get_version() + ' started on HTTP port ' + str(args.httpPort))
     logging.info('MQ Appliance monitored is ' + args.appliance + ' at ' + args.ip + '(' + str(args.port) + ')')
 
     # Register metric collectors

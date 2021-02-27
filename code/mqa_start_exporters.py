@@ -15,7 +15,7 @@
 # limitations under the License.
 
 """
-This module provides the ability to start a list of exporters
+This module provides a utility to start a list of exporters
 for the MQ Appliance.
 """
 
@@ -25,16 +25,16 @@ import shlex
 import subprocess
 import sys
 
-from getpass import getpass
 from mqalib import get_password
+from mqalib import get_version
 
 
 def main():
 
     # Build parser to handle the command line options
-    parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter Start Utility')
+    parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter Start Utility - ' + get_version())
+    parser.add_argument('-d', '--directory', type=str, required=False, default='', help = 'Path to directory for log and PID files (defaults to current directory')
     parser.add_argument('-f', '--file',  type=str, required=True, help = 'Name of the file with the exporters configuration (CSV)') 
-    parser.add_argument('-lp', '--logpath', type=str, required=False, default='', help = 'Directory path to store log and PID files (defaults to current directory')
     parser.add_argument('-ln', '--lognumbers', type=int, required=False, default=10, help = 'Number of logs in a rotation (defaults to 10)')
     parser.add_argument('-ls', '--logsize', type=int, required=False, default=10485760, help = 'Size of logs in bytes (defaults to 10MB - 10485760)')
     parser.add_argument('-u', '--user', type=str, required=True, help = 'User to login to the appliance')
@@ -48,40 +48,45 @@ def main():
     # Process command line options
     args = parser.parse_args()
 
-    args.logpath = args.logpath.replace('\\', '/')
+    args.directory = args.directory.replace('\\', '/')
+    if args.directory != '':
+        if not args.directory.endswith('/'):
+            args.directory += '/'
 
     # Prompt for the password
     if args.pw == None:
         args.pw = get_password()
 
-    print('MQ Appliance Prometheus Exporter Start Utility')
+    print('MQ Appliance Prometheus Exporter Start Utility - ' + get_version())
 
     # Process the exporters configuration file (CSV)
     with open(args.file) as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')
-        linecount = 0
-        for row in csvreader:
-            command = shlex.split('python mqa_metrics.py -a ' + row[0] + 
-                                                       ' -i ' + row[1] + 
-                                                       ' -p ' + row[2] + 
-                                                       ' -l ' + args.logpath + row[0] + '_exporter.log' +  
+
+        exporter_count = 0
+        for exporter in csvreader:
+            command = shlex.split('python mqa_metrics.py -a ' + exporter[0] + 
+                                                       ' -i ' + exporter[1] + 
+                                                       ' -p ' + exporter[2] + 
+                                                       ' -l ' + args.directory + exporter[0] + '_exporter.log' +  
                                                        ' -ls ' + str(args.logsize) + 
                                                        ' -ln ' + str(args.lognumbers) + 
                                                        ' -u ' + args.user + 
                                                        ' -x ' + args.pw + 
-                                                       ' -hp ' + row[3] + 
-                                                       ' -t ' + row[4])                    
+                                                       ' -hp ' + exporter[3] + 
+                                                       ' -t ' + exporter[4])                    
             
+            # Start the exporter
             process = subprocess.Popen(command)
-            print('Started exporter for appliance \'' + row[0] + '\' on HTTP port ' + str(row[3]) + ', PID is ' + str(process.pid))
+            print('Started exporter for appliance \'' + exporter[0] + '\' on HTTP port ' + str(exporter[3]) + ', PID is ' + str(process.pid))
 
-            # Write pid to file
-            with open(args.logpath + row[0] + '.pid', 'w') as pidfile:
+            # Write pid of the exporter to file
+            with open(args.directory + exporter[0] + '.pid', 'w') as pidfile:
                 pidfile.write(str(process.pid))
 
-            linecount += 1
+            exporter_count += 1
 
-        print('Started ' + str(linecount) + ' exporters.')
+        print('Started ' + str(exporter_count) + ' exporters.')
 
 if __name__ == '__main__':
     main()

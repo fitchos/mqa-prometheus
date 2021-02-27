@@ -61,3 +61,7 @@ def get_password(prompt='password: '):
             sys.exit(1)
 
     return pw
+
+def get_version():
+
+    return 'v0.3'
