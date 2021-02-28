@@ -17,11 +17,13 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1614538531954,
+  "iteration": 1614550445404,
   "links": [
     {
       "asDropdown": false,
       "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
       "tags": [],
       "type": "dashboards"
     },
@@ -5629,12 +5631,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 6
+  "version": 8
 }

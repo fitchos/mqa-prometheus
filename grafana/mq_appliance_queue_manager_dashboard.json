@@ -17,10 +17,12 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1614538602272,
+  "iteration": 1614550485377,
   "links": [
     {
       "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
       "tags": [],
       "type": "dashboards"
     },
@@ -1460,7 +1462,7 @@
       "type": "stat"
     }
   ],
-  "refresh": false,
+  "refresh": "10s",
   "schemaVersion": 27,
   "style": "dark",
   "tags": [],
@@ -1531,12 +1533,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 5
+  "version": 9
 }
