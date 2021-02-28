@@ -4,7 +4,8 @@ This project provides a Prometheus Exporter for the IBM MQ Appliance.
 ![IBM MQ Appliance](/images/IBM_MQ_Appliance.png)
 
 ## WARNING
-The main branch is the development branch which may not be stable!
+The **main** branch is the development branch which may not be stable!
+Instead download the latest release.
 
 ## Prerequisites
 The following are prerequisites to run the exporter:

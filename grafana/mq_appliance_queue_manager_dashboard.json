@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 8,
-  "iteration": 1614359454314,
+  "id": 2,
+  "iteration": 1614514060873,
   "links": [],
   "panels": [
     {
@@ -77,9 +77,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -133,9 +134,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -192,9 +194,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -295,9 +298,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -351,9 +355,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -422,9 +427,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -482,7 +488,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -588,7 +594,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -692,9 +698,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "((1 / mqa_system_memory_memory_bytes_total{appliance=\"$appliance\"}) * (scalar(mqa_queue_manager_memory_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}))) * 100",
@@ -750,9 +757,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_system_memory_memory_bytes_free{appliance=\"$appliance\"}",
@@ -810,7 +818,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -917,7 +925,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1020,9 +1028,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_memory_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1077,9 +1086,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "(mqa_queue_manager_fs_bytes_used{appliance=\"$appliance\", qm=\"$qm\"} / mqa_queue_manager_fs_bytes_allocated{appliance=\"$appliance\", qm=\"$qm\"}) * 100",
@@ -1133,9 +1143,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_fs_bytes_allocated{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1194,7 +1205,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1302,7 +1313,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1405,9 +1416,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_fs_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1424,7 +1436,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 26,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1438,6 +1450,7 @@
         },
         "datasource": "Prometheus",
         "definition": "mqa_info",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -1445,7 +1458,10 @@
         "multi": false,
         "name": "appliance",
         "options": [],
-        "query": "mqa_info",
+        "query": {
+          "query": "mqa_info",
+          "refId": "Prometheus-appliance-Variable-Query"
+        },
         "refresh": 1,
         "regex": "/.*appliance=\"([^\"]*).*/",
         "skipUrlSync": false,
@@ -1460,11 +1476,12 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "QM2",
-          "value": "QM2"
+          "text": "QM1",
+          "value": "QM1"
         },
         "datasource": "Prometheus",
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -1472,7 +1489,10 @@
         "multi": false,
         "name": "qm",
         "options": [],
-        "query": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
+        "query": {
+          "query": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
+          "refId": "Prometheus-qm-Variable-Query"
+        },
         "refresh": 1,
         "regex": "/.*qm=\"([^\"]*).*/",
         "skipUrlSync": false,
@@ -1493,5 +1513,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 78
+  "version": 1
 }
