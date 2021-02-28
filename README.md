@@ -163,7 +163,7 @@ optional arguments:
 #### Sample commands to stop one or more exporters
 ```
 mqa_stop_exporters.py -d \temp
-mqa_list_exporters.py -d \temp -a my_appliance
+mqa_stop_exporters.py -d \temp -a my_appliance
 ```
 
 ### Available metrics
