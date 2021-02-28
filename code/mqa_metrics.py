@@ -80,14 +80,22 @@ def main():
     if args.log is None:
         logging.basicConfig(stream=sys.stdout, 
             level=logging.INFO, 
-            format="%(asctime)s - %(levelname)s - %(message)s",
+            format='%(asctime)s - %(levelname)s - %(message)s',
             datefmt='%Y-%m-%dT%H:%M:%S')
     else:
-        logging.basicConfig(handlers=[RotatingFileHandler(args.log, maxBytes=args.logsize, backupCount=args.lognumbers)], 
-            level=logging.INFO,
-            format="%(asctime)s - %(levelname)s - %(message)s",
-            datefmt='%Y-%m-%dT%H:%M:%S')
-
+        if sys.version[:1] == '3':
+            # Python 3 logging, supports log rotation
+            logging.basicConfig(handlers=[RotatingFileHandler(args.log, maxBytes=args.logsize, backupCount=args.lognumbers)], 
+                level=logging.INFO,
+                format="%(asctime)s - %(levelname)s - %(message)s",
+                datefmt='%Y-%m-%dT%H:%M:%S')
+        else:
+            # Python 2 logging, does not support log rotation
+            logging.basicConfig(filename=args.log, filemode='a', 
+                level=logging.INFO,
+                format='%(asctime)s - %(levelname)s - %(message)s',
+                datefmt='%Y-%m-%dT%H:%M:%S')
+        
     logging.info('MQ Appliance Prometheus Exporter ' + get_version() + ' started on HTTP port ' + str(args.httpPort))
     logging.info('MQ Appliance monitored is ' + args.appliance + ' at ' + args.ip + '(' + str(args.port) + ')')
 

@@ -14,7 +14,7 @@ The following are prerequisites to run the exporter:
     ```
       grafana-cli plugins install grafana-clock-panel
     ```
-4. Python 3.x (https://www.python.org/downloads/)
+4. Python 3.x or 2.x (https://www.python.org/downloads/)
 5. Prometheus Python client library
     ```
       pip install prometheus-client
@@ -30,6 +30,8 @@ You must run a separate exporter for each MQ Appliance you want to collect metri
 
 mqa_metrics.py is the name of the module to run an exporter. Only basic authentication is
 currently supported.
+
+**Note: if you use Python 2 and log to a file, you need to use an external mechanism to rotate the logs**
 
 ```
 Usage: mqa_metrics.py [-h] -a APPLIANCE -i IP [-hp HTTPPORT] [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] -p PORT

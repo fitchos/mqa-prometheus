@@ -79,5 +79,3 @@ def resolve_directory(args):
             directory += '/'
 
     return directory
-
-

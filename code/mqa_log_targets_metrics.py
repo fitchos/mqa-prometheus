@@ -30,6 +30,7 @@ class MQALogTargetsMetrics(object):
         self.port = port
         self.auth = auth
         self.timeout = timeout
+        #self.logger = logger
 
     def collect(self):
         # Perform REST API call to fetch data
