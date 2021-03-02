@@ -16,9 +16,37 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 27,
-  "iteration": 1614717245891,
-  "links": [],
+  "id": 10,
+  "iteration": 1614721379323,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Queue_Managers"
+      ],
+      "title": "Other Dashboards",
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "targetBlank": true,
+      "title": "IBM MQ Appliance Knowledge Center",
+      "type": "link",
+      "url": "https://www.ibm.com/support/knowledgecenter/en/SS5K6E_9.2.0/WelcomePage/homepage.html"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "targetBlank": true,
+      "title": "IBM MQ Support",
+      "type": "link",
+      "url": "https://www.ibm.com/mysupport/s/topic/0TO5000000024cJGAQ/mq?language=en_US&productId=01t0z000006zdYXAAY"
+    }
+  ],
   "panels": [
     {
       "collapsed": false,
@@ -80,7 +108,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -141,7 +169,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -202,7 +230,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -263,7 +291,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -324,7 +352,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -385,7 +413,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -493,7 +521,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -554,7 +582,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -615,7 +643,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -676,7 +704,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -737,7 +765,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -798,7 +826,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -859,7 +887,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -920,7 +948,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -981,7 +1009,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -1871,7 +1899,7 @@
           }
         ]
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_ipmi_sel_events_info{appliance=\"$appliance\"}",
@@ -5714,22 +5742,24 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 27,
+  "schemaVersion": 26,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "MQA_Main"
+  ],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "x0033xn10",
-          "value": "x0033xn10"
+          "selected": false,
+          "text": "MQA2002PROD1",
+          "value": "MQA2002PROD1"
         },
         "datasource": "Prometheus",
         "definition": "mqa_info",
         "description": null,
-        "error": null,
+        "error": {},
         "hide": 0,
         "includeAll": false,
         "label": "Appliance",
@@ -5753,12 +5783,12 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 6
+  "version": 11
 }

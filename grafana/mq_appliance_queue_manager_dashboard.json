@@ -16,14 +16,18 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
-  "iteration": 1614550485377,
+  "id": 8,
+  "iteration": 1614721470665,
   "links": [
     {
+      "asDropdown": false,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": [],
+      "tags": [
+        "MQA_Main"
+      ],
+      "tooltip": "",
       "type": "dashboards"
     },
     {
@@ -31,8 +35,9 @@
       "tags": [],
       "targetBlank": true,
       "title": "IBM MQ Appliance Knowledge Center",
+      "tooltip": "",
       "type": "link",
-      "url": "https://www.ibm.com/support/knowledgecenter/SS5K6E_9.2.0/WelcomePage/homepage.html"
+      "url": "https://www.ibm.com/support/knowledgecenter/en/SS5K6E_9.2.0/WelcomePage/homepage.html"
     },
     {
       "icon": "external link",
@@ -101,10 +106,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -158,10 +162,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -218,10 +221,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -322,10 +324,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -379,10 +380,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -417,7 +417,6 @@
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -452,10 +451,9 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "showThresholdMarkers": true
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -513,7 +511,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -619,7 +617,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -689,7 +687,6 @@
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -724,10 +721,9 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "showThresholdMarkers": true
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "((1 / mqa_system_memory_memory_bytes_total{appliance=\"$appliance\"}) * (scalar(mqa_queue_manager_memory_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}))) * 100",
@@ -783,10 +779,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_system_memory_memory_bytes_free{appliance=\"$appliance\"}",
@@ -844,7 +839,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -951,7 +946,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1054,10 +1049,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_memory_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1078,7 +1072,6 @@
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -1113,10 +1106,9 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "showThresholdMarkers": true
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "(mqa_queue_manager_fs_bytes_used{appliance=\"$appliance\", qm=\"$qm\"} / mqa_queue_manager_fs_bytes_allocated{appliance=\"$appliance\", qm=\"$qm\"}) * 100",
@@ -1170,10 +1162,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_fs_bytes_allocated{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1232,7 +1223,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1340,7 +1331,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1443,10 +1434,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "mqa_queue_manager_fs_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1462,10 +1452,12 @@
       "type": "stat"
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 27,
+  "refresh": false,
+  "schemaVersion": 26,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "MQA_Queue_Managers"
+  ],
   "templating": {
     "list": [
       {
@@ -1477,7 +1469,6 @@
         },
         "datasource": "Prometheus",
         "definition": "mqa_info",
-        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -1485,10 +1476,7 @@
         "multi": false,
         "name": "appliance",
         "options": [],
-        "query": {
-          "query": "mqa_info",
-          "refId": "Prometheus-appliance-Variable-Query"
-        },
+        "query": "mqa_info",
         "refresh": 1,
         "regex": "/.*appliance=\"([^\"]*).*/",
         "skipUrlSync": false,
@@ -1503,12 +1491,11 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "QM1",
-          "value": "QM1"
+          "text": "QM2",
+          "value": "QM2"
         },
         "datasource": "Prometheus",
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
-        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -1516,10 +1503,7 @@
         "multi": false,
         "name": "qm",
         "options": [],
-        "query": {
-          "query": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
-          "refId": "Prometheus-qm-Variable-Query"
-        },
+        "query": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
         "refresh": 1,
         "regex": "/.*qm=\"([^\"]*).*/",
         "skipUrlSync": false,
@@ -1533,12 +1517,12 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 9
+  "version": 86
 }
