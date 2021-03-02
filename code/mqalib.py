@@ -18,19 +18,19 @@ import json
 import logging
 import requests
 import os
+import time
 import sys
 
 from datetime import datetime
 from getpass import getpass
 
-def call_rest_api(api_call, ip, port, auth, timeout):
-    """Perform a REST API call"""
 
-    requests.packages.urllib3.disable_warnings()
+def call_rest_api(api_call, ip, port, session, timeout):
+    """Perform a REST API call"""
 
     logging.info('Performing REST API call to gather \'' + api_call + '\'...')
     try:
-        response = requests.get('https://' + ip + ':' + port + api_call, timeout=timeout, verify=False, auth=auth)
+        response = session.get('https://' + ip + ':' + port + api_call, timeout=timeout)
         if response.status_code == 200:
             data = json.loads(response.text)
 
@@ -46,7 +46,28 @@ def call_rest_api(api_call, ip, port, auth, timeout):
 
     logging.info('REST API call to gather \'' + api_call  + '\' completed.')
 
-    return data
+    return data   
+
+def init_rest_api(ip, port, auth, timeout):
+
+    requests.packages.urllib3.disable_warnings()
+
+    session = requests.Session()
+    session.auth = auth
+    session.verify = False
+
+    while True:
+        try:
+            response = session.get('https://' + ip + ':' + port + '/mgmt/status/', timeout=timeout)
+            if response.status_code == 200:
+                logging.info('Successfully connected to appliance at ' + ip + '(' + str(port) + ')')
+                break
+        except requests.RequestException as err:
+            logging.error('Failed to connect to appliance at ' + ip + '(' + str(port) + '), error is: ' + str(err))
+            logging.info('Retrying in 20 seconds...')
+            time.sleep(20)
+
+    return session
 
 def get_password(prompt='password: '):
     """Get a password from the command line"""

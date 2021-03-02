@@ -42,6 +42,7 @@ from mqa_system_memory_metrics import MQASystemMemoryMetrics
 from mqa_tcp_summary_metrics import MQATCPSummaryMetrics
 from mqalib import get_password
 from mqalib import get_version
+from mqalib import init_rest_api
 from prometheus_client import start_http_server, REGISTRY
 from requests import packages
 
@@ -99,22 +100,25 @@ def main():
     logging.info('MQ Appliance Prometheus Exporter ' + get_version() + ' started on HTTP port ' + str(args.httpPort))
     logging.info('MQ Appliance monitored is ' + args.appliance + ' at ' + args.ip + '(' + str(args.port) + ')')
 
+    # Initialize HTTPS session
+    session = init_rest_api(args.ip, args.port, (args.user, args.pw), args.timeout)
+
     # Register metric collectors
-    REGISTRY.register(MQAActiveUsersMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQAEnvironmentalFanSensorsMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQAEnvironmentalSensorsMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQAEthernetCountersMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQAFailureNotificationMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQAFileSystemMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQAInformationMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQALogTargetsMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQAMQSystemResourcesMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQANetworkInterfaceMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQAQueueManagersMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQARaidSsdMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQASystemCpuMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQASystemMemoryMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
-    REGISTRY.register(MQATCPSummaryMetrics(args.appliance, args.ip, args.port, (args.user, args.pw), args.timeout))
+    REGISTRY.register(MQAActiveUsersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAEnvironmentalFanSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAEnvironmentalSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAEthernetCountersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAFailureNotificationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAFileSystemMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAInformationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQALogTargetsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAMQSystemResourcesMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQANetworkInterfaceMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAQueueManagersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQARaidSsdMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQASystemCpuMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQASystemMemoryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQATCPSummaryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
 
     # Start the HTTP server serving the metrics
     start_http_server(args.httpPort)

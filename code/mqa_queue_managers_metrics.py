@@ -24,16 +24,16 @@ from prometheus_client.core import GaugeMetricFamily, InfoMetricFamily
 class MQAQueueManagersMetrics(object):
     """MQ Appliance queue managers metrics collector"""
 
-    def __init__(self, appliance, ip, port, auth, timeout):
+    def __init__(self, appliance, ip, port, session, timeout):
         self.appliance = appliance
         self.ip = ip
         self.port = port
-        self.auth = auth
+        self.session = session
         self.timeout = timeout
 
     def collect(self):
         # Perform REST API call to fetch data
-        data = call_rest_api('/mgmt/status/default/QueueManagersStatus', self.ip, self.port, self.auth, self.timeout)
+        data = call_rest_api('/mgmt/status/default/QueueManagersStatus', self.ip, self.port, self.session, self.timeout)
         if data == '':
             return
 

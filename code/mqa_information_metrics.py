@@ -24,18 +24,18 @@ from prometheus_client.core import InfoMetricFamily
 class MQAInformationMetrics(object):
     """MQ Appliance information metrics collector"""
 
-    def __init__(self, appliance, ip, port, auth, timeout):
+    def __init__(self, appliance, ip, port, session, timeout):
         self.appliance = appliance
         self.ip = ip
         self.port = port
-        self.auth = auth
+        self.session = session
         self.timeout = timeout
 
     def collect(self):
         # Perform REST API call to fetch data
-        data = call_rest_api('/mgmt/status/default/DateTimeStatus', self.ip, self.port, self.auth, self.timeout)
-        data2 = call_rest_api('/mgmt/status/default/FirmwareStatus', self.ip, self.port, self.auth, self.timeout)
-        data3 = call_rest_api('/mgmt/status/default/FirmwareVersion3', self.ip, self.port, self.auth, self.timeout)
+        data = call_rest_api('/mgmt/status/default/DateTimeStatus', self.ip, self.port, self.session, self.timeout)
+        data2 = call_rest_api('/mgmt/status/default/FirmwareStatus', self.ip, self.port, self.session, self.timeout)
+        data3 = call_rest_api('/mgmt/status/default/FirmwareVersion3', self.ip, self.port, self.session, self.timeout)
 
         if data == '' or data2 == '' or data3 == '':
             return
