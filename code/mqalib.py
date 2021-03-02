@@ -14,6 +14,9 @@
 
 """This module provides various helper functions."""
 
+import csv
+import fnmatch
+import glob
 import json
 import logging
 import requests
@@ -83,6 +86,30 @@ def get_password(prompt='password: '):
             sys.exit(1)
 
     return pw
+
+def get_pid_file_list(file, directory, appliance):
+    """Get a list of PID files"""
+
+    # Build list of pid files
+    if file == None:
+        file_list = glob.glob(directory + appliance + '.pid')
+    else:
+        file_list = []
+
+        try:
+            with open(file) as csv_file:
+                csv_reader = csv.reader(csv_file, delimiter=',')
+
+                for exporter in csv_reader:
+                    if appliance != None and not fnmatch.fnmatch(exporter[0], appliance):
+                        continue
+
+                    file_list.append(directory + exporter[0] + '.pid')
+        except FileNotFoundError as err:
+            print(str(err))
+            sys.exit(1)
+
+    return file_list
 
 def get_version():
 

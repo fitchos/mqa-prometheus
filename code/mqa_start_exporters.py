@@ -58,36 +58,41 @@ def main():
     print('MQ Appliance Prometheus Exporter Start Utility - ' + get_version())
 
     # Process the exporters configuration file (CSV)
-    with open(args.file) as csvfile:
-        csvreader = csv.reader(csvfile, delimiter=',')
+    try:
+        with open(args.file) as csvfile:
+            csvreader = csv.reader(csvfile, delimiter=',')
+    
+            exporter_count = 0
+            for exporter in csvreader:
+                if args.appliance != None and args.appliance != exporter[0]:
+                    continue
 
-        exporter_count = 0
-        for exporter in csvreader:
-            if args.appliance != None and args.appliance != exporter[0]:
-                continue
+                command = shlex.split('python mqa_metrics.py -a ' + exporter[0] + 
+                                                        ' -i ' + exporter[1] + 
+                                                        ' -p ' + exporter[2] + 
+                                                        ' -l ' + args.directory + exporter[0] + '_exporter.log' +  
+                                                        ' -ls ' + str(args.logsize) + 
+                                                        ' -ln ' + str(args.lognumbers) + 
+                                                        ' -u ' + args.user + 
+                                                        ' -x ' + args.pw + 
+                                                        ' -hp ' + exporter[3] + 
+                                                        ' -t ' + exporter[4])                    
+                    
+                # Start the exporter
+                process = subprocess.Popen(command)
+                print('Started exporter for appliance \'' + exporter[0] + '\' on HTTP port ' + str(exporter[3]) + ', PID is ' + str(process.pid))
 
-            command = shlex.split('python mqa_metrics.py -a ' + exporter[0] + 
-                                                       ' -i ' + exporter[1] + 
-                                                       ' -p ' + exporter[2] + 
-                                                       ' -l ' + args.directory + exporter[0] + '_exporter.log' +  
-                                                       ' -ls ' + str(args.logsize) + 
-                                                       ' -ln ' + str(args.lognumbers) + 
-                                                       ' -u ' + args.user + 
-                                                       ' -x ' + args.pw + 
-                                                       ' -hp ' + exporter[3] + 
-                                                       ' -t ' + exporter[4])                    
-            
-            # Start the exporter
-            process = subprocess.Popen(command)
-            print('Started exporter for appliance \'' + exporter[0] + '\' on HTTP port ' + str(exporter[3]) + ', PID is ' + str(process.pid))
+                # Write pid of the exporter to file
+                with open(args.directory + exporter[0] + '.pid', 'w') as pidfile:
+                    pidfile.write(str(process.pid))
 
-            # Write pid of the exporter to file
-            with open(args.directory + exporter[0] + '.pid', 'w') as pidfile:
-                pidfile.write(str(process.pid))
+                exporter_count += 1
 
-            exporter_count += 1
+    except FileNotFoundError as err:
+        print(str(err))
+        sys.exit(1)
 
-        print('Started ' + str(exporter_count) + ' exporter(s).')
+    print('Started ' + str(exporter_count) + ' exporter(s).')
 
 if __name__ == '__main__':
     main()

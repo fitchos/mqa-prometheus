@@ -20,10 +20,11 @@ for the MQ Appliance.
 """
 
 import argparse
-import glob
 import os
 import signal
+import sys
 
+from mqalib import get_pid_file_list
 from mqalib import get_version
 from mqalib import resolve_directory
 
@@ -34,6 +35,7 @@ def main():
     parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter Stop Utility - ' + get_version())
     parser.add_argument('-a', '--appliance', type=str, required=False, default='*', help = 'Name of the appliance')
     parser.add_argument('-d', '--directory', type=str, required=False, default='', help = 'Path to directory for PID files (defaults to current directory)')
+    parser.add_argument('-f', '--file',  type=str, required=False, help = 'Name of the file with the exporters configuration (CSV)') 
 
     # Process command line options
     args = parser.parse_args()
@@ -41,12 +43,19 @@ def main():
 
     print('MQ Appliance Prometheus Exporter Stop Utility - ' + get_version())
 
+    # Build list of pid files
+    file_list = get_pid_file_list(args.file, args.directory, args.appliance)
+
     # Search for exporters by looking at pid files
     exporter_count_stopped = 0
     exporter_count_not_stopped = 0
-    for file in glob.glob(args.directory + args.appliance + '.pid'):
-        with open(file, "r") as f:
-            pid = f.readline()
+    for file in file_list:
+        try:
+            with open(file, "r") as f:
+                pid = f.readline()
+        except FileNotFoundError as err:
+            print('Exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\' is already stopped')
+            continue
 
         try:
             os.kill(int(pid), signal.SIGTERM)
