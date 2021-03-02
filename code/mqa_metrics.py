@@ -32,6 +32,7 @@ from mqa_ethernet_counters_metrics import MQAEthernetCountersMetrics
 from mqa_failure_notification_metrics import MQAFailureNotificationMetrics
 from mqa_file_system_metrics import MQAFileSystemMetrics
 from mqa_information_metrics import MQAInformationMetrics
+from mqa_ipmi_sel_events_metrics import MQAIPMISelEventsMetrics
 from mqa_log_targets_metrics import MQALogTargetsMetrics
 from mqa_mq_system_recources_metrics import MQAMQSystemResourcesMetrics
 from mqa_network_interface_metrics import MQANetworkInterfaceMetrics
@@ -111,6 +112,7 @@ def main():
     REGISTRY.register(MQAFailureNotificationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAFileSystemMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAInformationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAIPMISelEventsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQALogTargetsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAMQSystemResourcesMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQANetworkInterfaceMetrics(args.appliance, args.ip, args.port, session, args.timeout))

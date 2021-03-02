@@ -16,37 +16,12 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1614550445404,
-  "links": [
-    {
-      "asDropdown": false,
-      "icon": "external link",
-      "includeVars": true,
-      "keepTime": true,
-      "tags": [],
-      "type": "dashboards"
-    },
-    {
-      "icon": "external link",
-      "tags": [],
-      "targetBlank": true,
-      "title": "IBM MQ Appliance Knowledge Center",
-      "type": "link",
-      "url": "https://www.ibm.com/support/knowledgecenter/SS5K6E_9.2.0/WelcomePage/homepage.html"
-    },
-    {
-      "icon": "external link",
-      "tags": [],
-      "targetBlank": true,
-      "title": "IBM MQ Support",
-      "type": "link",
-      "url": "https://www.ibm.com/mysupport/s/topic/0TO5000000024cJGAQ/mq?language=en_US&productId=01t0z000006zdYXAAY"
-    }
-  ],
+  "id": 7,
+  "iteration": 1614716937176,
+  "links": [],
   "panels": [
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -55,1364 +30,957 @@
         "y": 0
       },
       "id": 2,
-      "panels": [],
+      "panels": [
+        {
+          "datasource": null,
+          "description": "The current local date and time on the appliance.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "semi-dark-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.time}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 4,
+            "x": 0,
+            "y": 2
+          },
+          "id": 89,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Date/Time",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The name of the time zone currently in effect.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "semi-dark-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.timezone}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 4,
+            "y": 2
+          },
+          "id": 93,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Timezone",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The total amount of time the appliance has been up since the last reload or reboot. Note that a shutdown and reload resets this counter.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "semi-dark-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.uptime}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 4,
+            "x": 6,
+            "y": 2
+          },
+          "id": 91,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Uptime",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The total amount of time since the last reboot. Note that this counter is reset by a shutdown and reboot, but not by a shutdown and reload.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "semi-dark-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.bootuptime}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 4,
+            "x": 10,
+            "y": 2
+          },
+          "id": 95,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Boot Up Time",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The number of times the firmware image was restarted through an appliance reboot or a firmware reload. The count is from the initial firmware load on the appliance till the current time. The count is independent of firmware version.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "semi-dark-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.bootcount}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 14,
+            "y": 2
+          },
+          "id": 97,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Boot Count",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The type of the firmware installation type. Can be primary or secondary. The secondary firmware image is used when rolling back the firmware.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "semi-dark-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.type}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 16,
+            "y": 2
+          },
+          "id": 99,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Type",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 3,
+            "x": 19,
+            "y": 2
+          },
+          "id": 14,
+          "options": {
+            "bgColor": "rgb(29, 50, 92)",
+            "clockType": "24 hour",
+            "countdownSettings": {
+              "endCountdownTime": "2021-02-11T22:10:38-05:00",
+              "endText": "00:00:00"
+            },
+            "dateSettings": {
+              "dateFormat": "YYYY-MM-DD",
+              "fontSize": "20px",
+              "fontWeight": "normal",
+              "showDate": true
+            },
+            "mode": "time",
+            "timeSettings": {
+              "fontSize": "28px",
+              "fontWeight": "bold"
+            },
+            "timezone": "",
+            "timezoneSettings": {
+              "fontSize": "12px",
+              "fontWeight": "normal",
+              "showTimezone": true,
+              "zoneFormat": "offsetAbbv"
+            }
+          },
+          "pluginVersion": "7.3.7",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Local Date and Time",
+          "type": "grafana-clock-panel"
+        },
+        {
+          "datasource": null,
+          "description": "The version of this firmware image.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.version}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 0,
+            "y": 4
+          },
+          "id": 107,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Version",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The level of the firmware.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.level}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 2,
+            "y": 4
+          },
+          "id": 109,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Level",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "Delivery type of the firmware.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.deliverytype}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 4,
+            "y": 4
+          },
+          "id": 111,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Delivery Type",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The specific build of the firmware image.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.build}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 6,
+            "y": 4
+          },
+          "id": 113,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Build",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "Date of the firmware build.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.builddate}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 8,
+            "y": 4
+          },
+          "id": 115,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Build Date",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "Date that the firmware was installed.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.installdate}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 10,
+            "y": 4
+          },
+          "id": 117,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Install Date",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The serial number of the appliance. This number is unique to each appliance.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "super-light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.serial}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 0,
+            "y": 6
+          },
+          "id": 101,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Serial #",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The IBM machine type of the appliance.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "super-light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.machinetype}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 2,
+            "y": 6
+          },
+          "id": 103,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Machine Type",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "The IBM model type of the appliance.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "super-light-blue",
+                "mode": "fixed"
+              },
+              "custom": {},
+              "displayName": "${__field.labels.modeltype}",
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 4,
+            "y": 6
+          },
+          "id": 105,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "name"
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_info{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Model Type",
+          "type": "stat"
+        }
+      ],
       "title": "Information",
       "type": "row"
-    },
-    {
-      "datasource": null,
-      "description": "The current local date and time on the appliance.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.time}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 0,
-        "y": 1
-      },
-      "id": 89,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Date/Time",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The name of the time zone currently in effect.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.timezone}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 1
-      },
-      "id": 93,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Timezone",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The total amount of time the appliance has been up since the last reload or reboot. Note that a shutdown and reload resets this counter.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.uptime}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 6,
-        "y": 1
-      },
-      "id": 91,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Uptime",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The total amount of time since the last reboot. Note that this counter is reset by a shutdown and reboot, but not by a shutdown and reload.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.bootuptime}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 10,
-        "y": 1
-      },
-      "id": 95,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Boot Up Time",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The number of times the firmware image was restarted through an appliance reboot or a firmware reload. The count is from the initial firmware load on the appliance till the current time. The count is independent of firmware version.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.bootcount}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 14,
-        "y": 1
-      },
-      "id": 97,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Boot Count",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The type of the firmware installation type. Can be primary or secondary. The secondary firmware image is used when rolling back the firmware.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.type}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 16,
-        "y": 1
-      },
-      "id": 99,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Type",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 19,
-        "y": 1
-      },
-      "id": 14,
-      "options": {
-        "bgColor": "rgb(29, 50, 92)",
-        "clockType": "24 hour",
-        "countdownSettings": {
-          "endCountdownTime": "2021-02-11T22:10:38-05:00",
-          "endText": "00:00:00"
-        },
-        "dateSettings": {
-          "dateFormat": "YYYY-MM-DD",
-          "fontSize": "20px",
-          "fontWeight": "normal",
-          "showDate": true
-        },
-        "mode": "time",
-        "timeSettings": {
-          "fontSize": "28px",
-          "fontWeight": "bold"
-        },
-        "timezone": "",
-        "timezoneSettings": {
-          "fontSize": "12px",
-          "fontWeight": "normal",
-          "showTimezone": true,
-          "zoneFormat": "offsetAbbv"
-        }
-      },
-      "pluginVersion": "7.3.7",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Local Date and Time",
-      "type": "grafana-clock-panel"
-    },
-    {
-      "datasource": null,
-      "description": "The version of this firmware image.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.version}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 3
-      },
-      "id": 107,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Version",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The level of the firmware.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.level}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 3
-      },
-      "id": 109,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Level",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "Delivery type of the firmware.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.deliverytype}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 3
-      },
-      "id": 111,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Delivery Type",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The specific build of the firmware image.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.build}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 3
-      },
-      "id": 113,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Build",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "Date of the firmware build.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.builddate}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 8,
-        "y": 3
-      },
-      "id": 115,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Build Date",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "Date that the firmware was installed.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.installdate}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 10,
-        "y": 3
-      },
-      "id": 117,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Install Date",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The serial number of the appliance. This number is unique to each appliance.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "super-light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.serial}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 5
-      },
-      "id": 101,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Serial #",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The IBM machine type of the appliance.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "super-light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.machinetype}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 5
-      },
-      "id": 103,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Machine Type",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The IBM model type of the appliance.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "super-light-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.modeltype}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 5
-      },
-      "id": 105,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Model Type",
-      "type": "stat"
-    },
-    {
-      "collapsed": false,
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 7
-      },
-      "id": 4,
-      "panels": [],
-      "title": "CPU",
-      "type": "row"
-    },
-    {
-      "datasource": null,
-      "description": "Current total CPU usage on the appliance",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 2,
-        "x": 0,
-        "y": 8
-      },
-      "id": 22,
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_system_cpu_usage{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": " CPU Usage",
-      "type": "gauge"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "decimals": 2,
-      "description": "CPU load average for 1, 5 and 15 minutes",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 2,
-        "y": 8
-      },
-      "hiddenSeries": false,
-      "id": 24,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.4.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "mqa_system_cpu_load_avg_1m{appliance=\"$appliance\"}",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "CPU Load Avg 1m",
-          "refId": "A"
-        },
-        {
-          "expr": "mqa_system_cpu_load_avg_5m{appliance=\"$appliance\"}",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "CPU Load Avg 5m",
-          "refId": "B"
-        },
-        {
-          "expr": "mqa_system_cpu_load_avg_15m{appliance=\"$appliance\"}",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "CPU Load Avg 15m",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "CPU Load Avg",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "decimals": 1,
-      "description": "CPU temperatures over time",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "unit": "celsius"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 10,
-        "x": 14,
-        "y": 8
-      },
-      "hiddenSeries": false,
-      "id": 36,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.4.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "mqa_environmental_sensors_cpu_1_temperature_celsius{appliance=\"$appliance\"}",
-          "interval": "",
-          "legendFormat": "CPU 1",
-          "refId": "A"
-        },
-        {
-          "expr": "mqa_environmental_sensors_cpu_2_temperature_celsius{appliance=\"$appliance\"}",
-          "interval": "",
-          "legendFormat": "CPU 2",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "CPU Temperatures",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "decimals": 2,
-      "description": "CPU usage overtime.",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 24,
-        "x": 0,
-        "y": 13
-      },
-      "hiddenSeries": false,
-      "id": 169,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.4.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "mqa_system_cpu_usage{appliance=\"$appliance\"}",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "CPU",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "CPU Usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
     },
     {
       "collapsed": true,
@@ -1421,7 +989,400 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 1
+      },
+      "id": 4,
+      "panels": [
+        {
+          "datasource": null,
+          "description": "Current total CPU usage on the appliance",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 2,
+            "x": 0,
+            "y": 8
+          },
+          "id": 22,
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "last"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "7.3.7",
+          "targets": [
+            {
+              "expr": "mqa_system_cpu_usage{appliance=\"$appliance\"}",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": " CPU Usage",
+          "type": "gauge"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "decimals": 2,
+          "description": "CPU load average for 1, 5 and 15 minutes",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 2,
+            "y": 8
+          },
+          "hiddenSeries": false,
+          "id": 24,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "mqa_system_cpu_load_avg_1m{appliance=\"$appliance\"}",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "CPU Load Avg 1m",
+              "refId": "A"
+            },
+            {
+              "expr": "mqa_system_cpu_load_avg_5m{appliance=\"$appliance\"}",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "CPU Load Avg 5m",
+              "refId": "B"
+            },
+            {
+              "expr": "mqa_system_cpu_load_avg_15m{appliance=\"$appliance\"}",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "CPU Load Avg 15m",
+              "refId": "C"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CPU Load Avg",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "decimals": 1,
+          "description": "CPU temperatures over time",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "unit": "celsius"
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 10,
+            "x": 14,
+            "y": 8
+          },
+          "hiddenSeries": false,
+          "id": 36,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "mqa_environmental_sensors_cpu_1_temperature_celsius{appliance=\"$appliance\"}",
+              "interval": "",
+              "legendFormat": "CPU 1",
+              "refId": "A"
+            },
+            {
+              "expr": "mqa_environmental_sensors_cpu_2_temperature_celsius{appliance=\"$appliance\"}",
+              "interval": "",
+              "legendFormat": "CPU 2",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CPU Temperatures",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "decimals": 2,
+          "description": "CPU usage overtime.",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 5,
+            "w": 24,
+            "x": 0,
+            "y": 13
+          },
+          "hiddenSeries": false,
+          "id": 169,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "mqa_system_cpu_usage{appliance=\"$appliance\"}",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "CPU",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CPU Usage",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "CPU",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
       },
       "id": 145,
       "panels": [
@@ -1615,7 +1576,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 3
       },
       "id": 81,
       "panels": [
@@ -1792,13 +1753,69 @@
       "type": "row"
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 171,
+      "panels": [],
+      "title": "IPMI Events",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "ntelligent Platform Management Interface (IPMI) System Event Log (SEL) events that the Baseboard Management Controller (BMC) collected.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "id": 173,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "7.3.7",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "IPMI SEL Events",
+      "type": "table"
+    },
+    {
       "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 13
       },
       "id": 163,
       "panels": [
@@ -2149,7 +2166,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 14
       },
       "id": 6,
       "panels": [
@@ -2403,7 +2420,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 15
       },
       "id": 10,
       "panels": [
@@ -3056,7 +3073,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 16
       },
       "id": 153,
       "panels": [
@@ -3522,7 +3539,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 17
       },
       "id": 119,
       "panels": [
@@ -4209,7 +4226,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 18
       },
       "id": 53,
       "panels": [
@@ -4731,7 +4748,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 19
       },
       "id": 8,
       "panels": [
@@ -5421,7 +5438,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 20
       },
       "id": 16,
       "panels": [
@@ -5592,7 +5609,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 27,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -5606,7 +5623,6 @@
         },
         "datasource": "Prometheus",
         "definition": "mqa_info",
-        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -5614,10 +5630,7 @@
         "multi": false,
         "name": "appliance",
         "options": [],
-        "query": {
-          "query": "mqa_info",
-          "refId": "Prometheus-appliance-Variable-Query"
-        },
+        "query": "mqa_info",
         "refresh": 1,
         "regex": "/.*appliance=\"([^\"]*).*/",
         "skipUrlSync": false,
@@ -5631,12 +5644,12 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 8
+  "version": 121
 }
