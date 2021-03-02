@@ -42,7 +42,7 @@ class MQAIPMISelEventsMetrics(object):
         for ise in data['IPMISelEvents']:
             i = InfoMetricFamily('mqa_ipmi_sel_events', 'MQ Appliance IPMI SEL events information')
             i.add_metric(['appliance', 'index', 'timestamp', 'recordType', 'sensorType', 'sensorNumber', 'sensorName', 'eventReadingTypeCode', 'eventData', 'eventDirection', 'extra'], 
-                      {'appliance': self.appliance, 'index': ise['Index'], 'timestamp': ise['Timestamp'],
+                      {'appliance': self.appliance, 'index': str(ise['Index']), 'timestamp': ise['Timestamp'],
                       'recordType': ise['RecordType'], 'sensorType': ise['SensorType'], 'sensorNumber': ise['SensorNumber'],
                       'sensorName': ise['SensorName'], 'eventReadingTypeCode': ise['EventReadingTypeCode'], 'eventData': ise['EventData2'],
                       'eventDirection': ise['EventDirection'], 'extra': ise['Extra']})
