@@ -34,6 +34,7 @@ def main():
 
     # Build parser to handle the command line options
     parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter Start Utility - ' + get_version())
+    parser.add_argument('-a', '--appliance', type=str, required=False, default='*', help = 'Name of the appliance')
     parser.add_argument('-d', '--directory', type=str, required=False, default='', help = 'Path to directory for log and PID files (defaults to current directory)')
     parser.add_argument('-f', '--file',  type=str, required=True, help = 'Name of the file with the exporters configuration (CSV)') 
     parser.add_argument('-ln', '--lognumbers', type=int, required=False, default=10, help = 'Number of logs in a rotation (defaults to 10)')
@@ -62,6 +63,9 @@ def main():
 
         exporter_count = 0
         for exporter in csvreader:
+            if args.appliance != None and args.appliance != exporter[0]:
+                continue
+
             command = shlex.split('python mqa_metrics.py -a ' + exporter[0] + 
                                                        ' -i ' + exporter[1] + 
                                                        ' -p ' + exporter[2] + 
