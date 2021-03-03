@@ -24,7 +24,6 @@ import os
 import time
 import sys
 
-from datetime import datetime
 from getpass import getpass
 
 

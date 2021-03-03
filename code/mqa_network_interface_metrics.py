@@ -14,10 +14,8 @@
 
 """This module implements the MQ Appliance network interface metrics collector"""
 
-import requests
 import json
 
-from datetime import datetime
 from mqalib import call_rest_api
 from prometheus_client.core import CounterMetricFamily, InfoMetricFamily
 
