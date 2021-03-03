@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 10,
-  "iteration": 1614721379323,
+  "id": 28,
+  "iteration": 1614791257853,
   "links": [
     {
       "asDropdown": false,
@@ -108,7 +108,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -169,7 +169,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -230,7 +230,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -291,7 +291,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -352,7 +352,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -413,7 +413,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -521,7 +521,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -582,7 +582,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -643,7 +643,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -704,7 +704,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -765,7 +765,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -826,7 +826,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -887,7 +887,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -948,7 +948,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -1009,7 +1009,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
           "expr": "mqa_info{appliance=\"$appliance\"}",
@@ -1022,6 +1022,90 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Model Type",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Whether intrusion has been detected in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "super-light-blue",
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "super-light-blue",
+                "value": 0
+              },
+              {
+                "color": "dark-red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 6,
+        "y": 5
+      },
+      "id": 193,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_intrusion_detected{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Intrusion Detected",
       "type": "stat"
     },
     {
@@ -1075,9 +1159,10 @@
               "values": false
             },
             "showThresholdLabels": false,
-            "showThresholdMarkers": true
+            "showThresholdMarkers": true,
+            "text": {}
           },
-          "pluginVersion": "7.3.7",
+          "pluginVersion": "7.4.2",
           "targets": [
             {
               "expr": "mqa_system_cpu_usage{appliance=\"$appliance\"}",
@@ -1134,7 +1219,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.7",
+          "pluginVersion": "7.4.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -1249,7 +1334,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.7",
+          "pluginVersion": "7.4.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -1291,7 +1376,7 @@
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "celsius",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -1355,7 +1440,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.7",
+          "pluginVersion": "7.4.2",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -1442,10 +1527,6 @@
                   {
                     "color": "green",
                     "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
                   }
                 ]
               }
@@ -1456,7 +1537,7 @@
             "h": 5,
             "w": 2,
             "x": 0,
-            "y": 13
+            "y": 9
           },
           "id": 147,
           "options": {
@@ -1471,9 +1552,10 @@
               "fields": "",
               "values": false
             },
+            "text": {},
             "textMode": "auto"
           },
-          "pluginVersion": "7.3.7",
+          "pluginVersion": "7.4.2",
           "targets": [
             {
               "expr": "count(mqa_failure_notification_info{appliance=\"$appliance\"})",
@@ -1559,14 +1641,14 @@
             "h": 5,
             "w": 13,
             "x": 2,
-            "y": 13
+            "y": 9
           },
           "id": 149,
           "options": {
             "showHeader": true,
             "sortBy": []
           },
-          "pluginVersion": "7.3.7",
+          "pluginVersion": "7.4.2",
           "targets": [
             {
               "expr": "mqa_failure_notification_info{appliance=\"$appliance\"}",
@@ -1612,7 +1694,7 @@
       "type": "row"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -1621,13 +1703,201 @@
         "y": 9
       },
       "id": 81,
+      "panels": [],
+      "title": "Fans",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "RPM for fan 1",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "rotrpm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 10
+      },
+      "id": 85,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_environmental_fan_sensors_fan_speed_rpm{appliance=\"$appliance\", fanID=\"fan-1\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{readingStatus}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Fan 1 RPM",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "RPM for fan 2",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "rotrpm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 4,
+        "y": 10
+      },
+      "id": 83,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_environmental_fan_sensors_fan_speed_rpm{appliance=\"$appliance\", fanID=\"fan-2\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{readingStatus}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Fan 2 RPM",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "RPM for fan 3",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "rotrpm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 8,
+        "y": 10
+      },
+      "id": 87,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_environmental_fan_sensors_fan_speed_rpm{appliance=\"$appliance\", fanID=\"fan-3\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{readingStatus}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Fan 3 RPM",
+      "type": "stat"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 171,
       "panels": [
         {
           "datasource": null,
-          "description": "RPM for fan 1",
+          "description": "Intelligent Platform Management Interface (IPMI) System Event Log (SEL) events that the Baseboard Management Controller (BMC) collected.",
           "fieldConfig": {
             "defaults": {
-              "custom": {},
+              "custom": {
+                "align": null,
+                "filterable": false
+              },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
@@ -1635,163 +1905,143 @@
                   {
                     "color": "green",
                     "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Index"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 77
                   }
                 ]
               },
-              "unit": "rotrpm"
-            },
-            "overrides": []
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Sensor Number"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 122
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Event Direction"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 119
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "timestamp"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 170
+                  }
+                ]
+              }
+            ]
           },
           "gridPos": {
-            "h": 3,
-            "w": 4,
+            "h": 8,
+            "w": 24,
             "x": 0,
-            "y": 4
+            "y": 6
           },
-          "id": 85,
+          "id": 173,
           "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Index"
+              }
+            ]
           },
-          "pluginVersion": "7.3.7",
+          "pluginVersion": "7.4.2",
           "targets": [
             {
-              "expr": "mqa_environmental_fan_sensors_fan_speed_rpm{appliance=\"$appliance\", fanID=\"fan-1\"}",
+              "expr": "mqa_ipmi_sel_events_info{appliance=\"$appliance\"}",
               "instant": true,
               "interval": "",
-              "legendFormat": "{{readingStatus}}",
+              "legendFormat": "",
               "refId": "A"
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Fan 1 RPM",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "RPM for fan 2",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "rotrpm"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 3,
-            "w": 4,
-            "x": 4,
-            "y": 4
-          },
-          "id": 83,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
+          "title": "IPMI SEL Events",
+          "transformations": [
             {
-              "expr": "mqa_environmental_fan_sensors_fan_speed_rpm{appliance=\"$appliance\", fanID=\"fan-2\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "{{readingStatus}}",
-              "refId": "A"
+              "id": "labelsToFields",
+              "options": {}
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true,
+                  "Value": true,
+                  "appliance": true,
+                  "instance": true,
+                  "job": true,
+                  "recordType": true
+                },
+                "indexByName": {
+                  "Time": 5,
+                  "Value": 13,
+                  "appliance": 6,
+                  "eventData": 8,
+                  "eventDirection": 9,
+                  "eventReadingTypeCode": 7,
+                  "index": 1,
+                  "instance": 10,
+                  "job": 11,
+                  "recordType": 12,
+                  "sensorName": 4,
+                  "sensorNumber": 2,
+                  "sensorType": 3,
+                  "timestamp": 0
+                },
+                "renameByName": {
+                  "Time": "Timestamp",
+                  "eventData": "Additional Event Data",
+                  "eventDirection": "Event Direction",
+                  "eventReadingTypeCode": "Reading Code",
+                  "index": "Index",
+                  "sensorName": "Sensor Name",
+                  "sensorNumber": "Sensor Number",
+                  "sensorType": "Sensor Type"
+                }
+              }
             }
           ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Fan 2 RPM",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "RPM for fan 3",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "rotrpm"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 3,
-            "w": 4,
-            "x": 8,
-            "y": 4
-          },
-          "id": 87,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_environmental_fan_sensors_fan_speed_rpm{appliance=\"$appliance\", fanID=\"fan-3\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "{{readingStatus}}",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Fan 3 RPM",
-          "type": "stat"
+          "type": "table"
         }
       ],
-      "title": "Fans",
+      "title": "IPMI Events",
       "type": "row"
     },
     {
@@ -1801,16 +2051,16 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 14
       },
-      "id": 171,
+      "id": 163,
       "panels": [],
-      "title": "IPMI Events",
+      "title": "Log Targets",
       "type": "row"
     },
     {
       "datasource": null,
-      "description": "Intelligent Platform Management Interface (IPMI) System Event Log (SEL) events that the Baseboard Management Controller (BMC) collected.",
+      "description": "List of log targets currently in use.",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -1836,48 +2086,136 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Index"
+              "options": "Status"
             },
             "properties": [
               {
+                "id": "custom.filterable",
+                "value": true
+              },
+              {
                 "id": "custom.width",
-                "value": 77
+                "value": 87
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Sensor Number"
+              "options": "HA Role"
             },
             "properties": [
               {
-                "id": "custom.width",
-                "value": 122
+                "id": "custom.filterable",
+                "value": true
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Event Direction"
+              "options": "HA Status"
             },
             "properties": [
               {
-                "id": "custom.width",
-                "value": 119
+                "id": "custom.filterable",
+                "value": true
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "timestamp"
+              "options": "DR Role"
+            },
+            "properties": [
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DR Status"
+            },
+            "properties": [
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Name"
             },
             "properties": [
               {
                 "id": "custom.width",
-                "value": 170
+                "value": 130
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "HRef"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 366
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "errorInfo"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": null
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "requestedMemory"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 132
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Memory "
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 93
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Error"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 116
               }
             ]
           }
@@ -1885,24 +2223,19 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 24,
+        "w": 14,
         "x": 0,
-        "y": 11
+        "y": 15
       },
-      "id": 173,
+      "id": 165,
       "options": {
         "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Index"
-          }
-        ]
+        "sortBy": []
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.2",
       "targets": [
         {
-          "expr": "mqa_ipmi_sel_events_info{appliance=\"$appliance\"}",
+          "expr": "mqa_log_target_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1911,7 +2244,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "IPMI SEL Events",
+      "title": "Log Targets",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -1925,34 +2258,37 @@
               "Value": true,
               "appliance": true,
               "instance": true,
-              "job": true,
-              "recordType": true
+              "job": true
             },
             "indexByName": {
-              "Time": 5,
-              "Value": 13,
-              "appliance": 6,
-              "eventData": 8,
-              "eventDirection": 9,
-              "eventReadingTypeCode": 7,
-              "index": 1,
-              "instance": 10,
-              "job": 11,
-              "recordType": 12,
-              "sensorName": 4,
-              "sensorNumber": 2,
-              "sensorType": 3,
-              "timestamp": 0
+              "Time": 3,
+              "Value": 7,
+              "appliance": 4,
+              "errorInfo": 11,
+              "eventsDropped": 10,
+              "eventsPending": 9,
+              "eventsProcessed": 8,
+              "href": 1,
+              "instance": 5,
+              "job": 6,
+              "name": 0,
+              "requestedMemory": 12,
+              "status": 2
             },
             "renameByName": {
-              "Time": "Timestamp",
-              "eventData": "Additional Event Data",
-              "eventDirection": "Event Direction",
-              "eventReadingTypeCode": "Reading Code",
-              "index": "Index",
-              "sensorName": "Sensor Name",
-              "sensorNumber": "Sensor Number",
-              "sensorType": "Sensor Type"
+              "drRole": "DR Role",
+              "drStatus": "DR Status",
+              "errorInfo": "Error",
+              "eventsDropped": "Events Dropped",
+              "eventsPending": "Events Pending",
+              "eventsProcessed": "Events Processed",
+              "haRole": "HA Role",
+              "haStatus": "HA Status",
+              "href": "HRef",
+              "name": "Name",
+              "qm": "Name",
+              "requestedMemory": "Memory ",
+              "status": "Status"
             }
           }
         }
@@ -1960,1238 +2296,1663 @@
       "type": "table"
     },
     {
-      "collapsed": true,
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 19
-      },
-      "id": 163,
-      "panels": [
-        {
-          "datasource": null,
-          "description": "List of log targets currently in use.",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {
-                "align": null,
-                "filterable": false
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Status"
-                },
-                "properties": [
-                  {
-                    "id": "custom.filterable",
-                    "value": true
-                  },
-                  {
-                    "id": "custom.width",
-                    "value": 87
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "HA Role"
-                },
-                "properties": [
-                  {
-                    "id": "custom.filterable",
-                    "value": true
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "HA Status"
-                },
-                "properties": [
-                  {
-                    "id": "custom.filterable",
-                    "value": true
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "DR Role"
-                },
-                "properties": [
-                  {
-                    "id": "custom.filterable",
-                    "value": true
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "DR Status"
-                },
-                "properties": [
-                  {
-                    "id": "custom.filterable",
-                    "value": true
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Name"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 130
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "HRef"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 366
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "errorInfo"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": null
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "requestedMemory"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 132
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Memory "
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 93
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Error"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 116
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 14,
-            "x": 0,
-            "y": 20
-          },
-          "id": 165,
-          "options": {
-            "showHeader": true,
-            "sortBy": []
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_log_target_info{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Log Targets",
-          "transformations": [
-            {
-              "id": "labelsToFields",
-              "options": {}
-            },
-            {
-              "id": "organize",
-              "options": {
-                "excludeByName": {
-                  "Time": true,
-                  "Value": true,
-                  "appliance": true,
-                  "instance": true,
-                  "job": true
-                },
-                "indexByName": {
-                  "Time": 3,
-                  "Value": 7,
-                  "appliance": 4,
-                  "errorInfo": 11,
-                  "eventsDropped": 10,
-                  "eventsPending": 9,
-                  "eventsProcessed": 8,
-                  "href": 1,
-                  "instance": 5,
-                  "job": 6,
-                  "name": 0,
-                  "requestedMemory": 12,
-                  "status": 2
-                },
-                "renameByName": {
-                  "drRole": "DR Role",
-                  "drStatus": "DR Status",
-                  "errorInfo": "Error",
-                  "eventsDropped": "Events Dropped",
-                  "eventsPending": "Events Pending",
-                  "eventsProcessed": "Events Processed",
-                  "haRole": "HA Role",
-                  "haStatus": "HA Status",
-                  "href": "HRef",
-                  "name": "Name",
-                  "qm": "Name",
-                  "requestedMemory": "Memory ",
-                  "status": "Status"
-                }
-              }
-            }
-          ],
-          "type": "table"
+      "decimals": 2,
+      "description": "Rate of log targets events processed.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
         },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 14,
+        "y": 15
+      },
+      "hiddenSeries": false,
+      "id": 167,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": null,
-          "decimals": 2,
-          "description": "Rate of log targets events processed.",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 10,
-            "x": 14,
-            "y": 20
-          },
-          "hiddenSeries": false,
-          "id": 167,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": true,
-            "max": false,
-            "min": false,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.3.7",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "rate(mqa_log_target_events_processed_total{appliance=\"$appliance\"}[1m])",
-              "interval": "",
-              "legendFormat": "{{name}}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Events Processed Rate",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
+          "expr": "rate(mqa_log_target_events_processed_total{appliance=\"$appliance\"}[1m])",
+          "interval": "",
+          "legendFormat": "{{name}}",
+          "refId": "A"
         }
       ],
-      "title": "Log Targets",
-      "type": "row"
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Events Processed Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 23
       },
       "id": 6,
-      "panels": [
-        {
-          "datasource": null,
-          "description": "Memory percentage currently in use",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "max": 100,
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 2,
-            "x": 0,
-            "y": 29
-          },
-          "id": 26,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "last"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_system_memory_memory_usage{appliance=\"$appliance\"}",
-              "format": "time_series",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Memory",
-          "type": "gauge"
-        },
-        {
-          "datasource": null,
-          "description": "Total memory available on the appliance",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 2,
-            "y": 29
-          },
-          "id": 31,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_system_memory_memory_bytes_total{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Total Memory",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of memory currently being used on the appliance",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {
-                "align": null,
-                "filterable": false
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "dark-red",
-                    "value": 150000000000
-                  },
-                  {
-                    "color": "#EAB839",
-                    "value": 180000000000
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 7,
-            "y": 29
-          },
-          "id": 28,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_system_memory_memory_bytes_used{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Used Memory",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of memory currently available on the appliance",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 12,
-            "y": 29
-          },
-          "id": 30,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_system_memory_memory_bytes_free{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Free Memory",
-          "type": "stat"
-        }
-      ],
+      "panels": [],
       "title": "Memory",
       "type": "row"
     },
     {
-      "collapsed": true,
+      "datasource": null,
+      "description": "Memory percentage currently in use",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 0,
+        "y": 24
+      },
+      "id": 26,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_system_memory_memory_usage{appliance=\"$appliance\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "Total memory available on the appliance",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 2,
+        "y": 24
+      },
+      "id": 31,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_system_memory_memory_bytes_total{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Memory",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of memory currently being used on the appliance",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 150000000000
+              },
+              {
+                "color": "dark-red",
+                "value": 180000000000
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 7,
+        "y": 24
+      },
+      "id": 28,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_system_memory_memory_bytes_used{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Used Memory",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of memory currently available on the appliance",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 12,
+        "y": 24
+      },
+      "id": 30,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_system_memory_memory_bytes_free{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Free Memory",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 29
       },
       "id": 10,
-      "panels": [
-        {
-          "datasource": null,
-          "description": "Status of all network interfaces.",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {
-                "align": null,
-                "filterable": false
+      "panels": [],
+      "title": "Networking",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "Status of all network interfaces.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "",
+              "to": "",
+              "type": 1
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
               },
-              "mappings": [
-                {
-                  "from": "",
-                  "id": 1,
-                  "text": "",
-                  "to": "",
-                  "type": 1
-                }
-              ],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
+              {
+                "color": "red",
+                "value": 80
               }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Admin Status"
             },
-            "overrides": [
+            "properties": [
               {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Admin Status"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 125
-                  },
-                  {
-                    "id": "custom.displayMode",
-                    "value": "color-background"
-                  }
-                ]
+                "id": "custom.width",
+                "value": 125
               },
               {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Operational Status"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 135
-                  },
-                  {
-                    "id": "custom.displayMode",
-                    "value": "color-background"
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "MTU"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 94
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Type"
-                },
-                "properties": [
-                  {
-                    "id": "custom.filterable",
-                    "value": true
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "IP Type"
-                },
-                "properties": [
-                  {
-                    "id": "custom.filterable",
-                    "value": true
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Name"
-                },
-                "properties": [
-                  {
-                    "id": "custom.displayMode",
-                    "value": "color-background"
-                  }
-                ]
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           },
-          "gridPos": {
-            "h": 6,
-            "w": 17,
-            "x": 0,
-            "y": 14
-          },
-          "id": 151,
-          "options": {
-            "showHeader": true,
-            "sortBy": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Operational Status"
+            },
+            "properties": [
               {
-                "desc": false,
-                "displayName": "Name"
+                "id": "custom.width",
+                "value": 135
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           },
-          "pluginVersion": "7.4.2",
-          "targets": [
-            {
-              "expr": "sort(mqa_network_interface_info{appliance=\"$appliance\"})",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Network Interfaces Status",
-          "transformations": [
-            {
-              "id": "labelsToFields",
-              "options": {}
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "MTU"
             },
-            {
-              "id": "organize",
-              "options": {
-                "excludeByName": {
-                  "Time": true,
-                  "Value": true,
-                  "appliance": true,
-                  "instance": true,
-                  "interfaceIndex": true,
-                  "job": true
-                },
-                "indexByName": {
-                  "Time": 5,
-                  "Value": 14,
-                  "adminStatus": 6,
-                  "appliance": 8,
-                  "instance": 9,
-                  "interfaceIndex": 0,
-                  "interfaceType": 2,
-                  "ip": 11,
-                  "ipType": 3,
-                  "job": 10,
-                  "macAddress": 12,
-                  "mtu": 13,
-                  "name": 1,
-                  "operStatus": 7,
-                  "prefixLength": 4
-                },
-                "renameByName": {
-                  "Time": "",
-                  "adminStatus": "Admin Status",
-                  "appliance": "",
-                  "date": "Date",
-                  "instance": "",
-                  "interfaceIndex": "Index",
-                  "interfaceType": "Type",
-                  "ip": "IP",
-                  "ipType": "IP Type",
-                  "location": "Location",
-                  "macAddress": "MAC Address",
-                  "mtu": "MTU",
-                  "name": "Name",
-                  "operStatus": "Operational Status",
-                  "prefixLength": "Prefix Length",
-                  "reason": "Reason",
-                  "uploadStatus": "Upload Status"
-                }
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 94
               }
-            }
-          ],
-          "type": "table"
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": null,
-          "description": "Receive rate for all interfaces",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "unit": "binBps"
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Type"
             },
-            "overrides": []
+            "properties": [
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
           },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 20
-          },
-          "hiddenSeries": false,
-          "id": 77,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": true,
-            "max": false,
-            "min": false,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.4.2",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "rate(mqa_network_interface_rx_bytes_total{appliance=\"$appliance\"}[5m])",
-              "interval": "",
-              "legendFormat": "{{name}}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "RX Bytes Rate",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "binBps",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP Type"
             },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "properties": [
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Name"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              }
+            ]
           }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": null,
-          "description": "Transmit rate for all interfaces",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "unit": "binBps"
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 20
-          },
-          "hiddenSeries": false,
-          "id": 79,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": true,
-            "max": false,
-            "min": false,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.4.2",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "rate(mqa_network_interface_tx_bytes_total{appliance=\"$appliance\"}[5m])",
-              "interval": "",
-              "legendFormat": "{{name}}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "TX Bytes Rate",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "binBps",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 17,
+        "x": 0,
+        "y": 30
+      },
+      "id": 151,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Name"
           }
+        ]
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "sort(mqa_network_interface_info{appliance=\"$appliance\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Network Interfaces Status",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {}
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": null,
-          "decimals": 0,
-          "description": "Number of TCP connections established",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "thresholds": {
-                "mode": "absolute",
-                "steps": []
-              },
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 12,
-            "x": 0,
-            "y": 28
-          },
-          "hiddenSeries": false,
-          "id": 73,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": true,
-            "max": true,
-            "min": true,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
+          "id": "organize",
           "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.4.2",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "mqa_tcp_connections_established{appliance=\"$appliance\"}",
-              "instant": false,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "Connections",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "TCP Established",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": 0,
-              "format": "none",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "appliance": true,
+              "instance": true,
+              "interfaceIndex": true,
+              "job": true
             },
-            {
-              "decimals": null,
-              "format": "none",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": null,
-          "decimals": 0,
-          "description": "Number of TCP listeners currently active",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "thresholds": {
-                "mode": "absolute",
-                "steps": []
-              },
-              "unit": "none"
+            "indexByName": {
+              "Time": 5,
+              "Value": 14,
+              "adminStatus": 6,
+              "appliance": 8,
+              "instance": 9,
+              "interfaceIndex": 0,
+              "interfaceType": 2,
+              "ip": 11,
+              "ipType": 3,
+              "job": 10,
+              "macAddress": 12,
+              "mtu": 13,
+              "name": 1,
+              "operStatus": 7,
+              "prefixLength": 4
             },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 5,
-            "w": 12,
-            "x": 12,
-            "y": 28
-          },
-          "hiddenSeries": false,
-          "id": 75,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": true,
-            "max": true,
-            "min": true,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.4.2",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "mqa_tcp_connections_listen{appliance=\"$appliance\"}",
-              "instant": false,
-              "interval": "",
-              "legendFormat": "Listeners",
-              "refId": "A"
+            "renameByName": {
+              "Time": "",
+              "adminStatus": "Admin Status",
+              "appliance": "",
+              "date": "Date",
+              "instance": "",
+              "interfaceIndex": "Index",
+              "interfaceType": "Type",
+              "ip": "IP",
+              "ipType": "IP Type",
+              "location": "Location",
+              "macAddress": "MAC Address",
+              "mtu": "MTU",
+              "name": "Name",
+              "operStatus": "Operational Status",
+              "prefixLength": "Prefix Length",
+              "reason": "Reason",
+              "uploadStatus": "Upload Status"
             }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "TCP Listening",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": 0,
-              "format": "none",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "decimals": null,
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
           }
         }
       ],
-      "title": "Networking",
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Receive rate for all interfaces",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "unit": "binBps"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "hiddenSeries": false,
+      "id": 77,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(mqa_network_interface_rx_bytes_total{appliance=\"$appliance\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "RX Bytes Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "binBps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Transmit rate for all interfaces",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "unit": "binBps"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "hiddenSeries": false,
+      "id": 79,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(mqa_network_interface_tx_bytes_total{appliance=\"$appliance\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TX Bytes Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "binBps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 0,
+      "description": "Number of TCP connections established",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 44
+      },
+      "hiddenSeries": false,
+      "id": 73,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "mqa_tcp_connections_established{appliance=\"$appliance\"}",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Connections",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Established",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "none",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 0,
+      "description": "Number of TCP listeners currently active",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 44
+      },
+      "hiddenSeries": false,
+      "id": 75,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "mqa_tcp_connections_listen{appliance=\"$appliance\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Listeners",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Listening",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 49
+      },
+      "id": 175,
+      "panels": [],
+      "title": "Power Supplies",
       "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "Whether Power Supply #1 is present in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "light-green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 50
+      },
+      "id": 177,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_power_supply_1_present{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "PS 1 - Present",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Whether Power Supply #1 is enabled in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 50
+      },
+      "id": 179,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_power_supply_1_not_enabled{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "PS 1 - Enabled",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Whether Power Supply #1 has lost AC in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 50
+      },
+      "id": 181,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_power_supply_1_ac_lost{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "PS 1 - Lost AC",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Whether Power Supply #1 has failed in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 50
+      },
+      "id": 183,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_power_supply_1_output_failure{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "PS 1 - Failure",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Whether Power Supply #2 is present in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "dark-red",
+                "value": 0
+              },
+              {
+                "color": "light-green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 52
+      },
+      "id": 185,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_power_supply_2_present{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "PS 2 - Present",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Whether Power Supply #2 is enabled in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 52
+      },
+      "id": 187,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_power_supply_2_not_enabled{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "PS 2 - Enabled",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Whether Power Supply #2 has lost AC in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 52
+      },
+      "id": 189,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_power_supply_2_ac_lost{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "PS 2 - Lost AC",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Whether Power Supply #2 has failed in the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "YES",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "NO",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 52
+      },
+      "id": 191,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_other_sensor_power_supply_2_output_failure{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "PS 2 - Failure",
+      "type": "stat"
     },
     {
       "collapsed": true,
@@ -3200,7 +3961,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 54
       },
       "id": 153,
       "panels": [
@@ -3295,7 +4056,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 15
+            "y": 20
           },
           "id": 155,
           "options": {
@@ -3382,7 +4143,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 15
+            "y": 20
           },
           "hiddenSeries": false,
           "id": 157,
@@ -3482,7 +4243,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 23
+            "y": 28
           },
           "hiddenSeries": false,
           "id": 159,
@@ -3582,7 +4343,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 23
+            "y": 28
           },
           "hiddenSeries": false,
           "id": 161,
@@ -3666,691 +4427,702 @@
       "type": "row"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 55
       },
       "id": 119,
-      "panels": [
-        {
-          "datasource": null,
-          "description": "First SSD drive serial number",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "displayName": "${__field.labels.serialNumber}",
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 0,
-            "y": 56
-          },
-          "id": 121,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "name"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"1\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "SSD #1",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of data in bytes written to the SSD since manufacturing",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 2,
-            "y": 56
-          },
-          "id": 123,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"1\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Data Written",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Life left in percent for the SSD",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 4,
-            "y": 56
-          },
-          "id": 125,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_life_left{appliance=\"$appliance\", diskNumber=\"1\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Life Left",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Third SSD drive serial number",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "displayName": "${__field.labels.serialNumber}",
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 7,
-            "y": 56
-          },
-          "id": 129,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "name"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"3\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "SSD #3",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of data in bytes written to the SSD since manufacturing",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 9,
-            "y": 56
-          },
-          "id": 137,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"3\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Data Written",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Life left in percent for the SSD",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 11,
-            "y": 56
-          },
-          "id": 141,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_life_left{appliance=\"$appliance\", diskNumber=\"3\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Life Left",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Second SSD drive serial number",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "displayName": "${__field.labels.serialNumber}",
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 0,
-            "y": 58
-          },
-          "id": 127,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "name"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"2\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "SSD #2",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of data in bytes written to the SSD since manufacturing",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 2,
-            "y": 58
-          },
-          "id": 131,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"2\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Data Written",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Life left in percent for the SSD",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 4,
-            "y": 58
-          },
-          "id": 133,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_life_left{appliance=\"$appliance\", diskNumber=\"2\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Life Left",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Fourth SSD drive serial number",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "displayName": "${__field.labels.serialNumber}",
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 7,
-            "y": 58
-          },
-          "id": 135,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "name"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"4\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "SSD #4",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of data in bytes written to the SSD since manufacturing",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 9,
-            "y": 58
-          },
-          "id": 139,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"4\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Data Written",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Life left in percent for the SSD",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 2,
-            "w": 2,
-            "x": 11,
-            "y": 58
-          },
-          "id": 143,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_raid_ssd_life_left{appliance=\"$appliance\", diskNumber=\"4\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Life Left",
-          "type": "stat"
-        }
-      ],
+      "panels": [],
       "title": "Raid SSDs",
       "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "First SSD drive serial number",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "displayName": "${__field.labels.serialNumber}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 56
+      },
+      "id": 121,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"1\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "SSD #1",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of data in bytes written to the SSD since manufacturing",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 56
+      },
+      "id": 123,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"1\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Data Written",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Life left in percent for the SSD",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 56
+      },
+      "id": 125,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_life_left{appliance=\"$appliance\", diskNumber=\"1\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Life Left",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Third SSD drive serial number",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "displayName": "${__field.labels.serialNumber}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 7,
+        "y": 56
+      },
+      "id": 129,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"3\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "SSD #3",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of data in bytes written to the SSD since manufacturing",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 9,
+        "y": 56
+      },
+      "id": 137,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"3\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Data Written",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Life left in percent for the SSD",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 11,
+        "y": 56
+      },
+      "id": 141,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_life_left{appliance=\"$appliance\", diskNumber=\"3\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Life Left",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Second SSD drive serial number",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "displayName": "${__field.labels.serialNumber}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 58
+      },
+      "id": 127,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"2\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "SSD #2",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of data in bytes written to the SSD since manufacturing",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 58
+      },
+      "id": 131,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"2\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Data Written",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Life left in percent for the SSD",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 58
+      },
+      "id": 133,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_life_left{appliance=\"$appliance\", diskNumber=\"2\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Life Left",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Fourth SSD drive serial number",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "displayName": "${__field.labels.serialNumber}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 7,
+        "y": 58
+      },
+      "id": 135,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"4\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "SSD #4",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of data in bytes written to the SSD since manufacturing",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 9,
+        "y": 58
+      },
+      "id": 139,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_bytes_written_total{appliance=\"$appliance\", diskNumber=\"4\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Data Written",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Life left in percent for the SSD",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 11,
+        "y": 58
+      },
+      "id": 143,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_raid_ssd_life_left{appliance=\"$appliance\", diskNumber=\"4\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Life Left",
+      "type": "stat"
     },
     {
       "collapsed": true,
@@ -4359,7 +5131,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 60
       },
       "id": 53,
       "panels": [
@@ -4875,694 +5647,705 @@
       "type": "row"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 61
       },
       "id": 8,
-      "panels": [
-        {
-          "datasource": null,
-          "description": "Percentage of storage for MQ Data currently in use",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 2,
-            "x": 0,
-            "y": 6
-          },
-          "id": 38,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "(mqa_mq_resources_storage_bytes_used{appliance=\"$appliance\"} / mqa_mq_resources_storage_bytes_total{appliance=\"$appliance\"}) * 100",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MQ Data",
-          "type": "gauge"
-        },
-        {
-          "datasource": null,
-          "description": "Total storage for MQ Data currently allocated",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 2,
-            "y": 6
-          },
-          "id": 40,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_storage_bytes_total{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Total MQ Data",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Total storage for MQ Data currently in use",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 7,
-            "y": 6
-          },
-          "id": 45,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_storage_bytes_used{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Used MQ Data",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of storage for MQ Data currently free",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 12,
-            "y": 6
-          },
-          "id": 42,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_storage_bytes_total{appliance=\"$appliance\"} - mqa_mq_resources_storage_bytes_used{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Free MQ Data",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Percentage of storage for MQ Errors currently in use",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 2,
-            "x": 0,
-            "y": 11
-          },
-          "id": 43,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "(mqa_mq_resources_errors_storage_bytes_used{appliance=\"$appliance\"} / mqa_mq_resources_errors_storage_bytes_total{appliance=\"$appliance\"}) * 100",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MQ Errors",
-          "type": "gauge"
-        },
-        {
-          "datasource": null,
-          "description": "Total storage for MQ Errors currently allocated",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 2,
-            "y": 11
-          },
-          "id": 44,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_errors_storage_bytes_total{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Total MQ Errors",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Total storage for MQ Errors currently allocated",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 7,
-            "y": 11
-          },
-          "id": 49,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_errors_storage_bytes_used{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Used MQ Errors",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of storage for MQ Errors currently free",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 12,
-            "y": 11
-          },
-          "id": 46,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_errors_storage_bytes_total{appliance=\"$appliance\"} - mqa_mq_resources_errors_storage_bytes_used{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Free MQ Errors",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Percentage of storage for MQ Trace currently in use",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 2,
-            "x": 0,
-            "y": 16
-          },
-          "id": 47,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "(mqa_mq_resources_trace_storage_bytes_used{appliance=\"$appliance\"} / mqa_mq_resources_trace_storage_bytes_total{appliance=\"$appliance\"}) * 100",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MQ Trace",
-          "type": "gauge"
-        },
-        {
-          "datasource": null,
-          "description": "Total storage for MQ Trace currently allocated",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 2,
-            "y": 16
-          },
-          "id": 48,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_trace_storage_bytes_total{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Total MQ Trace",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of storage for MQ Trace currently in use",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 7,
-            "y": 16
-          },
-          "id": 41,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_trace_storage_bytes_used{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Used MQ Trace",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "description": "Amount of storage for MQ Trace currently free",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {},
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 5,
-            "x": 12,
-            "y": 16
-          },
-          "id": 51,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.3.7",
-          "targets": [
-            {
-              "expr": "mqa_mq_resources_trace_storage_bytes_total{appliance=\"$appliance\"} - mqa_mq_resources_trace_storage_bytes_used{appliance=\"$appliance\"}",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Free MQ trace",
-          "type": "stat"
-        }
-      ],
+      "panels": [],
       "title": "Storage - MQ",
       "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "Percentage of storage for MQ Data currently in use",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 0,
+        "y": 62
+      },
+      "id": 38,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "(mqa_mq_resources_storage_bytes_used{appliance=\"$appliance\"} / mqa_mq_resources_storage_bytes_total{appliance=\"$appliance\"}) * 100",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "MQ Data",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "Total storage for MQ Data currently allocated",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 2,
+        "y": 62
+      },
+      "id": 40,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_storage_bytes_total{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total MQ Data",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Total storage for MQ Data currently in use",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 7,
+        "y": 62
+      },
+      "id": 45,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_storage_bytes_used{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Used MQ Data",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of storage for MQ Data currently free",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 12,
+        "y": 62
+      },
+      "id": 42,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_storage_bytes_total{appliance=\"$appliance\"} - mqa_mq_resources_storage_bytes_used{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Free MQ Data",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Percentage of storage for MQ Errors currently in use",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 0,
+        "y": 67
+      },
+      "id": 43,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "(mqa_mq_resources_errors_storage_bytes_used{appliance=\"$appliance\"} / mqa_mq_resources_errors_storage_bytes_total{appliance=\"$appliance\"}) * 100",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "MQ Errors",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "Total storage for MQ Errors currently allocated",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 2,
+        "y": 67
+      },
+      "id": 44,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_errors_storage_bytes_total{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total MQ Errors",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Total storage for MQ Errors currently allocated",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 7,
+        "y": 67
+      },
+      "id": 49,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_errors_storage_bytes_used{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Used MQ Errors",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of storage for MQ Errors currently free",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 12,
+        "y": 67
+      },
+      "id": 46,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_errors_storage_bytes_total{appliance=\"$appliance\"} - mqa_mq_resources_errors_storage_bytes_used{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Free MQ Errors",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Percentage of storage for MQ Trace currently in use",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 0,
+        "y": 72
+      },
+      "id": 47,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "(mqa_mq_resources_trace_storage_bytes_used{appliance=\"$appliance\"} / mqa_mq_resources_trace_storage_bytes_total{appliance=\"$appliance\"}) * 100",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "MQ Trace",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "Total storage for MQ Trace currently allocated",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 2,
+        "y": 72
+      },
+      "id": 48,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_trace_storage_bytes_total{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total MQ Trace",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of storage for MQ Trace currently in use",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 7,
+        "y": 72
+      },
+      "id": 41,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_trace_storage_bytes_used{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Used MQ Trace",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Amount of storage for MQ Trace currently free",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 12,
+        "y": 72
+      },
+      "id": 51,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_mq_resources_trace_storage_bytes_total{appliance=\"$appliance\"} - mqa_mq_resources_trace_storage_bytes_used{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Free MQ trace",
+      "type": "stat"
     },
     {
       "collapsed": true,
@@ -5571,7 +6354,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 77
       },
       "id": 16,
       "panels": [
@@ -5742,7 +6525,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 26,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [
     "MQA_Main"
@@ -5753,13 +6536,13 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "MQA2002PROD1",
-          "value": "MQA2002PROD1"
+          "text": "x0033wn10",
+          "value": "x0033wn10"
         },
         "datasource": "Prometheus",
         "definition": "mqa_info",
         "description": null,
-        "error": {},
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Appliance",
@@ -5790,5 +6573,5 @@
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 11
+  "version": 14
 }
