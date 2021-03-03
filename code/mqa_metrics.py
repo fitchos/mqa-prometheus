@@ -36,6 +36,7 @@ from mqa_ipmi_sel_events_metrics import MQAIPMISelEventsMetrics
 from mqa_log_targets_metrics import MQALogTargetsMetrics
 from mqa_mq_system_recources_metrics import MQAMQSystemResourcesMetrics
 from mqa_network_interface_metrics import MQANetworkInterfaceMetrics
+from mqa_other_sensors_metrics import MQAOtherSensorsMetrics
 from mqa_queue_managers_metrics import MQAQueueManagersMetrics
 from mqa_raid_ssd_metrics import MQARaidSsdMetrics
 from mqa_system_cpu_metrics import MQASystemCpuMetrics
@@ -116,6 +117,7 @@ def main():
     REGISTRY.register(MQALogTargetsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAMQSystemResourcesMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQANetworkInterfaceMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAOtherSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAQueueManagersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQARaidSsdMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQASystemCpuMetrics(args.appliance, args.ip, args.port, session, args.timeout))
