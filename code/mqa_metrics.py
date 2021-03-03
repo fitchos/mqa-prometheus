@@ -29,6 +29,7 @@ from mqa_active_users_metrics import MQAActiveUsersMetrics
 from mqa_environmental_fan_sensors_metrics import MQAEnvironmentalFanSensorsMetrics
 from mqa_environmental_sensors_metrics import MQAEnvironmentalSensorsMetrics
 from mqa_ethernet_counters_metrics import MQAEthernetCountersMetrics
+from mqa_exporter_information_metrics import MQAExporterInformationMetrics
 from mqa_failure_notification_metrics import MQAFailureNotificationMetrics
 from mqa_file_system_metrics import MQAFileSystemMetrics
 from mqa_information_metrics import MQAInformationMetrics
@@ -110,6 +111,7 @@ def main():
     REGISTRY.register(MQAEnvironmentalFanSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAEnvironmentalSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAEthernetCountersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAExporterInformationMetrics(args.appliance))
     REGISTRY.register(MQAFailureNotificationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAFileSystemMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAInformationMetrics(args.appliance, args.ip, args.port, session, args.timeout))

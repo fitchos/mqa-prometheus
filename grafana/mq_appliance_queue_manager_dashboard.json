@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 8,
-  "iteration": 1614721470665,
+  "id": 4,
+  "iteration": 1614806303269,
   "links": [
     {
       "asDropdown": false,
@@ -106,9 +106,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -162,9 +163,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -221,9 +223,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -240,6 +243,128 @@
     },
     {
       "datasource": null,
+      "description": "The current local date and time on the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.time}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 13,
+        "y": 1
+      },
+      "id": 54,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Date/Time",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The current local date and time on the server running the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.localTime}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 17,
+        "y": 1
+      },
+      "id": 58,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Date/Time",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -249,7 +374,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 12,
+        "x": 21,
         "y": 1
       },
       "id": 12,
@@ -324,9 +449,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -380,9 +506,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_info{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -395,6 +522,189 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "DR Status",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The name of the time zone currently in effect.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.timezone}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 14,
+        "y": 3
+      },
+      "id": 56,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Timezone",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The name of the time zone currently in effect on the server running the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.localTimezone}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 16,
+        "y": 3
+      },
+      "id": 60,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Timezone",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The exporter version number of the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.version}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 19,
+        "y": 3
+      },
+      "id": 62,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Version",
       "type": "stat"
     },
     {
@@ -451,9 +761,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -511,7 +822,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -617,7 +928,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -721,9 +1032,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "((1 / mqa_system_memory_memory_bytes_total{appliance=\"$appliance\"}) * (scalar(mqa_queue_manager_memory_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}))) * 100",
@@ -779,9 +1091,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_system_memory_memory_bytes_free{appliance=\"$appliance\"}",
@@ -839,7 +1152,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -946,7 +1259,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1049,9 +1362,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_memory_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1106,9 +1420,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "(mqa_queue_manager_fs_bytes_used{appliance=\"$appliance\", qm=\"$qm\"} / mqa_queue_manager_fs_bytes_allocated{appliance=\"$appliance\", qm=\"$qm\"}) * 100",
@@ -1162,9 +1477,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_fs_bytes_allocated{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1223,7 +1539,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1331,7 +1647,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1434,9 +1750,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.7",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_queue_manager_fs_bytes_used{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1453,7 +1770,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 26,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [
     "MQA_Queue_Managers"
@@ -1469,6 +1786,7 @@
         },
         "datasource": "Prometheus",
         "definition": "mqa_info",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -1476,7 +1794,10 @@
         "multi": false,
         "name": "appliance",
         "options": [],
-        "query": "mqa_info",
+        "query": {
+          "query": "mqa_info",
+          "refId": "Prometheus-appliance-Variable-Query"
+        },
         "refresh": 1,
         "regex": "/.*appliance=\"([^\"]*).*/",
         "skipUrlSync": false,
@@ -1496,6 +1817,7 @@
         },
         "datasource": "Prometheus",
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -1503,7 +1825,10 @@
         "multi": false,
         "name": "qm",
         "options": [],
-        "query": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
+        "query": {
+          "query": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
+          "refId": "Prometheus-qm-Variable-Query"
+        },
         "refresh": 1,
         "regex": "/.*qm=\"([^\"]*).*/",
         "skipUrlSync": false,
@@ -1524,5 +1849,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 86
+  "version": 8
 }

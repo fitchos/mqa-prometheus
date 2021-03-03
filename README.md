@@ -290,6 +290,19 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_network_interface_info | Info | MQ Appliance network interface information | appliance, interfaceIndex, interfaceType, name, adminStatus, operStatus, ipType, ip, prefixLength, macAddress, mtu |
 
+**Other Sensors**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_other_sensor_intrusion_detected | Gauge | Whether an intrusion has been detected | appliance, readingStatus |
+| mqa_other_sensor_power_supply_1_ac_lost | Gauge | Whether power supply 1 lost AC | appliance, readingStatus |
+| mqa_other_sensor_power_supply_1_not_enabled | Gauge | Whether power supply 1 is not enabled | appliance, readingStatus |
+| mqa_other_sensor_power_supply_1_output_failure | Gauge | Whether power supply 1 has an output failure | appliance, readingStatus |
+| mqa_other_sensor_power_supply_1_present | Gauge | Whether power supply 1 is present | appliance, readingStatus |
+| mqa_other_sensor_power_supply_2_ac_lost | Gauge | Whether power supply 2 lost AC | appliance, readingStatus |
+| mqa_other_sensor_power_supply_2_not_enabled | Gauge | Whether power supply 2 is not enabled | appliance, readingStatus |
+| mqa_other_sensor_power_supply_2_output_failure | Gauge | Whether power supply 2 has an output failure | appliance, readingStatus |
+| mqa_other_sensor_power_supply_2_present | Gauge | Whether power supply 2 is present | appliance, readingStatus |
+
 **Queue Manager**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
