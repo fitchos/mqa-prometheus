@@ -100,14 +100,16 @@ To start multiple exporters build a CSV (comma delimited) file with the followin
 To start the exporters, use the mqa_start_exporters utility
 
 ```
-Usage: mqa_start_exporters.py [-h] [-d DIRECTORY] -f FILE [-ln LOGNUMBERS] [-ls LOGSIZE] -u USER [-x PW]
+Usage: mqa_start_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY] -f FILE [-ln LOGNUMBERS] [-ls LOGSIZE] -u USER [-x PW]
 
-MQ Appliance Prometheus Exporter Start Utility - vx.x
+MQ Appliance Prometheus Exporter Start Utility - v0.4
 
 optional arguments:
   -h, --help            show this help message and exit
+  -a APPLIANCE, --appliance APPLIANCE
+                        Name of the appliance
   -d DIRECTORY, --directory DIRECTORY
-                        Path to directory for log and PID files (defaults to current directory
+                        Path to directory for log and PID files (defaults to current directory)
   -f FILE, --file FILE  Name of the file with the exporters configuration (CSV)
   -ln LOGNUMBERS, --lognumbers LOGNUMBERS
                         Number of logs in a rotation (defaults to 10)
@@ -126,9 +128,9 @@ mqa_start_exporters.py -f my_exporter_list.csv -d \temp -u admin
 To list the exporters currently running, use the mqa_list_exporters utility
 
 ```
-Usage: mqa_list_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY]
+Usage: mqa_list_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY] [-f FILE]
 
-MQ Appliance Prometheus Exporter List Utility - v0.3
+MQ Appliance Prometheus Exporter List Utility - v0.4
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -136,21 +138,24 @@ optional arguments:
                         Name of the appliance
   -d DIRECTORY, --directory DIRECTORY
                         Path to directory for PID files (defaults to current directory)
+  -f FILE, --file FILE  Name of the file with the exporters configuration (CSV)
 ```
 
 #### Sample commands to list exporters running
 ```
 mqa_list_exporters.py -d \temp
 mqa_list_exporters.py -d \temp -a my_appliance
+mqa_list_exporters.py -f my_exporters_file.csv
+mqa_list_exporters.py -f my_exporters_file.csv -a my_appliance
 ```
 
 #### Stopping one or more exporters
 To stop one or more exporters, use the mqa_stop_exporters utility
 
 ```
-usage: mqa_stop_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY]
+Usage: mqa_stop_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY] [-f FILE]
 
-MQ Appliance Prometheus Exporter Stop Utility - v0.3
+MQ Appliance Prometheus Exporter Stop Utility - v0.4
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -158,12 +163,15 @@ optional arguments:
                         Name of the appliance
   -d DIRECTORY, --directory DIRECTORY
                         Path to directory for PID files (defaults to current directory)
+  -f FILE, --file FILE  Name of the file with the exporters configuration (CSV)
 ```
 
 #### Sample commands to stop one or more exporters
 ```
 mqa_stop_exporters.py -d \temp
 mqa_stop_exporters.py -d \temp -a my_appliance
+mqa_stop_exporters.py -d \temp -f my_exporters_list.csv
+mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 ```
 
 ### Available metrics
@@ -249,6 +257,11 @@ mqa_stop_exporters.py -d \temp -a my_appliance
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_info | Info | MQ Appliance information | appliance, bootcount, bootuptime, build, builddate, deliverytype, installdate, installeddpos, level, machinetype, modeltype, runningdpos, serial, time, timezone, type, tzspec, uptime, version, watchdogbuild, xmlaccelerator |
+
+**IPMI SEL Events Information**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_ipmi_sel_events_info | MQ Appliance IPMI SEL events information | appliance, index, timestamp, recordType, sensorType, sensorNumber, sensorName, eventReadingTypeCode, eventData, eventDirection, extra |
 
 **MQ Resources**
 | Metric | Type | Description | Labels |
