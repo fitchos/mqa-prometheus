@@ -241,6 +241,11 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_file_system_internal_bytes_free | Gauge | Free, or unused and available, internal storage space on the appliance | appliance |
 | mqa_file_system_internal_bytes_total | Counter | Total internal storage space on the appliance | appliance |
 
+**IPMI SEL Events Information**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_ipmi_sel_events_info | Info | MQ Appliance IPMI SEL events information | appliance, index, timestamp, recordType, sensorType, sensorNumber, sensorName, eventReadingTypeCode, eventData, eventDirection, extra |
+
 **Log Targets**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
@@ -257,11 +262,6 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_info | Info | MQ Appliance information | appliance, bootcount, bootuptime, build, builddate, deliverytype, installdate, installeddpos, level, machinetype, modeltype, runningdpos, serial, time, timezone, type, tzspec, uptime, version, watchdogbuild, xmlaccelerator |
-
-**IPMI SEL Events Information**
-| Metric | Type | Description | Labels |
-|------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_ipmi_sel_events_info | MQ Appliance IPMI SEL events information | appliance, index, timestamp, recordType, sensorType, sensorNumber, sensorName, eventReadingTypeCode, eventData, eventDirection, extra |
 
 **MQ Resources**
 | Metric | Type | Description | Labels |
