@@ -231,6 +231,11 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_ethernet_counters_in_pause_frames_total | Counter | The number of pause frames received | appliance, name |
 | mqa_ethernet_counters_out_pause_frames_total | Counter | The number of pause frames transmitted | appliance, name |
 
+**Exporter Information**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_exporter_info | Info | MQ Appliance exporter information | appliance, version, localTime, localTimezone |
+
 **File System**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|

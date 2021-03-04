@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 4,
-  "iteration": 1614806303269,
+  "iteration": 1614816851663,
   "links": [
     {
       "asDropdown": false,
@@ -239,128 +239,7 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "HA Status",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The current local date and time on the appliance.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.time}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 13,
-        "y": 1
-      },
-      "id": 54,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Appliance Date/Time",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The current local date and time on the server running the Prometheus exporter.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-orange",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.localTime}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 17,
-        "y": 1
-      },
-      "id": 58,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Exporter Date/Time",
+      "transformations": [],
       "type": "stat"
     },
     {
@@ -372,9 +251,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 6,
         "w": 3,
-        "x": 21,
+        "x": 17,
         "y": 1
       },
       "id": 12,
@@ -409,6 +288,67 @@
       "timeShift": null,
       "title": "Local Date and Time",
       "type": "grafana-clock-panel"
+    },
+    {
+      "datasource": null,
+      "description": "The current local date and time on the server running the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.localTime}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "id": 58,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Date/Time",
+      "type": "stat"
     },
     {
       "datasource": null,
@@ -526,67 +466,6 @@
     },
     {
       "datasource": null,
-      "description": "The name of the time zone currently in effect.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-blue",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.timezone}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 14,
-        "y": 3
-      },
-      "id": 56,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Timezone",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
       "description": "The name of the time zone currently in effect on the server running the Prometheus exporter.",
       "fieldConfig": {
         "defaults": {
@@ -612,7 +491,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 16,
+        "x": 21,
         "y": 3
       },
       "id": 60,
@@ -648,6 +527,128 @@
     },
     {
       "datasource": null,
+      "description": "The current local date and time on the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.time}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 5
+      },
+      "id": 54,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Date/Time",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The name of the time zone currently in effect.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.timezone}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 5
+      },
+      "id": 56,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Timezone",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "description": "The exporter version number of the Prometheus exporter.",
       "fieldConfig": {
         "defaults": {
@@ -673,8 +674,8 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 19,
-        "y": 3
+        "x": 22,
+        "y": 5
       },
       "id": 62,
       "options": {
@@ -714,7 +715,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 7
       },
       "id": 4,
       "panels": [],
@@ -749,7 +750,7 @@
         "h": 5,
         "w": 2,
         "x": 0,
-        "y": 6
+        "y": 8
       },
       "id": 6,
       "options": {
@@ -800,7 +801,7 @@
         "h": 5,
         "w": 10,
         "x": 2,
-        "y": 6
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 8,
@@ -906,7 +907,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 6
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 48,
@@ -1020,7 +1021,7 @@
         "h": 5,
         "w": 2,
         "x": 0,
-        "y": 11
+        "y": 13
       },
       "id": 44,
       "options": {
@@ -1076,7 +1077,7 @@
         "h": 2,
         "w": 3,
         "x": 2,
-        "y": 11
+        "y": 13
       },
       "id": 24,
       "options": {
@@ -1130,7 +1131,7 @@
         "h": 5,
         "w": 10,
         "x": 5,
-        "y": 11
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 50,
@@ -1237,7 +1238,7 @@
         "h": 5,
         "w": 9,
         "x": 15,
-        "y": 11
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 26,
@@ -1347,7 +1348,7 @@
         "h": 3,
         "w": 3,
         "x": 2,
-        "y": 13
+        "y": 15
       },
       "id": 20,
       "options": {
@@ -1408,7 +1409,7 @@
         "h": 5,
         "w": 2,
         "x": 0,
-        "y": 16
+        "y": 18
       },
       "id": 16,
       "options": {
@@ -1462,7 +1463,7 @@
         "h": 2,
         "w": 3,
         "x": 2,
-        "y": 16
+        "y": 18
       },
       "id": 22,
       "options": {
@@ -1516,7 +1517,7 @@
         "h": 5,
         "w": 10,
         "x": 5,
-        "y": 16
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 52,
@@ -1625,7 +1626,7 @@
         "h": 5,
         "w": 9,
         "x": 15,
-        "y": 16
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 30,
@@ -1735,7 +1736,7 @@
         "h": 3,
         "w": 3,
         "x": 2,
-        "y": 18
+        "y": 20
       },
       "id": 28,
       "options": {
@@ -1849,5 +1850,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 8
+  "version": 12
 }

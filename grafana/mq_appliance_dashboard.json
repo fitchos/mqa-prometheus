@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1614806256084,
+  "iteration": 1614816893782,
   "links": [
     {
       "asDropdown": false,
@@ -369,67 +369,6 @@
     },
     {
       "datasource": null,
-      "description": "The current local date and time on the server running the Prometheus exporter.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-orange",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.localTime}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 17,
-        "y": 1
-      },
-      "id": 195,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Exporter Date/Time",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -437,9 +376,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 6,
         "w": 3,
-        "x": 21,
+        "x": 17,
         "y": 1
       },
       "id": 14,
@@ -474,6 +413,67 @@
       "timeShift": null,
       "title": "Local Date and Time",
       "type": "grafana-clock-panel"
+    },
+    {
+      "datasource": null,
+      "description": "The current local date and time on the server running the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.localTime}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "id": 195,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Date/Time",
+      "type": "stat"
     },
     {
       "datasource": null,
@@ -929,7 +929,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 18,
+        "x": 21,
         "y": 3
       },
       "id": 199,
@@ -1257,7 +1257,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 19,
+        "x": 22,
         "y": 5
       },
       "id": 197,
@@ -6839,5 +6839,5 @@
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 16
+  "version": 18
 }
