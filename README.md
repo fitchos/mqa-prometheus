@@ -102,7 +102,7 @@ To start the exporters, use the mqa_start_exporters utility
 ```
 Usage: mqa_start_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY] -f FILE [-ln LOGNUMBERS] [-ls LOGSIZE] -u USER [-x PW]
 
-MQ Appliance Prometheus Exporter Start Utility - v0.4
+MQ Appliance Prometheus Exporter Start Utility - vx.x
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -130,7 +130,7 @@ To list the exporters currently running, use the mqa_list_exporters utility
 ```
 Usage: mqa_list_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY] [-f FILE]
 
-MQ Appliance Prometheus Exporter List Utility - v0.4
+MQ Appliance Prometheus Exporter List Utility - vx.x
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -155,7 +155,7 @@ To stop one or more exporters, use the mqa_stop_exporters utility
 ```
 Usage: mqa_stop_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY] [-f FILE]
 
-MQ Appliance Prometheus Exporter Stop Utility - v0.4
+MQ Appliance Prometheus Exporter Stop Utility - vx.x
 
 optional arguments:
   -h, --help            show this help message and exit
