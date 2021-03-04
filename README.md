@@ -180,6 +180,18 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_active_users_total | Gauge | Total active users connected to the appliance | appliance, connection |
 
+**Current Sensors**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+|mqa_current_sensors_power_supply_1_in_current_amperes | Gauge | Current going into power supply 1 | appliance, readingStatus |
+|mqa_current_sensors_power_supply_1_in_current_upper_critical_threshold_amperes | Gauge | Upper critical threshold for current going into power supply 1 | appliance, readingStatus |
+|mqa_current_sensors_power_supply_1_out_current_amperes | Gauge | Current going out power supply 1 | appliance, readingStatus |
+|mqa_current_sensors_power_supply_1_out_current_upper_critical_threshold_amperes | Gauge | Upper critical threshold for current going out power supply 1 | appliance, readingStatus |
+|mqa_current_sensors_power_supply_2_in_current_amperes | Gauge | Current going into power supply 2 | appliance, readingStatus |
+|mqa_current_sensors_power_supply_2_in_current_upper_critical_threshold_amperes | Gauge | Upper critical threshold for current going into power supply 2 | appliance, readingStatus |
+|mqa_current_sensors_power_supply_2_out_current_amperes | Gauge | Current going out power supply 2 | appliance, readingStatus |
+|mqa_current_sensors_power_supply_2_out_current_upper_critical_threshold_amperes | Gauge | Upper critical threshold for current going out power supply 2 | appliance, readingStatus |
+
 **Environmental Sensors**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|

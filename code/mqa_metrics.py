@@ -26,6 +26,7 @@ import time
 
 from logging.handlers import RotatingFileHandler
 from mqa_active_users_metrics import MQAActiveUsersMetrics
+from mqa_current_sensors_metrics import MQACurrentSensorsMetrics
 from mqa_environmental_fan_sensors_metrics import MQAEnvironmentalFanSensorsMetrics
 from mqa_environmental_sensors_metrics import MQAEnvironmentalSensorsMetrics
 from mqa_ethernet_counters_metrics import MQAEthernetCountersMetrics
@@ -108,6 +109,7 @@ def main():
 
     # Register metric collectors
     REGISTRY.register(MQAActiveUsersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQACurrentSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAEnvironmentalFanSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAEnvironmentalSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQAEthernetCountersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
