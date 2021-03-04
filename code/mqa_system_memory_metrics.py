@@ -41,13 +41,19 @@ class MQASystemMemoryMetrics(object):
         yield g
 
         c = CounterMetricFamily('mqa_system_memory_memory_bytes_total', 'The total memory of the system in bytes. The total memory equals the amount of installed memory minus the amount of reserved memory', labels=['appliance'])
-        c.add_metric([self.appliance], data['SystemMemoryStatus']['TotalMemory']  * 1048576)
+        # Memory in MB not MiB
+        #c.add_metric([self.appliance], data['SystemMemoryStatus']['TotalMemory']  * 1048576)
+        c.add_metric([self.appliance], data['SystemMemoryStatus']['TotalMemory']  * 1000000)
         yield c
 
         g = GaugeMetricFamily('mqa_system_memory_memory_bytes_used', 'The amount of memory in bytes that is currently in use. The used memory equals the amount of total memory minus the amount of free memory. The used memory does not include any hold memory', labels=['appliance'])
-        g.add_metric([self.appliance], data['SystemMemoryStatus']['UsedMemory'] * 1048576)
+        # Memory in MB not MiB
+        #g.add_metric([self.appliance], data['SystemMemoryStatus']['UsedMemory'] * 1048576)
+        g.add_metric([self.appliance], data['SystemMemoryStatus']['UsedMemory'] * 1000000)
         yield g
 
         g = GaugeMetricFamily('mqa_system_memory_memory_bytes_free', 'The amount of memory in bytes that is currently not in use and is therefore available. The free memory value includes any hold memory that is not currently in use', labels=['appliance'])
-        g.add_metric([self.appliance], data['SystemMemoryStatus']['FreeMemory'] * 1048576)
+        # Memory in MB not MiB
+        #g.add_metric([self.appliance], data['SystemMemoryStatus']['FreeMemory'] * 1048576)
+        g.add_metric([self.appliance], data['SystemMemoryStatus']['FreeMemory'] * 1000000)
         yield g
