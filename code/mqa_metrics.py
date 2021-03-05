@@ -44,6 +44,8 @@ from mqa_raid_ssd_metrics import MQARaidSsdMetrics
 from mqa_system_cpu_metrics import MQASystemCpuMetrics
 from mqa_system_memory_metrics import MQASystemMemoryMetrics
 from mqa_tcp_summary_metrics import MQATCPSummaryMetrics
+from mqa_temperature_sensors_metrics import MQATemperatureSensorsMetrics
+from mqa_voltage_sensors_metrics import MQAVoltageSensorsMetrics
 from mqalib import get_password
 from mqalib import get_version
 from mqalib import init_rest_api
@@ -127,6 +129,8 @@ def main():
     REGISTRY.register(MQASystemCpuMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQASystemMemoryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
     REGISTRY.register(MQATCPSummaryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQATemperatureSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAVoltageSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
 
     # Start the HTTP server serving the metrics
     start_http_server(args.httpPort)
