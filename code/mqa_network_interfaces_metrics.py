@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module implements the MQ Appliance network interface metrics collector"""
+"""This module implements the MQ Appliance network interfaces metrics collector"""
 
 import json
 
 from mqalib import call_rest_api
 from prometheus_client.core import CounterMetricFamily, InfoMetricFamily
 
-class MQANetworkInterfaceMetrics(object):
-    """MQ Appliance network interface metrics collector"""
+class MQANetworkInterfacesMetrics(object):
+    """MQ Appliance network interfaces metrics collector"""
 
     def __init__(self, appliance, ip, port, session, timeout):
         self.appliance = appliance

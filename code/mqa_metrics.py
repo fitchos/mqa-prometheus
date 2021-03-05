@@ -24,6 +24,7 @@ import logging
 import sys
 import time
 
+from configparser import ConfigParser, NoOptionError, NoSectionError
 from logging.handlers import RotatingFileHandler
 from mqa_active_users_metrics import MQAActiveUsersMetrics
 from mqa_current_sensors_metrics import MQACurrentSensorsMetrics
@@ -37,7 +38,7 @@ from mqa_information_metrics import MQAInformationMetrics
 from mqa_ipmi_sel_events_metrics import MQAIPMISelEventsMetrics
 from mqa_log_targets_metrics import MQALogTargetsMetrics
 from mqa_mq_system_recources_metrics import MQAMQSystemResourcesMetrics
-from mqa_network_interface_metrics import MQANetworkInterfaceMetrics
+from mqa_network_interfaces_metrics import MQANetworkInterfacesMetrics
 from mqa_other_sensors_metrics import MQAOtherSensorsMetrics
 from mqa_queue_managers_metrics import MQAQueueManagersMetrics
 from mqa_raid_ssd_metrics import MQARaidSsdMetrics
@@ -57,8 +58,9 @@ def main():
 
     # Build parser to handle the command line options
     parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter - ' + get_version())
-    parser.add_argument('-a', '--appliance',  type=str, required=True, help = 'Name of the appliance') 
-    parser.add_argument('-i', '--ip', type=str, required=True, help = 'IP address of the appliance REST API')
+    parser.add_argument('-a', '--appliance',  type=str, required=True, help = 'Name of the appliance')
+    parser.add_argument('-c', '--config',  type=str, required=False, help = 'Name of the exporter configuration file (INI)') 
+    parser.add_argument('-i', '--ip', type=str, required=True, help = 'IP address or DNS of the appliance REST API')
     parser.add_argument('-hp', '--httpPort', type=int, default=8000, help = 'Port number of the exported HTTP server (default: 8000)')
     parser.add_argument('-l', '--log', type=str, help = 'Name of the log file (defaults to STDOUT)')
     parser.add_argument('-ln', '--lognumbers', type=int, default=10, help = 'Number of logs in a rotation (defaults to 10)')
@@ -106,31 +108,65 @@ def main():
     logging.info('MQ Appliance Prometheus Exporter ' + get_version() + ' started on HTTP port ' + str(args.httpPort))
     logging.info('MQ Appliance monitored is ' + args.appliance + ' at ' + args.ip + '(' + str(args.port) + ')')
 
+    # Read exporter configuration file
+    if args.config != None:
+        config = ConfigParser()
+        config.read(args.config)
+        
     # Initialize HTTPS session
     session = init_rest_api(args.ip, args.port, (args.user, args.pw), args.timeout)
 
     # Register metric collectors
-    REGISTRY.register(MQAActiveUsersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQACurrentSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAEnvironmentalFanSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAEnvironmentalSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAEthernetCountersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAExporterInformationMetrics(args.appliance))
-    REGISTRY.register(MQAFailureNotificationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAFileSystemMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    try:
+        if args.config == None or config.getboolean('collectors', 'active_users'):
+            REGISTRY.register(MQAActiveUsersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'current_sensors'):   
+            REGISTRY.register(MQACurrentSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'environmental_fan_sensors'):
+            REGISTRY.register(MQAEnvironmentalFanSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'environmental_sensors'):
+            REGISTRY.register(MQAEnvironmentalSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'ethernet_counters'):
+            REGISTRY.register(MQAEthernetCountersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'failure_notification'):
+            REGISTRY.register(MQAFailureNotificationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'file_system'):
+            REGISTRY.register(MQAFileSystemMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'ipmi_sel_events'):
+            REGISTRY.register(MQAIPMISelEventsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'log_targets'):
+            REGISTRY.register(MQALogTargetsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'mq_system_resources'):
+            REGISTRY.register(MQAMQSystemResourcesMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'network_interfaces'):
+            REGISTRY.register(MQANetworkInterfacesMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'other_sensors'):
+            REGISTRY.register(MQAOtherSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'queue_managers'):
+            REGISTRY.register(MQAQueueManagersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'raid_ssd'):
+            REGISTRY.register(MQARaidSsdMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'system_cpu'):
+            REGISTRY.register(MQASystemCpuMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'system_memory'):
+            REGISTRY.register(MQASystemMemoryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'tcp_summary'):
+            REGISTRY.register(MQATCPSummaryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'temperature_sensors'):
+            REGISTRY.register(MQATemperatureSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'voltage_sensors'):
+            REGISTRY.register(MQAVoltageSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    except NoSectionError as err:
+        logging.error('Invalid exporter configuration file \'' + args.config + '\', ' + str(err))
+        logging.info('Exporter has terminated')
+        sys.exit(1)
+    except NoOptionError as err:
+        logging.error('Invalid exporter configuration file \'' + args.config + '\', ' + str(err))
+        logging.info('Exporter has terminated')
+        sys.exit(1)
+
     REGISTRY.register(MQAInformationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAIPMISelEventsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQALogTargetsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAMQSystemResourcesMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQANetworkInterfaceMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAOtherSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAQueueManagersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQARaidSsdMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQASystemCpuMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQASystemMemoryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQATCPSummaryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQATemperatureSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-    REGISTRY.register(MQAVoltageSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+    REGISTRY.register(MQAExporterInformationMetrics(args.appliance))
 
     # Start the HTTP server serving the metrics
     start_http_server(args.httpPort)

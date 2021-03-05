@@ -25,6 +25,7 @@ import shlex
 import subprocess
 import sys
 
+from configparser import ConfigParser 
 from mqalib import get_password
 from mqalib import get_version
 from mqalib import resolve_directory
@@ -35,7 +36,8 @@ def main():
     # Build parser to handle the command line options
     parser = argparse.ArgumentParser(description='MQ Appliance Prometheus Exporter Start Utility - ' + get_version())
     parser.add_argument('-a', '--appliance', type=str, required=False, help = 'Name of the appliance')
-    parser.add_argument('-d', '--directory', type=str, required=False, default='', help = 'Path to directory for log and PID files (defaults to current directory)')
+    parser.add_argument('-c', '--config',  type=str, required=False, help = 'Name of the exporter configuration file (INI)') 
+    parser.add_argument('-d', '--directory', type=str, required=False, default='', help = 'Path to directory for PID files (defaults to current directory)')
     parser.add_argument('-f', '--file',  type=str, required=True, help = 'Name of the file with the exporters configuration (CSV)') 
     parser.add_argument('-ln', '--lognumbers', type=int, required=False, default=10, help = 'Number of logs in a rotation (defaults to 10)')
     parser.add_argument('-ls', '--logsize', type=int, required=False, default=10485760, help = 'Size of logs in bytes (defaults to 10MB - 10485760)')
@@ -76,7 +78,8 @@ def main():
                                                         ' -u ' + args.user + 
                                                         ' -x ' + args.pw + 
                                                         ' -hp ' + exporter[3] + 
-                                                        ' -t ' + exporter[4])                    
+                                                        ' -t ' + exporter[4] +
+                                                        (' -c ' + args.config if args.config != None else ''))               
                     
                 # Start the exporter
                 process = subprocess.Popen(command)
