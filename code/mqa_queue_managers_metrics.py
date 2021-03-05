@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance queue managers metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import GaugeMetricFamily, InfoMetricFamily
@@ -30,6 +31,9 @@ class MQAQueueManagersMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/QueueManagersStatus', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -70,3 +74,7 @@ class MQAQueueManagersMetrics(object):
                           'drRole': 'Unknown' if qm['DrRole'] == '' else qm['DrRole'], 
                           'drStatus': 'Unknown' if qm['DrStatus'] == '' else qm['DrStatus']})
             yield i
+
+        g = GaugeMetricFamily('mqa_exporter_queue_managers_elapsed_time_seconds', 'Exporter eleapsed time to collect queue managers metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g

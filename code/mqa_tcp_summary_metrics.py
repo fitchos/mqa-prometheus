@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance TCP summary metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQATCPSummaryMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/TCPSummary', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -78,4 +82,8 @@ class MQATCPSummaryMetrics(object):
 
         g = GaugeMetricFamily('mqa_tcp_connections_closing', 'The number of TCP connections in the closing state. Connections in this state are waiting for a connection termination request acknowledgment from the remote TCP', labels=['appliance'])
         g.add_metric([self.appliance], data['TCPSummary']['closing'])
+        yield g
+
+        g = GaugeMetricFamily('mqa_exporter_tcp_summary_elapsed_time_seconds', 'Exporter eleapsed time to collect tcp summary metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
         yield g

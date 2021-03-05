@@ -15,9 +15,10 @@
 """This module implements the MQ Appliance network interfaces metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import CounterMetricFamily, InfoMetricFamily
+from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily, InfoMetricFamily
 
 class MQANetworkInterfacesMetrics(object):
     """MQ Appliance network interfaces metrics collector"""
@@ -30,6 +31,9 @@ class MQANetworkInterfacesMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/NetworkInterfaceStatus', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -70,7 +74,7 @@ class MQANetworkInterfacesMetrics(object):
             c.add_metric([self.appliance, ni['Name'], ni['AdminStatus'], ni['OperStatus']], ni['TxDrops2'])
             yield c
 
-            i = InfoMetricFamily('mqa_network_interface', 'MQ Appliance network interface information')
+            i = InfoMetricFamily('mqa_network_interface', 'MQ Appliance network interfaces information')
             i.add_metric(['appliance', 'interfaceIndex', 'interfaceType', 'name', 'adminStatus', 'operStatus', 'ipType', 'ip', 'prefixLength', 'macAddress', 'mtu'], 
                       {'appliance': self.appliance, 
                       'interfaceIndex': str(ni['InterfaceIndex']),
@@ -84,4 +88,8 @@ class MQANetworkInterfacesMetrics(object):
                       'macAddress': ni['MACAddress'], 
                       'mtu': str(ni['MTU'])})
             yield i
+
+        g = GaugeMetricFamily('mqa_exporter_network_interfaces_elapsed_time_seconds', 'Exporter eleapsed time to collect network interfaces metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g
 

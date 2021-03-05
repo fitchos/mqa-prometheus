@@ -15,9 +15,10 @@
 """This module implements the MQ Appliance failure notification metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import InfoMetricFamily
+from prometheus_client.core import InfoMetricFamily, GaugeMetricFamily
 
 class MQAFailureNotificationMetrics(object):
     """MQ Appliance failure notification metrics collector"""
@@ -30,6 +31,9 @@ class MQAFailureNotificationMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/FailureNotificationStatus2', self.ip, self.port, self.session, self.timeout)
 
@@ -52,3 +56,7 @@ class MQAFailureNotificationMetrics(object):
                       {'appliance': self.appliance, 'date': fn['Date'], 'reason': fn['Reason'],
                       'uploadStatus': fn['UploadStatus'], 'location': fn['Location']})
             yield i
+
+        g = GaugeMetricFamily('mqa_exporter_failure_notification_elapsed_time_seconds', 'Exporter eleapsed time to collect failure notification metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g

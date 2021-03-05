@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance MQ system resources metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQAMQSystemResourcesMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/MQSystemResources', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -70,4 +74,8 @@ class MQAMQSystemResourcesMetrics(object):
         # Memory in MB not MiB 
         #g.add_metric([self.appliance], data['MQSystemResources']['UsedTraceStorage'] * 1048576)
         g.add_metric([self.appliance], data['MQSystemResources']['UsedTraceStorage'] * 1000000)
+        yield g
+
+        g = GaugeMetricFamily('mqa_exporter_mq_system_resources_elapsed_time_seconds', 'Exporter eleapsed time to collect mq system resources metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
         yield g

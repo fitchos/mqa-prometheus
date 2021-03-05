@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance file system metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQAFileSystemMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/FilesystemStatus', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -71,3 +75,7 @@ class MQAFileSystemMetrics(object):
         #c.add_metric([self.appliance], data['FilesystemStatus']['TotalInternal'] * 1048576)
         c.add_metric([self.appliance], data['FilesystemStatus']['TotalInternal'] * 1000000)
         yield c
+
+        g = GaugeMetricFamily('mqa_exporter_file_system_elapsed_time_seconds', 'Exporter eleapsed time to collect file system metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g

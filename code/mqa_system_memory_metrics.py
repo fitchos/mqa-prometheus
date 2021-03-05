@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance system memory metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQASystemMemoryMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/SystemMemoryStatus', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -56,4 +60,8 @@ class MQASystemMemoryMetrics(object):
         # Memory in MB not MiB
         #g.add_metric([self.appliance], data['SystemMemoryStatus']['FreeMemory'] * 1048576)
         g.add_metric([self.appliance], data['SystemMemoryStatus']['FreeMemory'] * 1000000)
+        yield g
+
+        g = GaugeMetricFamily('mqa_exporter_system_memory_elapsed_time_seconds', 'Exporter eleapsed time to collect system_memory metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
         yield g

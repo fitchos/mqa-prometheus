@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance voltage sensors metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQAVoltageSensorsMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/VoltageSensors', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -232,3 +236,7 @@ class MQAVoltageSensorsMetrics(object):
                 yield g
 
                 continue
+
+        g = GaugeMetricFamily('mqa_exporter_voltage_sensors_elapsed_time_seconds', 'Exporter eleapsed time to collect voltage sensors metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g

@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance environmental sensors metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQAEnvironmentalSensorsMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/EnvironmentalSensors', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -78,4 +82,8 @@ class MQAEnvironmentalSensorsMetrics(object):
 
         g = GaugeMetricFamily('mqa_environmental_sensors_12_voltage', '12 voltage', labels=['appliance'])
         g.add_metric([self.appliance], float(data['EnvironmentalSensors']['volt12']))
+        yield g
+
+        g = GaugeMetricFamily('mqa_exporter_environmental_sensors_elapsed_time_seconds', 'Exporter eleapsed time to collect environmental sensors metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
         yield g

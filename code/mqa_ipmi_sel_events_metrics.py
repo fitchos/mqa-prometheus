@@ -15,9 +15,10 @@
 """This module implements the MQ Appliance IPMI SEL events metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import InfoMetricFamily
+from prometheus_client.core import InfoMetricFamily, GaugeMetricFamily
 
 class MQAIPMISelEventsMetrics(object):
     """MQ Appliance IPMI SEL events metrics collector"""
@@ -30,6 +31,9 @@ class MQAIPMISelEventsMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/IPMISelEvents', self.ip, self.port, self.session, self.timeout)
 
@@ -45,3 +49,7 @@ class MQAIPMISelEventsMetrics(object):
                       'sensorName': ise['SensorName'], 'eventReadingTypeCode': ise['EventReadingTypeCode'], 'eventData': ise['EventData2'],
                       'eventDirection': ise['EventDirection'], 'extra': ise['Extra']})
             yield i
+
+        g = GaugeMetricFamily('mqa_exporter_ipmi_sel_events_elapsed_time_seconds', 'Exporter eleapsed time to collect ipmi sel events metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g

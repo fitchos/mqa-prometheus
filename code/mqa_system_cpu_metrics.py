@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance system CPU metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQASystemCpuMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/SystemCpuStatus', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -50,4 +54,8 @@ class MQASystemCpuMetrics(object):
 
         g = GaugeMetricFamily('mqa_system_cpu_load_avg_15m', 'The average CPU load over 15 minutes', labels=['appliance'])
         g.add_metric([self.appliance], data['SystemCpuStatus']['CpuLoadAvg15'])
+        yield g
+
+        g = GaugeMetricFamily('mqa_exporter_system_cpu_elapsed_time_seconds', 'Exporter eleapsed time to collect system cpu metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
         yield g

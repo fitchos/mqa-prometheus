@@ -15,9 +15,10 @@
 """This module implements the MQ Appliance information metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import InfoMetricFamily
+from prometheus_client.core import InfoMetricFamily, GaugeMetricFamily
 
 class MQAInformationMetrics(object):
     """MQ Appliance information metrics collector"""
@@ -30,6 +31,9 @@ class MQAInformationMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/DateTimeStatus', self.ip, self.port, self.session, self.timeout)
         data2 = call_rest_api('/mgmt/status/default/FirmwareStatus', self.ip, self.port, self.session, self.timeout)
@@ -51,3 +55,7 @@ class MQAInformationMetrics(object):
                      'runningdpos': data3['FirmwareVersion3']['RunningDPOS'], 'xmlaccelerator': data3['FirmwareVersion3']['XMLAccelerator'],
                      'machinetype': data3['FirmwareVersion3']['MachineType'], 'modeltype': data3['FirmwareVersion3']['ModelType']})
         yield i
+
+        g = GaugeMetricFamily('mqa_exporter_mqa_information_elapsed_time_seconds', 'Exporter eleapsed time to collect mqa information metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g

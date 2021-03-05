@@ -15,9 +15,10 @@
 """This module implements the MQ Appliance ethernet counters metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import CounterMetricFamily
+from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily
 
 class MQAEthernetCountersMetrics(object):
     """MQ Appliance ethernet counters metrics collector"""
@@ -30,6 +31,9 @@ class MQAEthernetCountersMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/EthernetCountersStatus', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -141,3 +145,7 @@ class MQAEthernetCountersMetrics(object):
             c = CounterMetricFamily('mqa_ethernet_counters_out_pause_frames_total', 'The number of pause frames transmitted', labels=['appliance', 'name'])
             c.add_metric([self.appliance, ec['Name']], 0.0 if ec['OutPauseFrames'] == '' else float(ec['OutPauseFrames']))
             yield c
+
+        g = GaugeMetricFamily('mqa_exporter_ethernet_counters_elapsed_time_seconds', 'Exporter eleapsed time to collect ethernet counters metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g

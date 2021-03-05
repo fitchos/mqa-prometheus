@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance temperature sensors metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQATemperatureSensorsMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/TemperatureSensors', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -453,6 +457,11 @@ class MQATemperatureSensorsMetrics(object):
                 g = GaugeMetricFamily('mqa_temperature_sensor_outlet_1_upper_non_recoverable_threshold_temperature_celsius', 'Upper non recoverable temperature threshold for outlet 1 in celsius', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, ts['ReadingStatus']], -1 if ts['UpperNonRecoverableThreshold'] == '' else ts['UpperNonRecoverableThreshold'])
                 yield g
+
+        g = GaugeMetricFamily('mqa_exporter_temperature_sensors_elapsed_time_seconds', 'Exporter eleapsed time to collect temperature sensors metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g
+
 
 
 

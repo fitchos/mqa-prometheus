@@ -15,9 +15,10 @@
 """This module implements the MQ Appliance log targets metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import CounterMetricFamily, InfoMetricFamily
+from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily, InfoMetricFamily
 
 class MQALogTargetsMetrics(object):
     """MQ Appliance log targets metrics collector"""
@@ -30,6 +31,9 @@ class MQALogTargetsMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/LogTargetStatus', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -69,4 +73,8 @@ class MQALogTargetsMetrics(object):
                       'eventsPending': str(lt['EventsPending']), 
                       'requestedMemory': str(lt['RequestedMemory'])})
             yield i
+
+        g = GaugeMetricFamily('mqa_exporter_log_targets_elapsed_time_seconds', 'Exporter eleapsed time to collect log targets metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g
              

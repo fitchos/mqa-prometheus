@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance other sensors metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQAOtherSensorsMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/OtherSensors', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -91,3 +95,7 @@ class MQAOtherSensorsMetrics(object):
                 g.add_metric([self.appliance, os['ReadingStatus']], 1 if os['Value'] == 'true' else 0)
                 yield g
                 continue
+
+        g = GaugeMetricFamily('mqa_exporter_other_sensors_elapsed_time_seconds', 'Exporter eleapsed time to collect other sensors metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g

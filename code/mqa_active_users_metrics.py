@@ -15,6 +15,7 @@
 """This module implements the MQ Appliance active users metrics collector"""
 
 import json
+import time
 
 from mqalib import call_rest_api
 from prometheus_client.core import GaugeMetricFamily
@@ -30,6 +31,9 @@ class MQAActiveUsersMetrics(object):
         self.timeout = timeout
 
     def collect(self):
+
+        start = time.perf_counter()
+
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/ActiveUsers', self.ip, self.port, self.session, self.timeout)
         if data == '':
@@ -60,3 +64,7 @@ class MQAActiveUsersMetrics(object):
             g = GaugeMetricFamily('mqa_active_users_total', 'Total active users connected to the appliance', labels=['appliance', 'connection'])
             g.add_metric([self.appliance, conn], connections.get(conn))
             yield g
+
+        g = GaugeMetricFamily('mqa_exporter_active_users_elapsed_time_seconds', 'Exporter eleapsed time to collect active users metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.perf_counter() - start)
+        yield g
