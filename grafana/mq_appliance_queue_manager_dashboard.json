@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
-  "iteration": 1614888095815,
+  "id": 9,
+  "iteration": 1615074047444,
   "links": [
     {
       "asDropdown": false,
@@ -28,6 +28,15 @@
         "MQA_Main"
       ],
       "tooltip": "",
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Exporters"
+      ],
       "type": "dashboards"
     },
     {
@@ -612,7 +621,7 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 2,
+        "w": 3,
         "x": 4,
         "y": 5
       },
@@ -644,7 +653,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Timezone",
+      "title": "Appliance Timezone",
       "type": "stat"
     },
     {
@@ -1843,12 +1852,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 13
+  "version": 3
 }

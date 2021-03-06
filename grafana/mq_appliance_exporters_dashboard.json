@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 34,
-  "iteration": 1614990992508,
+  "id": 7,
+  "iteration": 1615074068819,
   "links": [
     {
       "icon": "external link",
@@ -115,7 +115,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
@@ -132,6 +132,67 @@
     },
     {
       "datasource": null,
+      "description": "The current local date and time on the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.time}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 4,
+        "y": 1
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Date/Time",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -141,7 +202,7 @@
       "gridPos": {
         "h": 6,
         "w": 3,
-        "x": 4,
+        "x": 8,
         "y": 1
       },
       "id": 10,
@@ -223,7 +284,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
@@ -236,6 +297,67 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Exporter Timezone",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The name of the time zone currently in effect.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.timezone}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 5,
+        "y": 3
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Timezone",
       "type": "stat"
     },
     {
@@ -264,7 +386,7 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 2,
+        "w": 3,
         "x": 0,
         "y": 5
       },
@@ -284,7 +406,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
@@ -297,6 +419,67 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Exporter Version",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The version of this firmware image.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.version}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 5,
+        "y": 5
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Version",
       "type": "stat"
     },
     {
@@ -355,7 +538,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -556,9 +739,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "x0031fn10",
-          "value": "x0031fn10"
+          "selected": false,
+          "text": "MQA2002PROD1",
+          "value": "MQA2002PROD1"
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -572,43 +755,13 @@
         "options": [
           {
             "selected": true,
-            "text": "x0031fn10",
-            "value": "x0031fn10"
+            "text": "MQA2002PROD1",
+            "value": "MQA2002PROD1"
           },
           {
             "selected": false,
-            "text": "x0031fn20",
-            "value": "x0031fn20"
-          },
-          {
-            "selected": false,
-            "text": "x0032fn10",
-            "value": "x0032fn10"
-          },
-          {
-            "selected": false,
-            "text": "x0032fn20",
-            "value": "x0032fn20"
-          },
-          {
-            "selected": false,
-            "text": "x0033wn10",
-            "value": "x0033wn10"
-          },
-          {
-            "selected": false,
-            "text": "x0033xn10",
-            "value": "x0033xn10"
-          },
-          {
-            "selected": false,
-            "text": "x0034wn10",
-            "value": "x0034wn10"
-          },
-          {
-            "selected": false,
-            "text": "x0038mn10",
-            "value": "x0038mn10"
+            "text": "MQA2002PROD2",
+            "value": "MQA2002PROD2"
           }
         ],
         "query": {
@@ -628,12 +781,12 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 19
+  "version": 7
 }
