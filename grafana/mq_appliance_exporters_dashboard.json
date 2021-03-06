@@ -1,0 +1,639 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Metrics about the MQ Appliance exporters",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 34,
+  "iteration": 1614990992508,
+  "links": [
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Main"
+      ],
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Queue_Managers"
+      ],
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "targetBlank": true,
+      "title": "IBM MQ Appliance Knowledge Center",
+      "type": "link",
+      "url": "https://www.ibm.com/support/knowledgecenter/en/SS5K6E_9.2.0/WelcomePage/homepage.html"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "targetBlank": true,
+      "title": "IBM MQ Support",
+      "type": "link",
+      "url": "https://www.ibm.com/mysupport/s/topic/0TO5000000024cJGAQ/mq?language=en_US&productId=01t0z000006zdYXAAY"
+    }
+  ],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "panels": [],
+      "title": "Information",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "The current local date and time on the server running the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.localTime}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Date/Time",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 4,
+        "y": 1
+      },
+      "id": 10,
+      "options": {
+        "bgColor": "rgb(29, 50, 92)",
+        "clockType": "24 hour",
+        "countdownSettings": {
+          "endCountdownTime": "2021-02-11T22:10:38-05:00",
+          "endText": "00:00:00"
+        },
+        "dateSettings": {
+          "dateFormat": "YYYY-MM-DD",
+          "fontSize": "20px",
+          "fontWeight": "normal",
+          "showDate": true
+        },
+        "mode": "time",
+        "timeSettings": {
+          "fontSize": "28px",
+          "fontWeight": "bold"
+        },
+        "timezone": "",
+        "timezoneSettings": {
+          "fontSize": "12px",
+          "fontWeight": "normal",
+          "showTimezone": true,
+          "zoneFormat": "offsetAbbv"
+        }
+      },
+      "pluginVersion": "7.3.7",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Local Date and Time",
+      "type": "grafana-clock-panel"
+    },
+    {
+      "datasource": null,
+      "description": "The name of the time zone currently in effect on the server running the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.localTimezone}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 3
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Timezone",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The exporter version number of the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.version}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 5
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Version",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 12,
+      "panels": [],
+      "title": "Collectors",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Elapsed time for the  collectors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 14,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "mqa_exporter_active_users_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "interval": "",
+          "legendFormat": "Active Users",
+          "refId": "A"
+        },
+        {
+          "expr": "mqa_exporter_current_sensors_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Current Sensors",
+          "refId": "B"
+        },
+        {
+          "expr": "mqa_exporter_environmental_fan_sensors_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Env. Fan Sensors",
+          "refId": "C"
+        },
+        {
+          "expr": "mqa_exporter_environmental_sensors_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Env. Sensors",
+          "refId": "D"
+        },
+        {
+          "expr": "mqa_exporter_ethernet_counters_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Ethernet Counters",
+          "refId": "E"
+        },
+        {
+          "expr": "mqa_exporter_failure_notification_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Failure Notification",
+          "refId": "F"
+        },
+        {
+          "expr": "mqa_exporter_file_system_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "File  System",
+          "refId": "G"
+        },
+        {
+          "expr": "mqa_exporter_ipmi_sel_events_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "IPMI SEL Events",
+          "refId": "H"
+        },
+        {
+          "expr": "mqa_exporter_log_targets_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Log Targets",
+          "refId": "I"
+        },
+        {
+          "expr": "mqa_exporter_mq_system_resources_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "MQ System Resources",
+          "refId": "J"
+        },
+        {
+          "expr": "mqa_exporter_mqa_information_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "MQA Information",
+          "refId": "K"
+        },
+        {
+          "expr": "mqa_exporter_network_interfaces_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Network Interfaces",
+          "refId": "L"
+        },
+        {
+          "expr": "mqa_exporter_other_sensors_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Other Sensors",
+          "refId": "M"
+        },
+        {
+          "expr": "mqa_exporter_queue_managers_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Queue Managers",
+          "refId": "N"
+        },
+        {
+          "expr": "mqa_exporter_raid_ssd_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Raid SSD",
+          "refId": "O"
+        },
+        {
+          "expr": "mqa_exporter_system_cpu_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "System CPU",
+          "refId": "P"
+        },
+        {
+          "expr": "mqa_exporter_system_memory_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "System Memory",
+          "refId": "Q"
+        },
+        {
+          "expr": "mqa_exporter_tcp_summary_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "TCP Summary",
+          "refId": "R"
+        },
+        {
+          "expr": "mqa_exporter_temperature_sensors_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Temperature Sensors",
+          "refId": "S"
+        },
+        {
+          "expr": "mqa_exporter_voltage_sensors_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Voltage Sensors",
+          "refId": "T"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Collectors - Elapsed Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [
+    "MQA_Exporters"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "x0031fn10",
+          "value": "x0031fn10"
+        },
+        "datasource": null,
+        "definition": "mqa_info",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Appliance",
+        "multi": false,
+        "name": "appliance",
+        "options": [
+          {
+            "selected": true,
+            "text": "x0031fn10",
+            "value": "x0031fn10"
+          },
+          {
+            "selected": false,
+            "text": "x0031fn20",
+            "value": "x0031fn20"
+          },
+          {
+            "selected": false,
+            "text": "x0032fn10",
+            "value": "x0032fn10"
+          },
+          {
+            "selected": false,
+            "text": "x0032fn20",
+            "value": "x0032fn20"
+          },
+          {
+            "selected": false,
+            "text": "x0033wn10",
+            "value": "x0033wn10"
+          },
+          {
+            "selected": false,
+            "text": "x0033xn10",
+            "value": "x0033xn10"
+          },
+          {
+            "selected": false,
+            "text": "x0034wn10",
+            "value": "x0034wn10"
+          },
+          {
+            "selected": false,
+            "text": "x0038mn10",
+            "value": "x0038mn10"
+          }
+        ],
+        "query": {
+          "query": "mqa_info",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "/.*appliance=\"([^\"]*).*/",
+        "skipUrlSync": false,
+        "sort": 5,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "MQ Appliance - Exporters",
+  "uid": "h8ynI78Gk",
+  "version": 19
+}
