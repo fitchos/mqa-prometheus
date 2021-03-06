@@ -25,11 +25,9 @@ import shlex
 import subprocess
 import sys
 
-from configparser import ConfigParser 
 from mqalib import get_password
 from mqalib import get_version
 from mqalib import resolve_directory
-
 
 def main():
 

@@ -24,7 +24,6 @@ import logging
 import sys
 import time
 
-from configparser import ConfigParser, NoOptionError, NoSectionError
 from logging.handlers import RotatingFileHandler
 from mqa_active_users_metrics import MQAActiveUsersMetrics
 from mqa_current_sensors_metrics import MQACurrentSensorsMetrics
@@ -52,6 +51,11 @@ from mqalib import get_version
 from mqalib import init_rest_api
 from prometheus_client import start_http_server, REGISTRY
 from requests import packages
+
+if sys.version_info.major == 2:
+    from ConfigParser import ConfigParser, NoOptionError, NoSectionError
+else:
+    from configparser import ConfigParser, NoOptionError, NoSectionError
 
 
 def main():
