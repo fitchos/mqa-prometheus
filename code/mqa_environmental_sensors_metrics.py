@@ -32,7 +32,7 @@ class MQAEnvironmentalSensorsMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/EnvironmentalSensors', self.ip, self.port, self.session, self.timeout)
@@ -85,5 +85,5 @@ class MQAEnvironmentalSensorsMetrics(object):
         yield g
 
         g = GaugeMetricFamily('mqa_exporter_environmental_sensors_elapsed_time_seconds', 'Exporter eleapsed time to collect environmental sensors metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g

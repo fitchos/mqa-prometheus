@@ -89,7 +89,7 @@ def main():
 
                 exporter_count += 1
 
-    except FileNotFoundError as err:
+    except IOError as err:
         print(str(err))
         sys.exit(1)
 

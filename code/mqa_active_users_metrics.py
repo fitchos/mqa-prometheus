@@ -32,7 +32,7 @@ class MQAActiveUsersMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/ActiveUsers', self.ip, self.port, self.session, self.timeout)
@@ -66,5 +66,5 @@ class MQAActiveUsersMetrics(object):
             yield g
 
         g = GaugeMetricFamily('mqa_exporter_active_users_elapsed_time_seconds', 'Exporter eleapsed time to collect active users metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g

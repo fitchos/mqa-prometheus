@@ -32,7 +32,7 @@ class MQAFailureNotificationMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/FailureNotificationStatus2', self.ip, self.port, self.session, self.timeout)
@@ -58,5 +58,5 @@ class MQAFailureNotificationMetrics(object):
             yield i
 
         g = GaugeMetricFamily('mqa_exporter_failure_notification_elapsed_time_seconds', 'Exporter eleapsed time to collect failure notification metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g

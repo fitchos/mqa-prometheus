@@ -32,7 +32,7 @@ class MQALogTargetsMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/LogTargetStatus', self.ip, self.port, self.session, self.timeout)
@@ -75,6 +75,6 @@ class MQALogTargetsMetrics(object):
             yield i
 
         g = GaugeMetricFamily('mqa_exporter_log_targets_elapsed_time_seconds', 'Exporter eleapsed time to collect log targets metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g
              

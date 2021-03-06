@@ -32,7 +32,7 @@ class MQACurrentSensorsMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/CurrentSensors', self.ip, self.port, self.session, self.timeout)
@@ -79,7 +79,7 @@ class MQACurrentSensorsMetrics(object):
                 yield g
         
         g = GaugeMetricFamily('mqa_exporter_current_sensors_elapsed_time_seconds', 'Exporter eleapsed time to collect current sensors metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g
 
         

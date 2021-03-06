@@ -104,7 +104,7 @@ def get_pid_file_list(file, directory, appliance):
                         continue
 
                     file_list.append(directory + exporter[0] + '.pid')
-        except FileNotFoundError as err:
+        except IOError as err:
             print(str(err))
             sys.exit(1)
 

@@ -32,7 +32,7 @@ class MQAFileSystemMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/FilesystemStatus', self.ip, self.port, self.session, self.timeout)
@@ -77,5 +77,5 @@ class MQAFileSystemMetrics(object):
         yield c
 
         g = GaugeMetricFamily('mqa_exporter_file_system_elapsed_time_seconds', 'Exporter eleapsed time to collect file system metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g

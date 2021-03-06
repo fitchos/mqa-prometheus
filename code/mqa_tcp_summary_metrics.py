@@ -32,7 +32,7 @@ class MQATCPSummaryMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/TCPSummary', self.ip, self.port, self.session, self.timeout)
@@ -85,5 +85,5 @@ class MQATCPSummaryMetrics(object):
         yield g
 
         g = GaugeMetricFamily('mqa_exporter_tcp_summary_elapsed_time_seconds', 'Exporter eleapsed time to collect tcp summary metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g

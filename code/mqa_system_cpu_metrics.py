@@ -32,7 +32,7 @@ class MQASystemCpuMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/SystemCpuStatus', self.ip, self.port, self.session, self.timeout)
@@ -57,5 +57,5 @@ class MQASystemCpuMetrics(object):
         yield g
 
         g = GaugeMetricFamily('mqa_exporter_system_cpu_elapsed_time_seconds', 'Exporter eleapsed time to collect system cpu metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g

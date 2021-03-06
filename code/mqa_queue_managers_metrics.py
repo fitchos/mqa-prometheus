@@ -32,7 +32,7 @@ class MQAQueueManagersMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/QueueManagersStatus', self.ip, self.port, self.session, self.timeout)
@@ -76,5 +76,5 @@ class MQAQueueManagersMetrics(object):
             yield i
 
         g = GaugeMetricFamily('mqa_exporter_queue_managers_elapsed_time_seconds', 'Exporter eleapsed time to collect queue managers metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g

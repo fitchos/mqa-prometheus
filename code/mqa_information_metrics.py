@@ -32,7 +32,7 @@ class MQAInformationMetrics(object):
 
     def collect(self):
 
-        start = time.perf_counter()
+        start = time.time()
 
         # Perform REST API call to fetch data
         data = call_rest_api('/mgmt/status/default/DateTimeStatus', self.ip, self.port, self.session, self.timeout)
@@ -57,5 +57,5 @@ class MQAInformationMetrics(object):
         yield i
 
         g = GaugeMetricFamily('mqa_exporter_mqa_information_elapsed_time_seconds', 'Exporter eleapsed time to collect mqa information metrics', labels=['appliance'])
-        g.add_metric([self.appliance], time.perf_counter() - start)
+        g.add_metric([self.appliance], time.time() - start)
         yield g

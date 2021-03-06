@@ -52,7 +52,7 @@ def main():
         try:
             with open(file, "r") as f:
                 pid = f.readline()
-        except FileNotFoundError as err:
+        except IOError as err:
             print('Exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\' is not running')
             continue
 
