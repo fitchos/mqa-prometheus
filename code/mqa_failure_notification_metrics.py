@@ -51,7 +51,7 @@ class MQAFailureNotificationMetrics(object):
         # Update Prometheus metrics
         for fn in failureNotifications:
 
-            i = InfoMetricFamily('mqa_failure_notification', 'MQ Appliance failure notification')
+            i = InfoMetricFamily('mqa_failure_notification', 'MQ Appliance failure notifications')
             i.add_metric(['appliance', 'date', 'reason', 'uploadStatus', 'location'], 
                       {'appliance': self.appliance, 'date': fn['Date'], 'reason': fn['Reason'],
                       'uploadStatus': fn['UploadStatus'], 'location': fn['Location']})

@@ -247,6 +247,31 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_exporter_info | Info | MQ Appliance exporter information | appliance, version, localTime, localTimezone |
+| mqa_exporter_active_users_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect active users metrics | appliance |
+| mqa_exporter_current_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect current sensors metrics | appliance |
+| mqa_exporter_environmental_fan_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect environmental fan sensors metrics | appliance |
+| mqa_exporter_environmental_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect environmental sensors metrics | appliance |
+| mqa_exporter_ethernet_counters_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect ethernet counters metrics | appliance |
+| mqa_exporter_failure_notification_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect failure notification metrics | appliance |
+| mqa_exporter_file_system_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect file system metrics | appliance |
+| mqa_exporter_mqa_information_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect mqa information metrics | appliance |
+| mqa_exporter_ipmi_sel_events_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect ipmi sel events metrics | appliance |
+| mqa_exporter_log_targets_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect log targets metrics | appliance |
+| mqa_exporter_mq_system_resources_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect mq system resources metrics | appliance |
+| mqa_exporter_network_interfaces_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect network interfaces metrics | appliance |
+| mqa_exporter_other_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect other sensors metrics | appliance |
+| mqa_exporter_queue_managers_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect queue managers metrics | appliance |
+| mqa_exporter_raid_ssd_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect raid ssd metrics | appliance |
+| mqa_exporter_system_cpu_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect system cpu metrics | appliance |
+| mqa_exporter_system_memory_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect system_memory metrics | appliance |
+| mqa_exporter_tcp_summary_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect tcp summary metrics | appliance |
+| mqa_exporter_temperature_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect temperature sensors metrics | appliance |
+| mqa_exporter_voltage_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect voltage sensors metrics | appliance |
+
+**Failure Notifications**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_failure_notification_info | Info | MQ Appliance failure notifications | appliance, date, reason, uploadStatus, location |
 
 **File System**
 | Metric | Type | Description | Labels |
@@ -290,7 +315,7 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_mq_resources_trace_storage_bytes_total | Counter | The total storage in bytes available for IBM MQ trace | appliance |
 | mqa_mq_resources_trace_storage_bytes_used | Gauge | The amount of IBM MQ trace storage in bytes in use | appliance |
 
-**Network Interface**
+**Network Interfaces**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_network_interface_rx_bytes_total | Counter | The amount of data successfully received on the interface, which includes MAC framing overhead | appliance, adminStatus, name, operStatus |
@@ -320,7 +345,7 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_other_sensor_power_supply_2_output_failure | Gauge | Whether power supply 2 has an output failure | appliance, readingStatus |
 | mqa_other_sensor_power_supply_2_present | Gauge | Whether power supply 2 is present | appliance, readingStatus |
 
-**Queue Manager**
+**Queue Managers**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_queue_manager_cpu_usage | Gauge | The instantaneous CPU usage by the queue manager as a percentage of the CPU load | appliance, qm |

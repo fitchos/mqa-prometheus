@@ -446,7 +446,7 @@ class MQATemperatureSensorsMetrics(object):
                 g.add_metric([self.appliance, ts['ReadingStatus']], ts['Value'])
                 yield g
 
-                g = GaugeMetricFamily('mqa_temperature_sensor_outlet__upper_non_critical_threshold_temperature_celsius', 'Upper non critical temperature threshold for outlet 1 in celsius', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_temperature_sensor_outlet_1_upper_non_critical_threshold_temperature_celsius', 'Upper non critical temperature threshold for outlet 1 in celsius', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, ts['ReadingStatus']], ts['UpperNonCriticalThreshold'])
                 yield g
 
