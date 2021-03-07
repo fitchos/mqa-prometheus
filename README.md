@@ -112,7 +112,7 @@ temperature_sensors = false
 voltage_sensors = false
 ```
 
-When no configuration is specified, all metric collectors run by default.
+When no configuration file is specified, all metric collectors run by default.
 
 ### Utilities to manage exporters
 Three utilities are available to:
