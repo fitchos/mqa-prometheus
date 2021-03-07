@@ -370,7 +370,99 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_tcp_connections_listen | Gauge | The number of TCP connections in the listen state. Connections in the listen state are waiting for a connection request from any remote TCP and port | appliance |
 | mqa_tcp_connections_closing | Gauge | The number of TCP connections in the closing state. Connections in this state are waiting for a connection termination request acknowledgment from the remote TCP seconds | appliance |
 
-*Voltage Sensors**
+**Temperature Sensors**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_temperature_sensor_cpu_dimm_1_channel_a_temperature_celsius | Gauge | CPU DIMM 1 channel A temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_a_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel A in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_a_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel A in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_a_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel A in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_b_temperature_celsius | Gauge | CPU DIMM 1 channel B temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_b_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel B in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_b_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel B in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_b_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel B in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_c_temperature_celsius | Gauge | CPU DIMM 1 channel C temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_c_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel C in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_c_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel C in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_c_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel C in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_d_temperature_celsius | Gauge | CPU DIMM 1 channel D temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_d_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel D in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_d_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel D in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_d_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel D in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_e_temperature_celsius | Gauge | CPU DIMM 1 channel E temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_e_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel E in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_e_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel E in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_e_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel E in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_f_temperature_celsius | Gauge | CPU DIMM 1 channel F temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_f_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel F in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_f_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel F in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_f_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel F in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_g_temperature_celsius | Gauge | CPU DIMM 1 channel G temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_g_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel G in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_g_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel G in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_g_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel G in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_h_temperature_celsius | Gauge | CPU DIMM 1 channel H temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_h_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel H in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_h_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel H in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_h_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel H in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_j_temperature_celsius | Gauge | CPU DIMM 1 channel J temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_j_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel J in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_j_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel J in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_j_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel J in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_k_temperature_celsius | Gauge | CPU DIMM 1 channel K temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_k_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel K in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_k_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel K in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_k_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel K in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_l_temperature_celsius | Gauge | CPU DIMM 1 channel L temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_l_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel L in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_l_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel L in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_l_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel L in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_m_temperature_celsius | Gauge | CPU DIMM 1 channel M temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_m_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU DIMM 1 channel M in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_m_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU DIMM 1 channel M in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_dimm_1_channel_m_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU DIMM 1 channel M in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_hardware_monitors_temperature_celsius | Gauge | Hardware monitors temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_hardware_monitors_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for hardware monitors in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_hardware_monitors_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for hardware monitors in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_hardware_monitors_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for hardware monitors in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_pch_temperature_celsius | Gauge | PCH temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_pch_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for PCH in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_pch_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for PCH in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_pch_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for PCH in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_1_hotspot_temperature_celsius | Gauge | Power supply 1 hotspot temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_1_hotspot_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for power supply 1 hotspot in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_1_hotspot_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for power supply 1 hotspot in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_1_hotspot_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for power supply 1 hotspot in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_2_hotspot_temperature_celsius | Gauge | Power supply 2 hotspot temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_2_hotspot_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for power supply 2 hotspot in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_2_hotspot_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for power supply 2 hotspot in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_2_hotspot_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for power supply 2 hotspot in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_1_intake_temperature_celsius | Gauge | Power supply 1 intake temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_1_intake_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for power supply 1 intake in celsius | appliance,  readingStatus |
+| mqa_temperature_sensor_power_supply_1_intake_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for power supply 1 intake in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_1_intake_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for power supply 1 intake in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_2_intake_temperature_celsius | Gauge | Power supply 2 intake temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_2_intake_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for power supply 2 intake in celsius | appliance,  readingStatus |
+| mqa_temperature_sensor_power_supply_2_intake_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for power supply 2 intake in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_power_supply_2_intake_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for power supply 2 intake in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_1_temperature_celsius | Gauge | CPU 1 temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_1_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU 1 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_1_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU 1 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_1_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU 1 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_2_temperature_celsius | Gauge | CPU 2 temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_2_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for CPU 2 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_2_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for CPU 2 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_cpu_2_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for CPU 2 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_inlet_1_temperature_celsius | Gauge | Inlet 1 temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_inlet_1_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for inlet 1 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_inlet_1_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for inlet 1 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_inlet_1_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for inlet 1 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_outlet_1_temperature_celsius | Gauge | Outlet 1 temperature in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_outlet_1_upper_non_critical_threshold_temperature_celsius | Gauge | Upper non critical temperature threshold for outlet 1 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_outlet_1_upper_critical_threshold_temperature_celsius | Gauge | Upper critical temperature threshold for outlet 1 in celsius | appliance, readingStatus |
+| mqa_temperature_sensor_outlet_1_upper_non_recoverable_threshold_temperature_celsius | Gauge | Upper non recoverable temperature threshold for outlet 1 in celsius | appliance, readingStatus |
+
+**Voltage Sensors**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_voltage_sensor_power_supply_1_in_voltage_volts | Gauge | Voltage going in power supply 1 in volts | appliance, readingStatus |

@@ -389,7 +389,7 @@ class MQATemperatureSensorsMetrics(object):
                 g.add_metric([self.appliance, ts['ReadingStatus']], ts['Value'])
                 yield g
 
-                g = GaugeMetricFamily('mqa_temperature_sensor_cpu__upper_non_critical_threshold_temperature_celsius', 'Upper non critical temperature threshold for CPU 1 in celsius', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_temperature_sensor_cpu_1_upper_non_critical_threshold_temperature_celsius', 'Upper non critical temperature threshold for CPU 1 in celsius', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, ts['ReadingStatus']], ts['UpperNonCriticalThreshold'])
                 yield g
 
@@ -427,7 +427,7 @@ class MQATemperatureSensorsMetrics(object):
                 g.add_metric([self.appliance, ts['ReadingStatus']], ts['Value'])
                 yield g
 
-                g = GaugeMetricFamily('mqa_temperature_sensor_inlet__upper_non_critical_threshold_temperature_celsius', 'Upper non critical temperature threshold for inlet 1 in celsius', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_temperature_sensor_inlet_1_upper_non_critical_threshold_temperature_celsius', 'Upper non critical temperature threshold for inlet 1 in celsius', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, ts['ReadingStatus']], ts['UpperNonCriticalThreshold'])
                 yield g
 
