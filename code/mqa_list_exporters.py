@@ -25,6 +25,7 @@ import os
 import sys
 
 from mqalib import get_pid_file_list
+from mqalib import get_pid_file_present
 from mqalib import get_version
 from mqalib import resolve_directory
 
@@ -49,15 +50,15 @@ def main():
     # Search for exporters by looking at pid files
     exporter_count = 0
     for file in file_list:
-        try:
-            with open(file, "r") as f:
-                pid = f.readline()
-        except IOError as err:
-            print('Exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\' is not running')
-            continue
 
-        print('Exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\' is running with PID ' + pid)
+        appliance = os.path.basename(os.path.splitext(file)[0])
 
+        exporter_running, pid = get_pid_file_present(os.path.split(file)[0] + '/', appliance)
+        if exporter_running:
+            print('Exporter for appliance \'' + appliance + '\' is running with PID ' + pid)
+        else:
+            print('Exporter for appliance \'' + appliance + '\' is not running')
+       
         exporter_count += 1
 
     if exporter_count == 0:

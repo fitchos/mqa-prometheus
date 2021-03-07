@@ -110,6 +110,17 @@ def get_pid_file_list(file, directory, appliance):
 
     return file_list
 
+def get_pid_file_present(directory, appliance):
+    """Get whether a PID file exists"""
+
+    try:
+        with open(directory + appliance + '.pid', "r") as f:
+            pid = f.readline()
+    except IOError as err:
+        return False, None
+
+    return True, pid
+
 def get_version():
 
     return 'v0.5'

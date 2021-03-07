@@ -26,6 +26,7 @@ import subprocess
 import sys
 
 from mqalib import get_password
+from mqalib import get_pid_file_present
 from mqalib import get_version
 from mqalib import resolve_directory
 
@@ -67,27 +68,32 @@ def main():
                 if args.appliance != None and args.appliance != exporter[0]:
                     continue
 
-                command = shlex.split('python mqa_metrics.py -a ' + exporter[0] + 
-                                                        ' -i ' + exporter[1] + 
-                                                        ' -p ' + exporter[2] + 
-                                                        ' -l ' + args.directory + exporter[0] + '_exporter.log' +  
-                                                        ' -ls ' + str(args.logsize) + 
-                                                        ' -ln ' + str(args.lognumbers) + 
-                                                        ' -u ' + args.user + 
-                                                        ' -x ' + args.pw + 
-                                                        ' -hp ' + exporter[3] + 
-                                                        ' -t ' + exporter[4] +
-                                                        (' -c ' + args.config if args.config != None else ''))               
-                    
-                # Start the exporter
-                process = subprocess.Popen(command)
-                print('Started exporter for appliance \'' + exporter[0] + '\' on HTTP port ' + str(exporter[3]) + ', PID is ' + str(process.pid))
+                exporter_running, pid = get_pid_file_present(args.directory, exporter[0])
 
-                # Write pid of the exporter to file
-                with open(args.directory + exporter[0] + '.pid', 'w') as pidfile:
-                    pidfile.write(str(process.pid))
+                if exporter_running:
+                    print('Exporter for appliance \'' + exporter[0] + '\' is already running with PID ' + pid)
+                else:
+                    command = shlex.split('python mqa_metrics.py -a ' + exporter[0] + 
+                                                            ' -i ' + exporter[1] + 
+                                                            ' -p ' + exporter[2] + 
+                                                            ' -l ' + args.directory + exporter[0] + '_exporter.log' +  
+                                                            ' -ls ' + str(args.logsize) + 
+                                                            ' -ln ' + str(args.lognumbers) + 
+                                                            ' -u ' + args.user + 
+                                                            ' -x ' + args.pw + 
+                                                            ' -hp ' + exporter[3] + 
+                                                            ' -t ' + exporter[4] +
+                                                            (' -c ' + args.config if args.config != None else ''))               
+                        
+                    # Start the exporter
+                    process = subprocess.Popen(command)
+                    print('Started exporter for appliance \'' + exporter[0] + '\' on HTTP port ' + str(exporter[3]) + ', PID is ' + str(process.pid))
 
-                exporter_count += 1
+                    # Write pid of the exporter to file
+                    with open(args.directory + exporter[0] + '.pid', 'w') as pidfile:
+                        pidfile.write(str(process.pid))
+
+                    exporter_count += 1
 
     except IOError as err:
         print(str(err))
