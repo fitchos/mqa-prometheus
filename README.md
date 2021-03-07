@@ -122,7 +122,9 @@ Three utilities are available to:
 3. Stop one or more exporters
 
 **Note: Environment variable MQA_EXPORTER_DIRECTORY can be set to a directory name**
-      **and avoid having to specify the -d parameter on the commands**
+**and avoid having to specify the -d parameter on the commands. If the environment**
+**variable is not set and the -d parameter is not specified, the directory where the**
+**log and PID files are stored is the current directory**
 
 #### Starting multiple exporters
 To start multiple exporters build a CSV (comma delimited) file with the following information:
