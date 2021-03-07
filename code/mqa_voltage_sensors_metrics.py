@@ -208,30 +208,30 @@ class MQAVoltageSensorsMetrics(object):
                 continue
 
             if vs['Name'] == 'Voltage CPU1 Core':
-                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu1_core_volts', 'Voltage CPU 1 core in volts', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu_1_core_volts', 'Voltage CPU 1 core in volts', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, vs['ReadingStatus']], vs['Value'] / 1000)
                 yield g
 
-                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu1_core_lower_critical_thereshold_voltage_volts', 'Lower critical threshold of CPU 1 core voltage in volts', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu_1_core_lower_critical_thereshold_voltage_volts', 'Lower critical threshold of CPU 1 core voltage in volts', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, vs['ReadingStatus']], vs['LowerCriticalThreshold'] / 1000)
                 yield g
 
-                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu1_core_upper_critical_thereshold_voltage_volts', 'Upper critical threshold of CPU 1 core voltage in volts', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu_1_core_upper_critical_thereshold_voltage_volts', 'Upper critical threshold of CPU 1 core voltage in volts', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, vs['ReadingStatus']], vs['UpperCriticalThreshold'] / 1000)
                 yield g
 
                 continue
 
             if vs['Name'] == 'Voltage CPU2 Core':
-                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu2_core_volts', 'Voltage CPU 2 core in volts', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu_2_core_volts', 'Voltage CPU 2 core in volts', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, vs['ReadingStatus']], vs['Value'] / 1000)
                 yield g
 
-                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu2_core_lower_critical_thereshold_voltage_volts', 'Lower critical threshold of CPU 2 core voltage in volts', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu_2_core_lower_critical_thereshold_voltage_volts', 'Lower critical threshold of CPU 2 core voltage in volts', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, vs['ReadingStatus']], vs['LowerCriticalThreshold'] / 1000)
                 yield g
 
-                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu2_core_upper_critical_thereshold_voltage_volts', 'Upper critical threshold of CPU 2 core voltage in volts', labels=['appliance', 'readingStatus'])
+                g = GaugeMetricFamily('mqa_voltage_sensor_voltage_cpu_2_core_upper_critical_thereshold_voltage_volts', 'Upper critical threshold of CPU 2 core voltage in volts', labels=['appliance', 'readingStatus'])
                 g.add_metric([self.appliance, vs['ReadingStatus']], vs['UpperCriticalThreshold'] / 1000)
                 yield g
 

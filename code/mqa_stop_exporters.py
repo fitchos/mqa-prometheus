@@ -25,6 +25,7 @@ import signal
 import sys
 
 from mqalib import get_pid_file_list
+from mqalib import get_pid_file_present
 from mqalib import get_version
 from mqalib import resolve_directory
 
@@ -42,6 +43,7 @@ def main():
     args.directory = resolve_directory(args)
 
     print('MQ Appliance Prometheus Exporter Stop Utility - ' + get_version())
+    print('Exporter directory is \'' + args.directory + '\'')
 
     # Build list of pid files
     file_list = get_pid_file_list(args.file, args.directory, args.appliance)
@@ -50,20 +52,21 @@ def main():
     exporter_count_stopped = 0
     exporter_count_not_stopped = 0
     for file in file_list:
-        try:
-            with open(file, "r") as f:
-                pid = f.readline()
-        except IOError as err:
-            print('Exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\' is already stopped')
-            continue
 
+        appliance = os.path.basename(os.path.splitext(file)[0])
+
+        exporter_running, pid = get_pid_file_present(os.path.split(file)[0] + '/', appliance)
+        if not exporter_running:
+            print('Exporter for appliance \'' + appliance + '\' is already stopped')
+            continue
+       
         try:
             os.kill(int(pid), signal.SIGTERM)
             os.remove(file)
-            print('Exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\' with PID ' + pid + ' has been stopped')
+            print('Exporter for appliance \'' + appliance + '\' with PID ' + pid + ' has been stopped')
             exporter_count_stopped += 1
         except Exception as err:
-            print('Error occurred while trying to stop the exporter for appliance \'' + os.path.basename(os.path.splitext(file)[0]) + '\'')
+            print('Error occurred while trying to stop the exporter for appliance \'' + appliance + '\'')
             print('The error is: ' + str(err))
             exporter_count_not_stopped += 1
 

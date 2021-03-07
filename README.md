@@ -355,7 +355,7 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_system_memory_memory_bytes_used | Gauge | The amount of memory in bytes that is currently in use. The used memory equals the amount of total memory minus the amount of free memory. The used memory does not include any hold memory | appliance |
 | mqa_system_memory_memory_bytes_free | Gauge | The amount of memory in bytes that is currently not in use and is therefore available. The free memory value includes any hold memory that is not currently in use | appliance |
 
-**TCP Connections**
+**TCP Summary**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_tcp_connections_established | Gauge | The number of TCP connections in the established state. Connections in this state have completed all handshakes and can transfer data in either direction | appliance |
@@ -369,4 +369,48 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_tcp_connections_last_ack | Gauge |The number of TCP connections in the last-ack state. Connections in this state are waiting for an acknowledgment of the connection termination request previously sent to the remote TCP (which includes an acknowledgment of its connection termination request) | appliance |
 | mqa_tcp_connections_listen | Gauge | The number of TCP connections in the listen state. Connections in the listen state are waiting for a connection request from any remote TCP and port | appliance |
 | mqa_tcp_connections_closing | Gauge | The number of TCP connections in the closing state. Connections in this state are waiting for a connection termination request acknowledgment from the remote TCP seconds | appliance |
+
+*Voltage Sensors**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_voltage_sensor_power_supply_1_in_voltage_volts | Gauge | Voltage going in power supply 1 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_1_in_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of voltage going in power supply 1 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_1_in_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of voltage going in power supply 1 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_1_out_voltage_volts | Gauge | Voltage going out power supply 1 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_1_out_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of voltage going out power supply 1 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_1_out_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of voltage going out power supply 1 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_2_in_voltage_volts | Gauge | Voltage going in power supply 2 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_2_in_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of voltage going in power supply 2 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_2_in_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of voltage going in power supply 2 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_2_out_voltage_volts | Gauge | Voltage going out power supply 2 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_2_out_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of voltage going out power supply 2 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_power_supply_2_out_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of voltage going out power supply 2 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_15_volts | Gauge | Voltage +1.5 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_15_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of +1.5 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_15_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of +1.5 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_18_volts | Gauge | Voltage +1.8 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_18_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of +1.8 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_18_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of +1.8 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_12_volts | Gauge | Voltage +12 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_12_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of +12 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_12_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of +12 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_33_volts | Gauge | Voltage +3.3 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_33_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of +3.3 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_33_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of +3.3 voltage +3.3 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_5_volts | Gauge | Voltage +5 in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_5_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of +5 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_5_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of +5 voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_5_standby_volts | Gauge | Voltage +5 standby in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_5_standby_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of +5 standby voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_5_standby_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of +5 standby voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_battery_volts | Gauge | Voltage battery in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_battery_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of battery voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_battery_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of battery voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_cpu_1_core_volts | Gauge | Voltage CPU 1 core in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_cpu_1_core_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of CPU 1 core voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_cpu_1_core_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of CPU 1 core voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_cpu_2_core_volts | Gauge | Voltage CPU 2 core in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_cpu_2_core_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of CPU 2 core voltage in volts | appliance, readingStatus |
+| mqa_voltage_sensor_voltage_cpu_2_core_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of CPU 2 core voltage in volts | appliance, readingStatus |
+
 

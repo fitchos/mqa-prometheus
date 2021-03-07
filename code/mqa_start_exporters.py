@@ -57,6 +57,7 @@ def main():
         args.pw = get_password()
 
     print('MQ Appliance Prometheus Exporter Start Utility - ' + get_version())
+    print('Exporter directory is \'' + args.directory + '\'')
 
     # Process the exporters configuration file (CSV)
     try:
