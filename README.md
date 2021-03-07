@@ -35,16 +35,17 @@ currently supported.
 **Note: if you use Python 2 and log to a file, you need to use an external mechanism to rotate the logs**
 
 ```
-Usage: mqa_metrics.py [-h] -a APPLIANCE -i IP [-hp HTTPPORT] [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] -p PORT
-                      [-t TIMEOUT] -u USER [-x PW]
+Usage: mqa_metrics.py [-h] -a APPLIANCE [-c CONFIG] -i IP [-hp HTTPPORT] [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] -p PORT [-t TIMEOUT] -u USER [-x PW]
 
-MQ Appliance Prometheus Exporter - vx.x
+MQ Appliance Prometheus Exporter - v0.5
 
 optional arguments:
   -h, --help            show this help message and exit
   -a APPLIANCE, --appliance APPLIANCE
                         Name of the appliance
-  -i IP, --ip IP        IP address of the appliance REST API
+  -c CONFIG, --config CONFIG
+                        Name of the exporter configuration file (INI)
+  -i IP, --ip IP        IP address or DNS of the appliance REST API
   -hp HTTPPORT, --httpPort HTTPPORT
                         Port number of the exported HTTP server (default: 8000)
   -l LOG, --log LOG     Name of the log file (defaults to STDOUT)
@@ -78,6 +79,41 @@ Run a second exporter (note: the HTTPPORT must be different)
 mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 8001 -l mqaprod2.log
 ```
 
+Run an exporter with a configuration file to select which metric collectors are running
+
+```
+mqa_metrics.py -a MQAPROD3 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 8003 -c exporters.cfg
+```
+
+The configuration looks like this:
+```
+# Exporters configuration file
+
+# List of available metrics collectors - set to true or false to run or not run a collector
+[collectors]
+active_users = true
+current_sensors = false
+environmental_fan_sensors = true
+environmental_sensors = true
+ethernet_counters = true
+failure_notification = true
+file_system = true
+ipmi_sel_events = false
+log_targets = true
+mq_system_resources = true
+network_interfaces = true
+other_sensors = true
+queue_managers = true
+raid_ssd = true
+system_cpu = true
+system_memory = true
+tcp_summary = true
+temperature_sensors = false
+voltage_sensors = false
+```
+
+When no configuration is specified, all metric collectors run by default.
+
 ### Utilities to manage exporters
 Three utilities are available to:
 
@@ -100,16 +136,18 @@ To start multiple exporters build a CSV (comma delimited) file with the followin
 To start the exporters, use the mqa_start_exporters utility
 
 ```
-Usage: mqa_start_exporters.py [-h] [-a APPLIANCE] [-d DIRECTORY] -f FILE [-ln LOGNUMBERS] [-ls LOGSIZE] -u USER [-x PW]
+Usage: mqa_start_exporters.py [-h] [-a APPLIANCE] [-c CONFIG] [-d DIRECTORY] -f FILE [-ln LOGNUMBERS] [-ls LOGSIZE] -u USER [-x PW]
 
-MQ Appliance Prometheus Exporter Start Utility - vx.x
+MQ Appliance Prometheus Exporter Start Utility - v0.5
 
 optional arguments:
   -h, --help            show this help message and exit
   -a APPLIANCE, --appliance APPLIANCE
                         Name of the appliance
+  -c CONFIG, --config CONFIG
+                        Name of the exporter configuration file (INI)
   -d DIRECTORY, --directory DIRECTORY
-                        Path to directory for log and PID files (defaults to current directory)
+                        Path to directory for PID files (defaults to current directory)
   -f FILE, --file FILE  Name of the file with the exporters configuration (CSV)
   -ln LOGNUMBERS, --lognumbers LOGNUMBERS
                         Number of logs in a rotation (defaults to 10)
@@ -119,9 +157,10 @@ optional arguments:
   -x PW, --pw PW        Password to login to the appliance
 ```
 
-#### Sample command to start a list of exporters
+#### Sample commands to start a list of exporters
 ```
-mqa_start_exporters.py -f my_exporter_list.csv -d \temp -u admin 
+mqa_start_exporters.py -f my_exporter_list.csv -d \temp -u admin
+mqa_start_exporters.py -f my_exporter_list.csv -u admin -c exporters.cfg
 ```
 
 #### Listing exporters currently running
