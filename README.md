@@ -399,6 +399,21 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_queue_manager_info | Info | MQ Appliance queue manager information | appliance, qm, status, haRole, haStatus, drRole, drStatus |
 
+**Raid Battery Module**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_raid_battery_module_voltage_volts | Gauge | The actual voltage of the battery in volts | appliance, controllerID, status |
+| mqa_raid_battery_module_current_amperes | Gauge | The current that flows through the battery terminals in amperes | appliance, controllerID, status |
+| mqa_raid_battery_module_temperature_celsius | Gauge | The temperature of the battery in degrees celsius | appliance, controllerID, status |
+| mqa_raid_battery_module_design_capacity_amperes_hour | Gauge | The designed capacity of the battery in ampere-hour | appliance, controllerID, status |
+| mqa_raid_battery_module_design_voltage_volts | Gauge | The designed voltage of the battery in volts | appliance, controllerID, status |
+
+**Raid Battery Module Information**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_raid_battery_module_info | Info | MQ Appliance raid battery module information | appliance, controllerID, batteryType, serial, name, status, voltage, current, temperature, designCapacity, designVoltage |
+
+
 **Raid Physical Drive**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
