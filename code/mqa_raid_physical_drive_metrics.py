@@ -42,16 +42,16 @@ class MQARaidPhysicalDriveMetrics(object):
         # Update Prometheus metrics
         for rpd in data['RaidPhysicalDriveStatus']:
 
-            c = CounterMetricFamily('mqa_raid_physical_drive_progress_percent_total', 'The current progress percentage of the operation on the physical drive. Operations can be rebuild, copyback, patrol, or clear.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID'])
-            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID'])], rpd['ProgressPercent'])
+            c = CounterMetricFamily('mqa_raid_physical_drive_progress_percent_total', 'The current progress percentage of the operation on the physical drive. Operations can be rebuild, copyback, patrol, or clear.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
+            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['ProgressPercent'])
             yield c
 
-            c = CounterMetricFamily('mqa_raid_physical_drive_raw_size_bytes_total', 'The exact size of the drive in bytes', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID'])
-            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID'])], rpd['RawSize'])
+            c = CounterMetricFamily('mqa_raid_physical_drive_raw_size_bytes_total', 'The exact size of the drive in bytes', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
+            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['RawSize'])
             yield c
 
-            c = CounterMetricFamily('mqa_raid_physical_drive_coerced_size_bytes_total', 'The normalized size in megabytes. The value is rounded down to an even multiple, which allows you to swap drives of the same nominal size but might not be the same raw size.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID'])
-            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID'])], rpd['CoercedSize'])
+            c = CounterMetricFamily('mqa_raid_physical_drive_coerced_size_bytes_total', 'The normalized size in megabytes. The value is rounded down to an even multiple, which allows you to swap drives of the same nominal size but might not be the same raw size.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
+            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['CoercedSize'])
             yield c
 
             if rpd['Temperature'][:3] == 'n/a':
