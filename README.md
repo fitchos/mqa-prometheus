@@ -389,10 +389,10 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 **Queue Managers**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_queue_manager_cpu_usage | Gauge | The instantaneous CPU usage by the queue manager as a percentage of the CPU load | appliance, qm |
-| mqa_queue_manager_memory_bytes_used | Gauge | The amount of memory in bytes that is currently in use by the queue manager | appliance, qm |
-| mqa_queue_manager_fs_bytes_used | Gauge | The amount of file system in bytes that is currently in use by the queue manager | appliance, qm |
-| mqa_queue_manager_fs_bytes_allocated | Gauge | The amount of file system in bytes allocated for the queue manager | appliance, qm |
+| mqa_queue_manager_cpu_usage | Gauge | The instantaneous CPU usage by the queue manager as a percentage of the CPU load | appliance, qm, status |
+| mqa_queue_manager_memory_bytes_used | Gauge | The amount of memory in bytes that is currently in use by the queue manager | appliance, qm, status |
+| mqa_queue_manager_fs_bytes_used | Gauge | The amount of file system in bytes that is currently in use by the queue manager | appliance, qm, status |
+| mqa_queue_manager_fs_bytes_allocated | Gauge | The amount of file system in bytes allocated for the queue manager | appliance, qm, status |
 
 **Queue Manager Information**
 | Metric | Type | Description | Labels |

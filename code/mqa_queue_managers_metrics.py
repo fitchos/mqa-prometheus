@@ -42,26 +42,26 @@ class MQAQueueManagersMetrics(object):
         # Update Prometheus metrics
         for qm in data['QueueManagersStatus']:
 
-            g = GaugeMetricFamily('mqa_queue_manager_cpu_usage', 'The instantaneous CPU usage by the queue manager as a percentage of the CPU load', labels=['appliance', 'qm'])
-            g.add_metric([self.appliance, qm['Name']], qm['CpuUsage'])
+            g = GaugeMetricFamily('mqa_queue_manager_cpu_usage', 'The instantaneous CPU usage by the queue manager as a percentage of the CPU load', labels=['appliance', 'qm', 'status'])
+            g.add_metric([self.appliance, qm['Name'], qm['Status']], qm['CpuUsage'])
             yield g
 
-            g = GaugeMetricFamily('mqa_queue_manager_memory_bytes_used', 'The amount of memory in bytes that is currently in use by the queue manager', labels=['appliance', 'qm'])
+            g = GaugeMetricFamily('mqa_queue_manager_memory_bytes_used', 'The amount of memory in bytes that is currently in use by the queue manager', labels=['appliance', 'qm', 'status'])
             # Memory in MB not MiB
             #g.add_metric([self.appliance, qm['Name']], qm['UsedMemory'] * 1048576)
-            g.add_metric([self.appliance, qm['Name']], qm['UsedMemory'] * 1000000)
+            g.add_metric([self.appliance, qm['Name'], qm['Status']], qm['UsedMemory'] * 1000000)
             yield g
 
-            g = GaugeMetricFamily('mqa_queue_manager_fs_bytes_used', 'The amount of file system in bytes that is currently in use by the queue manager', labels=['appliance', 'qm'])
+            g = GaugeMetricFamily('mqa_queue_manager_fs_bytes_used', 'The amount of file system in bytes that is currently in use by the queue manager', labels=['appliance', 'qm', 'status'])
             # Memory in MB not MiB
             #g.add_metric([self.appliance, qm['Name']], qm['UsedFs'] * 1048576)
-            g.add_metric([self.appliance, qm['Name']], qm['UsedFs'] * 1000000)
+            g.add_metric([self.appliance, qm['Name'], qm['Status']], qm['UsedFs'] * 1000000)
             yield g
 
-            g = GaugeMetricFamily('mqa_queue_manager_fs_bytes_allocated', 'The amount of file system in bytes allocated for the queue manager', labels=['appliance', 'qm'])
+            g = GaugeMetricFamily('mqa_queue_manager_fs_bytes_allocated', 'The amount of file system in bytes allocated for the queue manager', labels=['appliance', 'qm', 'status'])
             # Memory in MB not MiB     
             #g.add_metric([self.appliance, qm['Name']], qm['TotalFs'] * 1048576)
-            g.add_metric([self.appliance, qm['Name']], qm['TotalFs'] * 1000000)
+            g.add_metric([self.appliance, qm['Name'], qm['Status']], qm['TotalFs'] * 1000000)
             yield g
 
             i = InfoMetricFamily('mqa_queue_manager', 'MQ Appliance queue manager information')
