@@ -47,11 +47,11 @@ class MQARaidPhysicalDriveMetrics(object):
             yield c
 
             c = CounterMetricFamily('mqa_raid_physical_drive_raw_size_bytes_total', 'The exact size of the drive in bytes', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
-            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['RawSize'])
+            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['RawSize'] * 1000000)
             yield c
 
             c = CounterMetricFamily('mqa_raid_physical_drive_coerced_size_bytes_total', 'The normalized size in megabytes. The value is rounded down to an even multiple, which allows you to swap drives of the same nominal size but might not be the same raw size.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
-            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['CoercedSize'])
+            c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['CoercedSize'] * 1000000)
             yield c
 
             if rpd['Temperature'][:3] == 'n/a':
