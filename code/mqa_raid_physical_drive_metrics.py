@@ -42,7 +42,7 @@ class MQARaidPhysicalDriveMetrics(object):
         # Update Prometheus metrics
         for rpd in data['RaidPhysicalDriveStatus']:
 
-            c = CounterMetricFamily('mqa_raid_physical_drive_progress_percent_total', 'The current progress percentage of the operation on the physical drive. Operations can be rebuild, copyback, patrol, or clear.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
+            c = CounterMetricFamily('mqa_raid_physical_drive_progress_percent_total', 'The current progress percentage of the operation on the physical drive. Operations can be rebuild, copyback, patrol, or clear', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
             c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['ProgressPercent'])
             yield c
 
@@ -50,7 +50,7 @@ class MQARaidPhysicalDriveMetrics(object):
             c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['RawSize'] * 1000000)
             yield c
 
-            c = CounterMetricFamily('mqa_raid_physical_drive_coerced_size_bytes_total', 'The normalized size in megabytes. The value is rounded down to an even multiple, which allows you to swap drives of the same nominal size but might not be the same raw size.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
+            c = CounterMetricFamily('mqa_raid_physical_drive_coerced_size_bytes_total', 'The normalized size in megabytes. The value is rounded down to an even multiple, which allows you to swap drives of the same nominal size but might not be the same raw size', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
             c.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], rpd['CoercedSize'] * 1000000)
             yield c
 
@@ -58,14 +58,14 @@ class MQARaidPhysicalDriveMetrics(object):
                 temperature_celsius = -1
             else:
                 temperature_celsius = int(rpd['Temperature'][:3])
-            g = GaugeMetricFamily('mqa_raid_physical_drive_temperature_celsius', 'The temperature of the hard disk drive in celsius.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
+            g = GaugeMetricFamily('mqa_raid_physical_drive_temperature_celsius', 'The temperature of the hard disk drive in celsius', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
             g.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], temperature_celsius)
             yield g
 
             i = InfoMetricFamily('mqa_raid_physical_drive', 'MQ Appliance raid physical drive information')
             i.add_metric(['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'logicalDriveName', 'position', 'state',
                           'progressPercent', 'rawSize', 'coercedSize', 'interfaceType', 'interfaceSpeed', 'sasAddress', 'vendorID', 'productID',
-                          'revision', 'specificInfo', 'failure', 'Temperature'], 
+                          'revision', 'specificInfo', 'failure', 'temperature'], 
                       {'appliance': self.appliance, 
                       'controllerID': str(rpd['ControllerID']),
                       'deviceID': str(rpd['DeviceID']),
@@ -85,7 +85,7 @@ class MQARaidPhysicalDriveMetrics(object):
                       'revision': rpd['Revision'],
                       'specificInfo': rpd['SpecificInfo'], 
                       'failure': rpd['Failure'], 
-                      'Temperature': rpd['Temperature']})
+                      'temperature': rpd['Temperature']})
             yield i
 
         g = GaugeMetricFamily('mqa_exporter_raid_physical_drive_elapsed_time_seconds', 'Exporter eleapsed time to collect raid physical drive metrics', labels=['appliance'])
