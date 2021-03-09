@@ -58,8 +58,8 @@ class MQARaidPhysicalDriveMetrics(object):
                 temperature_celsius = -1
             else:
                 temperature_celsius = int(rpd['Temperature'][:3])
-            g = GaugeMetricFamily('mqa_raid_physical_drive_temperature_celsius', 'The temperature of the hard disk drive in celsius.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID'])
-            g.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID'])], temperature_celsius)
+            g = GaugeMetricFamily('mqa_raid_physical_drive_temperature_celsius', 'The temperature of the hard disk drive in celsius.', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
+            g.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], temperature_celsius)
             yield g
 
             i = InfoMetricFamily('mqa_raid_physical_drive', 'MQ Appliance raid physical drive information')
