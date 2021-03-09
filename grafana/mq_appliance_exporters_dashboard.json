@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 7,
-  "iteration": 1615074068819,
+  "id": 12,
+  "iteration": 1615318983163,
   "links": [
     {
       "icon": "external link",
@@ -44,6 +44,14 @@
       "title": "IBM MQ Appliance Knowledge Center",
       "type": "link",
       "url": "https://www.ibm.com/support/knowledgecenter/en/SS5K6E_9.2.0/WelcomePage/homepage.html"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "targetBlank": true,
+      "title": "IBM MQ Appliance Lifecycle",
+      "type": "link",
+      "url": "https://www.ibm.com/support/pages/node/6426983"
     },
     {
       "icon": "external link",
@@ -788,5 +796,5 @@
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 7
+  "version": 2
 }

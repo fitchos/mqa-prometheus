@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 9,
-  "iteration": 1615074047444,
+  "id": 13,
+  "iteration": 1615319077529,
   "links": [
     {
       "asDropdown": false,
@@ -47,6 +47,14 @@
       "tooltip": "",
       "type": "link",
       "url": "https://www.ibm.com/support/knowledgecenter/en/SS5K6E_9.2.0/WelcomePage/homepage.html"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "targetBlank": true,
+      "title": "IBM MQ Appliance Lifecycle",
+      "type": "link",
+      "url": "https://www.ibm.com/support/pages/node/6426983"
     },
     {
       "icon": "external link",
@@ -1859,5 +1867,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 3
+  "version": 2
 }
