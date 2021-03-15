@@ -37,7 +37,7 @@ currently supported.
 ```
 Usage: mqa_metrics.py [-h] -a APPLIANCE [-c CONFIG] -i IP [-hp HTTPPORT] [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] -p PORT [-t TIMEOUT] -u USER [-x PW]
 
-MQ Appliance Prometheus Exporter - v0.5
+MQ Appliance Prometheus Exporter - vx.x
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -140,7 +140,7 @@ To start the exporters, use the mqa_start_exporters utility
 ```
 Usage: mqa_start_exporters.py [-h] [-a APPLIANCE] [-c CONFIG] [-d DIRECTORY] -f FILE [-ln LOGNUMBERS] [-ls LOGSIZE] -u USER [-x PW]
 
-MQ Appliance Prometheus Exporter Start Utility - v0.5
+MQ Appliance Prometheus Exporter Start Utility - vx.x
 
 optional arguments:
   -h, --help            show this help message and exit
