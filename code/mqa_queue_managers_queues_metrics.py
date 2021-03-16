@@ -1,0 +1,81 @@
+# Copyright 2021 Oliver "Fitch" Fisse (fitchos@protonmail.com)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""This module implements the MQ Appliance queue managers queues metrics collector"""
+
+import json
+import time
+
+from mqalib import call_rest_api
+from prometheus_client.core import GaugeMetricFamily
+
+class MQAQueueManagersQueuesMetrics(object):
+    """MQ Appliance queue managers queues metrics collector"""
+
+    def __init__(self, appliance, ip, port, session, timeout):
+        self.appliance = appliance
+        self.ip = ip
+        self.port = port
+        self.session = session
+        self.timeout = timeout
+
+    def collect(self):
+
+        start = time.time()
+
+        # Perform REST API call to fetch the list of queue managers
+        qm_data = call_rest_api('/ibmmq/rest/v2/admin/qmgr', self.ip, self.port, self.session, self.timeout)
+        if qm_data == '':
+            return
+
+        command = {
+            "type": "runCommandJSON",
+            "command": "display",
+            "qualifier": "qstatus",
+            "name": "*",
+            "responseParameters": ["curdepth", "ipprocs", "opprocs", "curfsize", "curmaxfs", "msgage", "qtime", "uncom"]
+        }
+
+        # For each running queue manager fetch the queues
+        for qm in qm_data['qmgr']:
+
+            if qm['state'] == 'running':
+                headers = {'Content-type': 'application/json;charset=UTF-8', 'ibm-mq-rest-csrf-token': ''}
+                queue_data = call_rest_api('/ibmmq/rest/v2/admin/action/qmgr/' + qm['name'] + '/mqsc', self.ip, self.port, self.session, self.timeout, 'POST', headers, command)
+                if queue_data == '':
+                    return
+
+                # Update Prometheus metrics
+                for queue in queue_data['commandResponse']:
+                    if queue['completionCode'] == 0:
+
+                        g = GaugeMetricFamily('mqa_qm_queue_current_depth', 'The current depth of the queue, that is, the number of messages on the queue, including both committed messages and uncommitted messages', labels=['appliance', 'qm', 'queue'])
+                        g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], queue['parameters']['curdepth'])
+                        yield g
+
+                        g = GaugeMetricFamily('mqa_qm_queue_input_procs', 'The number of handles that are currently open for input for the queue (either input-shared or input-exclusive)', labels=['appliance', 'qm', 'queue'])
+                        g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], queue['parameters']['ipprocs'])
+                        yield g
+
+                        g = GaugeMetricFamily('mqa_qm_queue_output_procs', 'The number of handles that are currently open for output for the queue', labels=['appliance', 'qm', 'queue'])
+                        g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], queue['parameters']['opprocs'])
+                        yield g
+
+                        g = GaugeMetricFamily('mqa_qm_queue_message_age_seconds', 'Age, in seconds, of the oldest message on the queue', labels=['appliance', 'qm', 'queue'])
+                        g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], 0 if queue['parameters']['msgage'] == '' else queue['parameters']['msgage'])
+                        yield g
+
+        g = GaugeMetricFamily('mqa_exporter_queue_managers_queues_elapsed_time_seconds', 'Exporter eleapsed time to collect queue managers queues metrics', labels=['appliance'])
+        g.add_metric([self.appliance], time.time() - start)
+        yield g

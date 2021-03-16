@@ -27,12 +27,16 @@ import sys
 from getpass import getpass
 
 
-def call_rest_api(api_call, ip, port, session, timeout):
+def call_rest_api(api_call, ip, port, session, timeout, method='GET', headers='', payload=''):
     """Perform a REST API call"""
 
     logging.info('Performing REST API call to gather \'' + api_call + '\'...')
     try:
-        response = session.get('https://' + ip + ':' + port + api_call, timeout=timeout)
+        if method == 'GET':
+            response = session.get('https://' + ip + ':' + port + api_call, timeout=timeout)
+        else:
+            response = session.post('https://' + ip + ':' + port + api_call, timeout=timeout, headers=headers, json=payload)
+            
         if response.status_code == 200:
             data = json.loads(response.text)
 
@@ -123,7 +127,7 @@ def get_pid_file_present(directory, appliance):
 
 def get_version():
 
-    return 'v0.6'
+    return 'v0.7'
 
 def resolve_directory(args):
     """Resolve the directory to use"""

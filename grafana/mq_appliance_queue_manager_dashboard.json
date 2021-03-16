@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 13,
-  "iteration": 1615319077529,
+  "id": 17,
+  "iteration": 1615931205787,
   "links": [
     {
       "asDropdown": false,
@@ -734,6 +734,433 @@
         "x": 0,
         "y": 7
       },
+      "id": 64,
+      "panels": [],
+      "title": "Queues",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "List of all LOCAL queues and their associated queue depth",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Depth"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 0,
+        "y": 8
+      },
+      "id": 66,
+      "options": {
+        "frameIndex": 2,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Depth"
+          }
+        ]
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{queue}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Queue List and Depth",
+      "transformations": [
+        {
+          "id": "seriesToRows",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Metric": "Name",
+              "Value": "Depth"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": null,
+      "description": "Total number of LOCAL queues",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 10,
+        "y": 8
+      },
+      "id": 68,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "count(mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Queues",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Total number of LOCAL queues with a non-zero depth",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 13,
+        "y": 8
+      },
+      "id": 70,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "count(mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"} > 0)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Queues with Depth",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Total number of SYSTEM LOCAL queues",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 10,
+        "y": 11
+      },
+      "id": 69,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "count(mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\", queue=~\"SYSTEM.*\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Total SYSTEM Queues",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Total number of SYSTEM LOCAL queues wit a non-zero depth",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 13,
+        "y": 11
+      },
+      "id": 71,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "count(mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\", queue=~\"SYSTEM.*\"} > 0)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "SYSTEM Queues with Depth",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Queues with non-zero queue depth (highest to lowest)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "decimals": 0,
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 10000
+              },
+              {
+                "color": "light-purple",
+                "value": 100000
+              },
+              {
+                "color": "red",
+                "value": 200000
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 73,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "sort_desc(mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"} > 0)",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{queue}}",
+          "refId": "B"
+        }
+      ],
+      "title": "Non-Zero Queue Depth (highest to lowest)",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
       "id": 4,
       "panels": [],
       "title": "Resources",
@@ -767,7 +1194,7 @@
         "h": 5,
         "w": 2,
         "x": 0,
-        "y": 8
+        "y": 24
       },
       "id": 6,
       "options": {
@@ -818,7 +1245,7 @@
         "h": 5,
         "w": 10,
         "x": 2,
-        "y": 8
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 8,
@@ -924,7 +1351,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 8
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 48,
@@ -1038,7 +1465,7 @@
         "h": 5,
         "w": 2,
         "x": 0,
-        "y": 13
+        "y": 29
       },
       "id": 44,
       "options": {
@@ -1094,7 +1521,7 @@
         "h": 2,
         "w": 3,
         "x": 2,
-        "y": 13
+        "y": 29
       },
       "id": 24,
       "options": {
@@ -1148,7 +1575,7 @@
         "h": 5,
         "w": 10,
         "x": 5,
-        "y": 13
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 50,
@@ -1255,7 +1682,7 @@
         "h": 5,
         "w": 9,
         "x": 15,
-        "y": 13
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 26,
@@ -1365,7 +1792,7 @@
         "h": 3,
         "w": 3,
         "x": 2,
-        "y": 15
+        "y": 31
       },
       "id": 20,
       "options": {
@@ -1426,7 +1853,7 @@
         "h": 5,
         "w": 2,
         "x": 0,
-        "y": 18
+        "y": 34
       },
       "id": 16,
       "options": {
@@ -1480,7 +1907,7 @@
         "h": 2,
         "w": 3,
         "x": 2,
-        "y": 18
+        "y": 34
       },
       "id": 22,
       "options": {
@@ -1534,7 +1961,7 @@
         "h": 5,
         "w": 10,
         "x": 5,
-        "y": 18
+        "y": 34
       },
       "hiddenSeries": false,
       "id": 52,
@@ -1643,7 +2070,7 @@
         "h": 5,
         "w": 9,
         "x": 15,
-        "y": 18
+        "y": 34
       },
       "hiddenSeries": false,
       "id": 30,
@@ -1753,7 +2180,7 @@
         "h": 3,
         "w": 3,
         "x": 2,
-        "y": 20
+        "y": 36
       },
       "id": 28,
       "options": {
@@ -1798,9 +2225,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "MQA2002PROD1",
-          "value": "MQA2002PROD1"
+          "selected": true,
+          "text": "MQA2002PROD2",
+          "value": "MQA2002PROD2"
         },
         "datasource": "Prometheus",
         "definition": "mqa_info",
@@ -1829,9 +2256,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "QM2",
-          "value": "QM2"
+          "selected": true,
+          "text": "QM4",
+          "value": "QM4"
         },
         "datasource": "Prometheus",
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
@@ -1867,5 +2294,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 2
+  "version": 15
 }
