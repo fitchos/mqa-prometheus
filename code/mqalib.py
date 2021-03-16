@@ -123,7 +123,7 @@ def get_pid_file_present(directory, appliance):
 
 def get_version():
 
-    return 'v0.5'
+    return 'v0.6'
 
 def resolve_directory(args):
     """Resolve the directory to use"""
