@@ -18,7 +18,7 @@ import json
 import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import GaugeMetricFamily
+from prometheus_client.core import GaugeMetricFamily, InfoMetricFamily
 
 class MQAQueueManagersQueuesMetrics(object):
     """MQ Appliance queue managers queues metrics collector"""
@@ -40,11 +40,11 @@ class MQAQueueManagersQueuesMetrics(object):
             return
 
         command = {
-            "type": "runCommandJSON",
-            "command": "display",
-            "qualifier": "qstatus",
-            "name": "*",
-            "responseParameters": ["curdepth", "ipprocs", "opprocs", "curfsize", "curmaxfs", "msgage", "qtime", "uncom"]
+            'type': 'runCommandJSON',
+            'command': 'display',
+            'qualifier': 'qstatus',
+            'name': '*',
+            'responseParameters': ['curdepth', 'ipprocs', 'opprocs', 'curfsize', 'curmaxfs', 'lgetdate', 'lgettime', 'lputdate', 'lputtime', 'monq','msgage', 'qtime', 'uncom']
         }
 
         # For each running queue manager fetch the queues
@@ -75,6 +75,54 @@ class MQAQueueManagersQueuesMetrics(object):
                         g = GaugeMetricFamily('mqa_qm_queue_message_age_seconds', 'Age, in seconds, of the oldest message on the queue', labels=['appliance', 'qm', 'queue'])
                         g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], 0 if queue['parameters']['msgage'] == '' else queue['parameters']['msgage'])
                         yield g
+
+                        if queue['parameters']['uncom'] == 'YES':
+                            uncommitted_messages = 1
+                        elif queue['parameters']['uncom'] == 'NO':
+                            uncommitted_messages = 0
+                        else:
+                            uncommitted_messages = queue['parameters']['uncom']
+
+                        g = GaugeMetricFamily('mqa_qm_queue_uncommitted_messages', 'Number of uncommitted changes (puts and gets) pending for the queue', labels=['appliance', 'qm', 'queue'])
+                        g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], uncommitted_messages)
+                        yield g
+
+                        current_file_size = 0
+                        current_max_file_size = 0
+                        try:
+                            # Fields only available since 9.1.5
+                            current_file_size = queue['parameters']['curfsize'] * 1000000
+                            g = GaugeMetricFamily('mqa_qm_queue_current_file_size_bytes', 'The current size of the queue file in bytes, rounded up to the nearest megabyte', labels=['appliance', 'qm', 'queue'])
+                            g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], current_file_size)
+                            yield g
+
+                            current_max_file_size = queue['parameters']['curmaxfs'] * 1000000
+                            g = GaugeMetricFamily('mqa_qm_queue_current_max_file_size_bytes', 'The current maximum size in bytes the queue file can grow to, rounded up to the nearest megabyte, given the current block size in use on a queue', labels=['appliance', 'qm', 'queue'])
+                            g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], current_max_file_size)
+                            yield g
+                        except KeyError:
+                            pass
+
+                        i = InfoMetricFamily('mqa_qm_queue', 'MQ Appliance queue information')
+                        i.add_metric(['appliance', 'qm', 'queue', 'curDepth', 'curFileSize', 'curMaxFileSize', 'ipProcs', 'lastGetDate'
+                                      'lastGetTime', 'lastPutDate', 'lastPutTime', 'monQ', 'msgAge', 'opProcs', 'qTime', 'unCom'], 
+                                    {'appliance': self.appliance, 
+                                    'qm': qm['name'], 
+                                    'queue': queue['parameters']['queue'],
+                                    'curDepth': str(queue['parameters']['curdepth']),
+                                    'curFileSize': str(current_file_size),
+                                    'curMaxFileSize': str(current_max_file_size),
+                                    'ipProcs': str(queue['parameters']['ipprocs']),
+                                    'lastGetDate': queue['parameters']['lgetdate'],
+                                    'lastGetTime': queue['parameters']['lgettime'],
+                                    'lastPutDate': queue['parameters']['lputdate'],
+                                    'lastPutTime': queue['parameters']['lputtime'],
+                                    'monQ': queue['parameters']['monq'],
+                                    'msgAge': str(queue['parameters']['msgage']),
+                                    'opProcs': str(queue['parameters']['opprocs']),
+                                    'qTime': queue['parameters']['qtime'],
+                                    'unCom': str(queue['parameters']['uncom'])})
+                        yield i
 
         g = GaugeMetricFamily('mqa_exporter_queue_managers_queues_elapsed_time_seconds', 'Exporter eleapsed time to collect queue managers queues metrics', labels=['appliance'])
         g.add_metric([self.appliance], time.time() - start)

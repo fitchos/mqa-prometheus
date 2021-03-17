@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 16,
-  "iteration": 1615931726525,
+  "iteration": 1616018483906,
   "links": [
     {
       "icon": "external link",
@@ -769,8 +769,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "MQA2002PROD2",
-          "value": "MQA2002PROD2"
+          "text": "MQA2002PROD1",
+          "value": "MQA2002PROD1"
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -783,12 +783,12 @@
         "name": "appliance",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "MQA2002PROD1",
             "value": "MQA2002PROD1"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "MQA2002PROD2",
             "value": "MQA2002PROD2"
           }
@@ -810,7 +810,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
