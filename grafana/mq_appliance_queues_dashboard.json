@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 18,
-  "iteration": 1616017660128,
+  "iteration": 1616020123975,
   "links": [
     {
       "asDropdown": false,
@@ -1006,7 +1006,8 @@
       "description": "Age of oldest message in seconds over time",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "unit": "s"
         },
         "overrides": []
       },
@@ -1236,8 +1237,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "QM1",
-          "value": "QM1"
+          "text": "QM2",
+          "value": "QM2"
         },
         "datasource": null,
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
@@ -1266,9 +1267,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "QUEUE1",
-          "value": "QUEUE1"
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1304,5 +1306,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queues",
   "uid": "e_6DCmQMk",
-  "version": 28
+  "version": 29
 }
