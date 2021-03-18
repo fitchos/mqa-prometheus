@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 18,
-  "iteration": 1616020123975,
+  "iteration": 1616076888238,
   "links": [
     {
       "asDropdown": false,
@@ -77,13 +77,15 @@
   "panels": [
     {
       "datasource": null,
-      "description": "Current queue depth for the queue",
+      "description": "The current local date and time on the appliance.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
           },
           "custom": {},
+          "displayName": "${__field.labels.time}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -91,14 +93,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 50000
-              },
-              {
-                "color": "red",
-                "value": 100000
               }
             ]
           }
@@ -107,11 +101,11 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 2,
+        "w": 4,
         "x": 0,
         "y": 0
       },
-      "id": 9,
+      "id": 25,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -119,36 +113,40 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "mean"
           ],
           "fields": "",
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "name"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "expr": "mqa_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Depth",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Date/Time",
       "type": "stat"
     },
     {
       "datasource": null,
-      "description": "Number of uncommitted messages on the queue",
+      "description": "The name of the time zone currently in effect.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
           },
           "custom": {},
+          "displayName": "${__field.labels.timezone}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -156,10 +154,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -168,72 +162,11 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 0
-      },
-      "id": 10,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_qm_queue_uncommitted_messages{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Uncommitted",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The number of handles that are currently open for input for the queue (either input-shared or input-exclusive)",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
+        "w": 3,
         "x": 4,
         "y": 0
       },
-      "id": 11,
+      "id": 27,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -241,192 +174,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_qm_queue_input_procs{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "IPPROCS",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The number of handles that are currently open for output for the queue",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 0
-      },
-      "id": 12,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_qm_queue_output_procs{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "OPPROCS",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "Age, in seconds, of the oldest message on the queue",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 8,
-        "y": 0
-      },
-      "id": 13,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_qm_queue_message_age_seconds{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Message Age",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "Interval, in microseconds, between messages being put on the queue and then being destructively read",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.qTime}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 10,
-        "y": 0
-      },
-      "id": 20,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
+            "mean"
           ],
           "fields": "",
           "values": false
@@ -437,28 +185,30 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "expr": "mqa_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Q-TIME",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Timezone",
       "type": "stat"
     },
     {
       "datasource": null,
-      "description": "The date on which the last message was retrieved from the queue since the queue manager started",
+      "description": "The current local date and time on the server running the Prometheus exporter.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "light-orange",
+            "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.lastGetDate}",
+          "displayName": "${__field.labels.localTime}",
           "mappings": [],
-          "noValue": "N/A",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -473,11 +223,11 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 2,
-        "x": 12,
+        "w": 4,
+        "x": 7,
         "y": 0
       },
-      "id": 16,
+      "id": 29,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -485,7 +235,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "mean"
           ],
           "fields": "",
           "values": false
@@ -496,28 +246,91 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Last GET Date",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Date/Time",
       "type": "stat"
     },
     {
       "datasource": null,
-      "description": "The time at which the last message was retrieved from the queue since the queue manager started",
+      "description": "The name of the time zone currently in effect on the server running the Prometheus exporter.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "light-orange",
+            "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.lastGetTime}",
+          "displayName": "${__field.labels.localTimezone}",
           "mappings": [],
-          "noValue": "N/A",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 11,
+        "y": 0
+      },
+      "id": 31,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Timezone",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The exporter version number of the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.version}",
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -536,7 +349,7 @@
         "x": 14,
         "y": 0
       },
-      "id": 17,
+      "id": 33,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -544,7 +357,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "mean"
           ],
           "fields": "",
           "values": false
@@ -555,14 +368,16 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Last GET Time",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Version",
       "type": "stat"
     },
     {
@@ -685,6 +500,425 @@
     },
     {
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 35,
+      "options": {
+        "bgColor": "rgb(29, 50, 92)",
+        "clockType": "24 hour",
+        "countdownSettings": {
+          "endCountdownTime": "2021-02-11T22:10:38-05:00",
+          "endText": "00:00:00"
+        },
+        "dateSettings": {
+          "dateFormat": "YYYY-MM-DD",
+          "fontSize": "20px",
+          "fontWeight": "normal",
+          "showDate": true
+        },
+        "mode": "time",
+        "timeSettings": {
+          "fontSize": "28px",
+          "fontWeight": "bold"
+        },
+        "timezone": "",
+        "timezoneSettings": {
+          "fontSize": "12px",
+          "fontWeight": "normal",
+          "showTimezone": true,
+          "zoneFormat": "offsetAbbv"
+        }
+      },
+      "pluginVersion": "7.3.7",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Local Date and Time",
+      "type": "grafana-clock-panel"
+    },
+    {
+      "datasource": null,
+      "description": "Current queue depth for the queue",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 50000
+              },
+              {
+                "color": "red",
+                "value": 100000
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 2
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Depth",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Number of uncommitted messages on the queue",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 2
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_uncommitted_messages{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Uncommitted",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The number of handles that are currently open for input for the queue (either input-shared or input-exclusive)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 2
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_input_procs{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "IPPROCS",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The number of handles that are currently open for output for the queue",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 2
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_output_procs{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "OPPROCS",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Age, in seconds, of the oldest message on the queue",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 8,
+        "y": 2
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_message_age_seconds{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Message Age",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Interval, in microseconds, between messages being put on the queue and then being destructively read",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.qTime}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 10,
+        "y": 2
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Q-TIME",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "description": "The current size of the queue file in bytes, rounded up to the nearest megabyte",
       "fieldConfig": {
         "defaults": {
@@ -709,8 +943,8 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 20,
-        "y": 0
+        "x": 12,
+        "y": 2
       },
       "id": 14,
       "options": {
@@ -767,8 +1001,8 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 22,
-        "y": 0
+        "x": 14,
+        "y": 2
       },
       "id": 15,
       "options": {
@@ -800,6 +1034,124 @@
       "type": "stat"
     },
     {
+      "datasource": null,
+      "description": "The date on which the last message was retrieved from the queue since the queue manager started",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.lastGetDate}",
+          "mappings": [],
+          "noValue": "N/A",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 16,
+        "y": 2
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Last GET Date",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The time at which the last message was retrieved from the queue since the queue manager started",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.lastGetTime}",
+          "mappings": [],
+          "noValue": "N/A",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 18,
+        "y": 2
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Last GET Time",
+      "type": "stat"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -819,7 +1171,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 2
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 2,
@@ -918,7 +1270,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 2
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 6,
@@ -1017,7 +1369,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 10
+        "y": 12
       },
       "hiddenSeries": false,
       "id": 4,
@@ -1074,7 +1426,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "s",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1115,7 +1467,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 10
+        "y": 12
       },
       "hiddenSeries": false,
       "id": 7,
@@ -1192,6 +1544,202 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Interval, in seconds, between messages being put on the queue and then being destructively read. A value based on the last few messages processed",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 20
+      },
+      "hiddenSeries": false,
+      "id": 22,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_time_small_sample_seconds{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "interval": "",
+          "legendFormat": "{{queue}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Q-Time Last Few Messages",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Interval, in seconds, between messages being put on the queue and then being destructively read. A value based on a larger sample of the recently processed messages",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 20
+      },
+      "hiddenSeries": false,
+      "id": 23,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "mqa_qm_queue_time_large_sample_seconds{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "interval": "",
+          "legendFormat": "{{queue}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Q-Time Larger Sample of  Messages",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "10s",
@@ -1237,8 +1785,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "QM2",
-          "value": "QM2"
+          "text": "QM1",
+          "value": "QM1"
         },
         "datasource": null,
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
@@ -1267,10 +1815,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "QUEUE1",
+          "value": "QUEUE1"
         },
         "datasource": null,
         "definition": "mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1306,5 +1853,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queues",
   "uid": "e_6DCmQMk",
-  "version": 29
+  "version": 41
 }

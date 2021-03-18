@@ -52,6 +52,7 @@ class MQAQueueManagersQueuesMetrics(object):
 
             if qm['state'] == 'running':
                 headers = {'Content-type': 'application/json;charset=UTF-8', 'ibm-mq-rest-csrf-token': ''}
+                 # v2 call, only available since 9.1.5
                 queue_data = call_rest_api('/ibmmq/rest/v2/admin/action/qmgr/' + qm['name'] + '/mqsc', self.ip, self.port, self.session, self.timeout, 'POST', headers, command)
                 if queue_data == '':
                     return
@@ -85,6 +86,23 @@ class MQAQueueManagersQueuesMetrics(object):
 
                         g = GaugeMetricFamily('mqa_qm_queue_uncommitted_messages', 'Number of uncommitted changes (puts and gets) pending for the queue', labels=['appliance', 'qm', 'queue'])
                         g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], uncommitted_messages)
+                        yield g
+
+                        queue_time = queue['parameters']['qtime']
+
+                        if queue_time == ' , ':
+                            q_time_small_sample = -1
+                            q_time_large_sample = -1
+                        else:
+                            q_time_small_sample = float(queue_time[:queue_time.find(',')])
+                            q_time_large_sample = float(queue_time[queue_time.find(',') + 1:])
+
+                        g = GaugeMetricFamily('mqa_qm_queue_time_small_sample_seconds', 'Interval, in seconds, between messages being put on the queue and then being destructively read. A value based on the last few messages processed', labels=['appliance', 'qm', 'queue'])
+                        g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], q_time_small_sample / 1000000)
+                        yield g
+
+                        g = GaugeMetricFamily('mqa_qm_queue_time_large_sample_seconds', 'Interval, in seconds, between messages being put on the queue and then being destructively read. A value based on a larger sample of the recently processed messages', labels=['appliance', 'qm', 'queue'])
+                        g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], q_time_large_sample / 1000000)
                         yield g
 
                         current_file_size = 0
