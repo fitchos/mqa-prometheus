@@ -18,7 +18,7 @@ import json
 import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily
+from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily, InfoMetricFamily
 
 class MQAMQSystemResourcesMetrics(object):
     """MQ Appliance MQ system resources metrics collector"""
@@ -63,6 +63,34 @@ class MQAMQSystemResourcesMetrics(object):
         g = GaugeMetricFamily('mqa_mq_resources_trace_storage_bytes_used', 'The amount of IBM MQ trace storage in bytes in use', labels=['appliance'])
         g.add_metric([self.appliance], data['MQSystemResources']['UsedTraceStorage'] * 1000000)
         yield g
+
+        ha_status = data['MQSystemResources']['HAStatus']
+        if ha_status == 'Online':
+            ha_status_value = 1
+        elif ha_status == 'Standby':
+            ha_status_value = 2
+        else:
+            ha_status_value = 0
+        g = GaugeMetricFamily('mqa_mq_resources_ha_status', 'HA status of the appliance (0: HA not set, 1: Online, 2: Standby', labels=['appliance'])
+        g.add_metric([self.appliance], ha_status_value)
+        yield g
+
+        ha_status = data['MQSystemResources']['HAPartner']
+        ha_status = ha_status[ha_status.find('(') + 1 : ha_status.find(')')]
+        if ha_status == 'Online':
+            ha_partner_status_value = 1
+        elif ha_status == 'Standby':
+            ha_partner_status_value = 2
+        else:
+            ha_partner_status_value = 0
+        g = GaugeMetricFamily('mqa_mq_resources_ha_partner_status', 'HA status of the partner appliance (0: HA not set, 1: Online, 2: Standby', labels=['appliance'])
+        g.add_metric([self.appliance], ha_partner_status_value)
+        yield g
+
+        i = InfoMetricFamily('mqa_mq_resources', 'MQ Appliance MQ resources information')
+        i.add_metric(['appliance', 'haStatus', 'haPartner'], 
+                      {'appliance': self.appliance, 'haStatus': data['MQSystemResources']['HAStatus'], 'haPartner': data['MQSystemResources']['HAPartner']})
+        yield i
 
         g = GaugeMetricFamily('mqa_exporter_mq_system_resources_elapsed_time_seconds', 'Exporter eleapsed time to collect mq system resources metrics', labels=['appliance'])
         g.add_metric([self.appliance], time.time() - start)

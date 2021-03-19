@@ -302,6 +302,9 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_exporter_network_interfaces_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect network interfaces metrics | appliance |
 | mqa_exporter_other_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect other sensors metrics | appliance |
 | mqa_exporter_queue_managers_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect queue managers metrics | appliance |
+| mqa_exporter_queue_managers_queues_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect queue managers queues metrics | appliance |
+| mqa_exporter_queue_managers_total | Gauge | Exporter total number of running queue managers | appliance |
+| mqa_exporter_queue_managers_queues_total | Gauge | Exporter total number of queues for all running queue managers | appliance |
 | mqa_exporter_raid_ssd_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect raid ssd metrics | appliance |
 | mqa_exporter_system_cpu_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect system cpu metrics | appliance |
 | mqa_exporter_system_memory_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect system_memory metrics | appliance |
@@ -346,6 +349,11 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_info | Info | MQ Appliance information | appliance, bootcount, bootuptime, build, builddate, deliverytype, installdate, installeddpos, level, machinetype, modeltype, runningdpos, serial, time, timezone, type, tzspec, uptime, version, watchdogbuild, xmlaccelerator |
 
+**MQ Resources Information**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_mq_resources_info | Info | MQ Appliance MQ resources information | appliance, haStatus, haPartner |
+
 **MQ Resources**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
@@ -355,6 +363,8 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_mq_resources_errors_storage_bytes_used | Gauge | The amount of IBM MQ error log storage in use in bytes | appliance |
 | mqa_mq_resources_trace_storage_bytes_total | Counter | The total storage in bytes available for IBM MQ trace | appliance |
 | mqa_mq_resources_trace_storage_bytes_used | Gauge | The amount of IBM MQ trace storage in bytes in use | appliance |
+| mqa_mq_resources_ha_status | Gauge | HA status of the appliance (0: HA not set, 1: Online, 2: Standby | appliance |
+| mqa_mq_resources_ha_partner_status | Gauge | HA status of the partner appliance (0: HA not set, 1: Online, 2: Standby | appliance |
 
 **Network Interfaces**
 | Metric | Type | Description | Labels |
