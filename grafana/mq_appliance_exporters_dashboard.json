@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 16,
-  "iteration": 1616153116889,
+  "iteration": 1616165863919,
   "links": [
     {
       "icon": "external link",
@@ -697,8 +697,12 @@
                 "value": null
               },
               {
+                "color": "#EAB839",
+                "value": 30
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 60
               }
             ]
           }
@@ -756,10 +760,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -1066,7 +1066,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "MQA2002PROD1",
           "value": "MQA2002PROD1"
         },
@@ -1079,23 +1079,12 @@
         "label": "Appliance",
         "multi": false,
         "name": "appliance",
-        "options": [
-          {
-            "selected": true,
-            "text": "MQA2002PROD1",
-            "value": "MQA2002PROD1"
-          },
-          {
-            "selected": false,
-            "text": "MQA2002PROD2",
-            "value": "MQA2002PROD2"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "mqa_info",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "/.*appliance=\"([^\"]*).*/",
         "skipUrlSync": false,
         "sort": 5,
@@ -1115,5 +1104,5 @@
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 16
+  "version": 18
 }
