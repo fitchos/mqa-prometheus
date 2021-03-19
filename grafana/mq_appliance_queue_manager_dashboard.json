@@ -525,11 +525,11 @@
     },
     {
       "datasource": null,
-      "description": "The exporter version number of the Prometheus exporter.",
+      "description": "The version of this firmware image.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "light-orange",
+            "fixedColor": "light-blue",
             "mode": "fixed"
           },
           "custom": {},
@@ -553,7 +553,7 @@
         "x": 22,
         "y": 1
       },
-      "id": 62,
+      "id": 75,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -572,7 +572,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "mqa_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -581,7 +581,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exporter Version",
+      "title": "Version",
       "type": "stat"
     },
     {
@@ -883,11 +883,11 @@
     },
     {
       "datasource": null,
-      "description": "The version of this firmware image.",
+      "description": "The exporter version number of the Prometheus exporter.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "light-blue",
+            "fixedColor": "light-orange",
             "mode": "fixed"
           },
           "custom": {},
@@ -911,7 +911,7 @@
         "x": 22,
         "y": 3
       },
-      "id": 75,
+      "id": 62,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -930,7 +930,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -939,7 +939,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Version",
+      "title": "Exporter Version",
       "type": "stat"
     },
     {
@@ -2511,5 +2511,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 29
+  "version": 30
 }
