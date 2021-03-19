@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 16,
-  "iteration": 1616153116887,
+  "iteration": 1616153116889,
   "links": [
     {
       "icon": "external link",
@@ -562,7 +562,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "sum({__name__=~\"mqa_exporter_.*\", appliance=\"$appliance\"}) - 1",
+          "expr": "sum({__name__=~\"mqa_exporter_.*_elapsed_time_seconds\", appliance=\"$appliance\"}) - 1",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -597,7 +597,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 5,
-        "w": 21,
+        "w": 15,
         "x": 3,
         "y": 6
       },
@@ -678,6 +678,128 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "datasource": null,
+      "description": "Total number of running queue managers on this appliance",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 18,
+        "y": 6
+      },
+      "id": 28,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_queue_managers_total{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Queue Managers",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Total number of queues for all running queue managers on this appliance",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 18,
+        "y": 8
+      },
+      "id": 29,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_queue_managers_queues_total{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Queues",
+      "type": "stat"
     },
     {
       "aliasColors": {},
@@ -944,9 +1066,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "MQA2002PROD2",
-          "value": "MQA2002PROD2"
+          "selected": true,
+          "text": "MQA2002PROD1",
+          "value": "MQA2002PROD1"
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -959,12 +1081,12 @@
         "name": "appliance",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "MQA2002PROD1",
             "value": "MQA2002PROD1"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "MQA2002PROD2",
             "value": "MQA2002PROD2"
           }
@@ -986,12 +1108,12 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 14
+  "version": 16
 }
