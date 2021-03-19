@@ -140,15 +140,15 @@
     },
     {
       "datasource": null,
-      "description": "The current local date and time on the appliance.",
+      "description": "The name of the time zone currently in effect on the server running the Prometheus exporter.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "semi-dark-blue",
+            "fixedColor": "light-orange",
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.time}",
+          "displayName": "${__field.labels.localTimezone}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -164,11 +164,11 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 4,
+        "w": 3,
         "x": 4,
         "y": 1
       },
-      "id": 16,
+      "id": 6,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -187,7 +187,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -196,7 +196,68 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Appliance Date/Time",
+      "title": "Exporter Timezone",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The exporter version number of the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.version}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 7,
+        "y": 1
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Version",
       "type": "stat"
     },
     {
@@ -208,9 +269,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 4,
         "w": 3,
-        "x": 8,
+        "x": 10,
         "y": 1
       },
       "id": 10,
@@ -248,15 +309,15 @@
     },
     {
       "datasource": null,
-      "description": "The name of the time zone currently in effect on the server running the Prometheus exporter.",
+      "description": "The current local date and time on the appliance.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "light-orange",
+            "fixedColor": "semi-dark-blue",
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.localTimezone}",
+          "displayName": "${__field.labels.time}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -272,11 +333,11 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 3,
+        "w": 4,
         "x": 0,
         "y": 3
       },
-      "id": 6,
+      "id": 16,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -295,7 +356,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "mqa_info{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -304,7 +365,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exporter Timezone",
+      "title": "Appliance Date/Time",
       "type": "stat"
     },
     {
@@ -334,7 +395,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 5,
+        "x": 4,
         "y": 3
       },
       "id": 18,
@@ -370,67 +431,6 @@
     },
     {
       "datasource": null,
-      "description": "The exporter version number of the Prometheus exporter.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-orange",
-            "mode": "fixed"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.version}",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 3,
-        "x": 0,
-        "y": 5
-      },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Exporter Version",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
       "description": "The version of this firmware image.",
       "fieldConfig": {
         "defaults": {
@@ -456,8 +456,8 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 5,
-        "y": 5
+        "x": 7,
+        "y": 3
       },
       "id": 20,
       "options": {
@@ -497,7 +497,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 5
       },
       "id": 12,
       "panels": [],
@@ -541,7 +541,7 @@
         "h": 5,
         "w": 3,
         "x": 0,
-        "y": 8
+        "y": 6
       },
       "id": 25,
       "options": {
@@ -599,7 +599,7 @@
         "h": 5,
         "w": 21,
         "x": 3,
-        "y": 8
+        "y": 6
       },
       "hiddenSeries": false,
       "id": 26,
@@ -699,7 +699,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 11
       },
       "hiddenSeries": false,
       "id": 14,
@@ -993,5 +993,5 @@
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 12
+  "version": 14
 }
