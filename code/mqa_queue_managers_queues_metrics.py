@@ -48,6 +48,9 @@ class MQAQueueManagersQueuesMetrics(object):
         }
 
         # For each running queue manager fetch the queues
+        total_queue_managers = 0
+        total_queues = 0
+
         for qm in qm_data['qmgr']:
 
             if qm['state'] == 'running':
@@ -55,11 +58,15 @@ class MQAQueueManagersQueuesMetrics(object):
                  # v2 call, only available since 9.1.5
                 queue_data = call_rest_api('/ibmmq/rest/v2/admin/action/qmgr/' + qm['name'] + '/mqsc', self.ip, self.port, self.session, self.timeout, 'POST', headers, command)
                 if queue_data == '':
-                    return
+                    continue
+
+                total_queue_managers += 1
 
                 # Update Prometheus metrics
                 for queue in queue_data['commandResponse']:
                     if queue['completionCode'] == 0:
+
+                        total_queues += 1
 
                         g = GaugeMetricFamily('mqa_qm_queue_current_depth', 'The current depth of the queue, that is, the number of messages on the queue, including both committed messages and uncommitted messages', labels=['appliance', 'qm', 'queue'])
                         g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], queue['parameters']['curdepth'])
@@ -144,4 +151,12 @@ class MQAQueueManagersQueuesMetrics(object):
 
         g = GaugeMetricFamily('mqa_exporter_queue_managers_queues_elapsed_time_seconds', 'Exporter eleapsed time to collect queue managers queues metrics', labels=['appliance'])
         g.add_metric([self.appliance], time.time() - start)
+        yield g
+
+        g = GaugeMetricFamily('mqa_exporter_queue_managers_total', 'Exporter total number of running queue managers', labels=['appliance'])
+        g.add_metric([self.appliance], total_queue_managers)
+        yield g
+
+        g = GaugeMetricFamily('mqa_exporter_queue_managers_queues_total', 'Exporter total number of queues for all running queue managers', labels=['appliance'])
+        g.add_metric([self.appliance], total_queues)
         yield g
