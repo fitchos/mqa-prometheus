@@ -26,6 +26,7 @@ class MQAExporterInformationMetrics(object):
         self.appliance = appliance
 
     def collect(self):
+
         # Collect exporter information
         version = get_version()
         local_time = time.localtime()

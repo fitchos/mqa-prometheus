@@ -41,38 +41,26 @@ class MQAMQSystemResourcesMetrics(object):
 
         # Update Prometheus metrics
         c = CounterMetricFamily('mqa_mq_resources_storage_bytes_total', 'The total storage in bytes available for IBM MQ data', labels=['appliance'])
-        # Memory in MB not MiB 
-        #c.add_metric([self.appliance], data['MQSystemResources']['TotalStorage'] * 1048576)
         c.add_metric([self.appliance], data['MQSystemResources']['TotalStorage'] * 1000000)
         yield c
 
         g = GaugeMetricFamily('mqa_mq_resources_storage_bytes_used', 'The amount of IBM MQ storage in use in bytes', labels=['appliance'])
-        # Memory in MB not MiB 
-        #g.add_metric([self.appliance], data['MQSystemResources']['UsedStorage'] * 1048576)
         g.add_metric([self.appliance], data['MQSystemResources']['UsedStorage'] * 1000000)
         yield g
 
         c = CounterMetricFamily('mqa_mq_resources_errors_storage_bytes_total', 'The total storage in bytes available for IBM MQ error logs', labels=['appliance'])
-        # Memory in MB not MiB 
-        #c.add_metric([self.appliance], data['MQSystemResources']['TotalErrorsStorage'] * 1048576)
         c.add_metric([self.appliance], data['MQSystemResources']['TotalErrorsStorage'] * 1000000)
         yield c
 
         g = GaugeMetricFamily('mqa_mq_resources_errors_storage_bytes_used', 'The amount of IBM MQ error log storage in use in bytes', labels=['appliance'])
-        # Memory in MB not MiB 
-        #g.add_metric([self.appliance], data['MQSystemResources']['UsedErrorsStorage'] * 1048576)
         g.add_metric([self.appliance], data['MQSystemResources']['UsedErrorsStorage'] * 1000000)
         yield g
 
         c = CounterMetricFamily('mqa_mq_resources_trace_storage_bytes_total', 'The total storage in bytes available for IBM MQ trace', labels=['appliance'])
-        # Memory in MB not MiB 
-        #c.add_metric([self.appliance], data['MQSystemResources']['TotalTraceStorage'] * 1048576)
         c.add_metric([self.appliance], data['MQSystemResources']['TotalTraceStorage'] * 1000000)
         yield c
 
         g = GaugeMetricFamily('mqa_mq_resources_trace_storage_bytes_used', 'The amount of IBM MQ trace storage in bytes in use', labels=['appliance'])
-        # Memory in MB not MiB 
-        #g.add_metric([self.appliance], data['MQSystemResources']['UsedTraceStorage'] * 1048576)
         g.add_metric([self.appliance], data['MQSystemResources']['UsedTraceStorage'] * 1000000)
         yield g
 

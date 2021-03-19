@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 16,
-  "iteration": 1616018483906,
+  "iteration": 1616153116887,
   "links": [
     {
       "icon": "external link",
@@ -505,6 +505,181 @@
       "type": "row"
     },
     {
+      "datasource": null,
+      "description": "Total elapsed time for all collectors",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 30,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 0,
+        "y": 8
+      },
+      "id": 25,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "sum({__name__=~\"mqa_exporter_.*\", appliance=\"$appliance\"}) - 1",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Elapsed Time",
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Total elapsed time for all collectors",
+      "fieldConfig": {
+        "defaults": {
+          "color": {},
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 21,
+        "x": 3,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 26,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum({__name__=~\"mqa_exporter_.*\", appliance=\"$appliance\"}) - 1",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Collectors",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Total Elapsed Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -524,7 +699,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 14,
@@ -758,6 +933,7 @@
       }
     }
   ],
+  "refresh": "10s",
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
@@ -769,8 +945,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "MQA2002PROD1",
-          "value": "MQA2002PROD1"
+          "text": "MQA2002PROD2",
+          "value": "MQA2002PROD2"
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -783,12 +959,12 @@
         "name": "appliance",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "MQA2002PROD1",
             "value": "MQA2002PROD1"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "MQA2002PROD2",
             "value": "MQA2002PROD2"
           }
@@ -810,12 +986,12 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 8
+  "version": 12
 }
