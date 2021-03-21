@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 15,
-  "iteration": 1616186561471,
+  "iteration": 1616337598233,
   "links": [
     {
       "asDropdown": false,
@@ -28,6 +28,15 @@
         "MQA_Queue_Managers"
       ],
       "title": "Other Dashboards",
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Channels"
+      ],
       "type": "dashboards"
     },
     {
@@ -98,7 +107,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.time}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -108,7 +116,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd MMM DD HH:mm:ss YYYY"
         },
         "overrides": []
       },
@@ -132,12 +141,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -220,7 +229,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.uptime}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -230,7 +238,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "dtdhms"
         },
         "overrides": []
       },
@@ -240,7 +249,7 @@
         "x": 6,
         "y": 1
       },
-      "id": 91,
+      "id": 236,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -254,12 +263,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_uptime_seconds_total{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -281,7 +290,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.bootuptime}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -291,7 +299,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "dtdhms"
         },
         "overrides": []
       },
@@ -315,12 +324,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_bootuptime_seconds_total{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -342,7 +351,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.bootcount}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -376,12 +384,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_bootcount_total{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -450,7 +458,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.localTime}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -460,7 +467,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd YYYY-MM-DD HH:mm:ss"
         },
         "overrides": []
       },
@@ -484,12 +492,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -8878,5 +8886,5 @@
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 22
+  "version": 33
 }

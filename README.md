@@ -287,7 +287,8 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 **Exporter Information**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_exporter_info | Info | MQ Appliance exporter information | appliance, version, localTime, localTimezone |
+| mqa_exporter_info | Info | MQ Appliance exporter information | appliance, version, localTimezone |
+| mqa_exporter_current_datetime_seconds_total | Counter | The current date and time of the server on which the exporter is running in epoch seconds | appliance |
 | mqa_exporter_active_users_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect active users metrics | appliance |
 | mqa_exporter_current_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect current sensors metrics | appliance |
 | mqa_exporter_environmental_fan_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect environmental fan sensors metrics | appliance |

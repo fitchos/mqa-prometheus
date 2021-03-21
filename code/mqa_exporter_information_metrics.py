@@ -17,7 +17,8 @@
 import time
 
 from mqalib import get_version
-from prometheus_client.core import InfoMetricFamily
+from mqalib import datetime_to_epoch
+from prometheus_client.core import CounterMetricFamily, InfoMetricFamily
 
 class MQAExporterInformationMetrics(object):
     """MQ Appliance exporter information metrics collector"""
@@ -30,7 +31,7 @@ class MQAExporterInformationMetrics(object):
         # Collect exporter information
         version = get_version()
         local_time = time.localtime()
-        formatted_local_time = time.strftime('%a %b %d %H:%M:%S %Y', local_time)
+        formatted_local_time = time.strftime('%Y-%m-%d %H.%M.%S', local_time)
 
         try:
             if local_time[8]:
@@ -41,7 +42,11 @@ class MQAExporterInformationMetrics(object):
             local_tzname = 'UNKNOWN'
 
         # Update Prometheus metrics
+        c = CounterMetricFamily('mqa_exporter_current_datetime_seconds', 'The current date and time of the server on which the exporter is running in epoch seconds ', labels=['appliance'])
+        c.add_metric([self.appliance], datetime_to_epoch(formatted_local_time, '%Y-%m-%d %H.%M.%S'))
+        yield c
+
         i = InfoMetricFamily('mqa_exporter', 'MQ Appliance exporter information')
-        i.add_metric(['appliance', 'version', 'localTime', 'localTimezone'],
-                      {'appliance': self.appliance, 'version': version, 'localTime': formatted_local_time, 'localTimezone': local_tzname})
+        i.add_metric(['appliance', 'version', 'localTimezone'],
+                      {'appliance': self.appliance, 'version': version, 'localTimezone': local_tzname})
         yield i

@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 18,
-  "iteration": 1616076888238,
+  "iteration": 1616337685278,
   "links": [
     {
       "asDropdown": false,
@@ -35,7 +35,7 @@
       "includeVars": true,
       "keepTime": true,
       "tags": [
-        "MQA_Exporters"
+        "MQA_Queue_Managers"
       ],
       "type": "dashboards"
     },
@@ -45,7 +45,7 @@
       "includeVars": true,
       "keepTime": true,
       "tags": [
-        "MQA_Queue_Managers"
+        "MQA_Exporters"
       ],
       "type": "dashboards"
     },
@@ -85,7 +85,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.time}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -95,7 +94,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd MMM DD HH:mm:ss YYYY"
         },
         "overrides": []
       },
@@ -119,12 +119,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -207,7 +207,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.localTime}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -217,7 +216,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd YYYY-MM-DD HH:mm:ss"
         },
         "overrides": []
       },
@@ -241,12 +241,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -382,16 +382,14 @@
     },
     {
       "datasource": null,
-      "description": "The date on which the last message was put to the queue since the queue manager started",
+      "description": "The date/time on which the last message was put to the queue since the queue manager started",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {},
-          "displayName": "${__field.labels.lastPutDate}",
           "mappings": [],
-          "noValue": "N/A",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -400,17 +398,18 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd YYYY-MM-DD HH:mm:ss"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
-        "w": 2,
+        "w": 4,
         "x": 16,
         "y": 0
       },
-      "id": 18,
+      "id": 38,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -424,78 +423,19 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "auto"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "expr": "mqa_qm_queue_last_put_datetime_seconds_total{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Last PUT Date",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The time at which the last message was put to the queue since the queue manager started",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.lastPutTime}",
-          "mappings": [],
-          "noValue": "N/A",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 18,
-        "y": 0
-      },
-      "id": 19,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Last PUT Time",
+      "title": "Last PUT Date/Time",
       "type": "stat"
     },
     {
@@ -1035,16 +975,14 @@
     },
     {
       "datasource": null,
-      "description": "The date on which the last message was retrieved from the queue since the queue manager started",
+      "description": "The date/time at which the last message was retrieved from the queue since the queue manager started",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {},
-          "displayName": "${__field.labels.lastGetDate}",
           "mappings": [],
-          "noValue": "N/A",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1053,17 +991,18 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd YYYY-MM-DD HH:mm:ss"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
-        "w": 2,
+        "w": 4,
         "x": 16,
         "y": 2
       },
-      "id": 16,
+      "id": 37,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1077,78 +1016,19 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "auto"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "expr": "mqa_qm_queue_last_get_datetime_seconds_total{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Last GET Date",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "The time at which the last message was retrieved from the queue since the queue manager started",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "displayName": "${__field.labels.lastGetTime}",
-          "mappings": [],
-          "noValue": "N/A",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 18,
-        "y": 2
-      },
-      "id": 17,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "name"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Last GET Time",
+      "title": "Last GET Date/Time",
       "type": "stat"
     },
     {
@@ -1785,8 +1665,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "QM1",
-          "value": "QM1"
+          "text": "QM2",
+          "value": "QM2"
         },
         "datasource": null,
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
@@ -1815,9 +1695,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "QUEUE1",
-          "value": "QUEUE1"
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1846,12 +1727,12 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Queues",
   "uid": "e_6DCmQMk",
-  "version": 41
+  "version": 54
 }

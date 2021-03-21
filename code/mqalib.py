@@ -15,6 +15,7 @@
 """This module provides various helper functions."""
 
 import csv
+import datetime
 import fnmatch
 import glob
 import json
@@ -52,7 +53,20 @@ def call_rest_api(api_call, ip, port, session, timeout, method='GET', headers=''
 
     logging.info('REST API call to gather \'' + api_call  + '\' completed.')
 
-    return data   
+    return data
+
+def datetime_to_epoch(date_time, format):
+
+    if date_time.strip() == '':
+        return -1
+
+    dt = datetime.datetime.strptime(date_time, format)
+
+    if sys.version[:1] == '3':
+        return dt.timestamp()
+    else:
+        return time.mktime(dt.timetuple())
+
 
 def init_rest_api(ip, port, auth, timeout):
 

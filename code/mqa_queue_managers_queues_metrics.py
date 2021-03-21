@@ -18,7 +18,8 @@ import json
 import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import GaugeMetricFamily, InfoMetricFamily
+from mqalib import datetime_to_epoch
+from prometheus_client.core import GaugeMetricFamily, CounterMetricFamily
 
 class MQAQueueManagersQueuesMetrics(object):
     """MQ Appliance queue managers queues metrics collector"""
@@ -128,26 +129,13 @@ class MQAQueueManagersQueuesMetrics(object):
                         except KeyError:
                             pass
 
-                        i = InfoMetricFamily('mqa_qm_queue', 'MQ Appliance queue information')
-                        i.add_metric(['appliance', 'qm', 'queue', 'curDepth', 'curFileSize', 'curMaxFileSize', 'ipProcs', 'lastGetDate'
-                                      'lastGetTime', 'lastPutDate', 'lastPutTime', 'monQ', 'msgAge', 'opProcs', 'qTime', 'unCom'], 
-                                    {'appliance': self.appliance, 
-                                    'qm': qm['name'], 
-                                    'queue': queue['parameters']['queue'],
-                                    'curDepth': str(queue['parameters']['curdepth']),
-                                    'curFileSize': str(current_file_size),
-                                    'curMaxFileSize': str(current_max_file_size),
-                                    'ipProcs': str(queue['parameters']['ipprocs']),
-                                    'lastGetDate': queue['parameters']['lgetdate'],
-                                    'lastGetTime': queue['parameters']['lgettime'],
-                                    'lastPutDate': queue['parameters']['lputdate'],
-                                    'lastPutTime': queue['parameters']['lputtime'],
-                                    'monQ': queue['parameters']['monq'],
-                                    'msgAge': str(queue['parameters']['msgage']),
-                                    'opProcs': str(queue['parameters']['opprocs']),
-                                    'qTime': queue['parameters']['qtime'],
-                                    'unCom': str(queue['parameters']['uncom'])})
-                        yield i
+                        c = CounterMetricFamily('mqa_qm_queue_last_get_datetime_seconds', 'The datetime on which the last message was retrieved from the queue since the queue manager started in epoch seconds', labels=['appliance', 'qm', 'queue'])
+                        c.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], datetime_to_epoch(queue['parameters']['lgetdate'] + ' ' + queue['parameters']['lgettime'], '%Y-%m-%d %H.%M.%S'))
+                        yield c
+
+                        c = CounterMetricFamily('mqa_qm_queue_last_put_datetime_seconds', 'The datetime on which the last message was put to the queue since the queue manager started in epoch seconds', labels=['appliance', 'qm', 'queue'])
+                        c.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], datetime_to_epoch(queue['parameters']['lgetdate'] + ' ' + queue['parameters']['lgettime'], '%Y-%m-%d %H.%M.%S'))
+                        yield c
 
         g = GaugeMetricFamily('mqa_exporter_queue_managers_queues_elapsed_time_seconds', 'Exporter eleapsed time to collect queue managers queues metrics', labels=['appliance'])
         g.add_metric([self.appliance], time.time() - start)

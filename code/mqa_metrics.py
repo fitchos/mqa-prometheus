@@ -39,6 +39,7 @@ from mqa_log_targets_metrics import MQALogTargetsMetrics
 from mqa_mq_system_recources_metrics import MQAMQSystemResourcesMetrics
 from mqa_network_interfaces_metrics import MQANetworkInterfacesMetrics
 from mqa_other_sensors_metrics import MQAOtherSensorsMetrics
+from mqa_queue_managers_channels_metrics import MQAQueueManagersChannelsMetrics
 from mqa_queue_managers_metrics import MQAQueueManagersMetrics
 from mqa_queue_managers_queues_metrics import MQAQueueManagersQueuesMetrics
 from mqa_raid_battery_module_metrics import MQARaidBatteryModuleMetrics
@@ -151,6 +152,8 @@ def main():
             REGISTRY.register(MQAOtherSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'queue_managers'):
             REGISTRY.register(MQAQueueManagersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'queue_managers_channels'):
+            REGISTRY.register(MQAQueueManagersChannelsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'queue_managers_queues'):
             REGISTRY.register(MQAQueueManagersQueuesMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'raid_battery_module'):

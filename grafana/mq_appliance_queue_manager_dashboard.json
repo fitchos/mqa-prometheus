@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 17,
-  "iteration": 1616186588299,
+  "iteration": 1616337663283,
   "links": [
     {
       "asDropdown": false,
@@ -35,7 +35,7 @@
       "includeVars": true,
       "keepTime": true,
       "tags": [
-        "MQA_Exporters"
+        "MQA_Channels"
       ],
       "type": "dashboards"
     },
@@ -45,6 +45,15 @@
       "keepTime": true,
       "tags": [
         "MQA_Queues"
+      ],
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Exporters"
       ],
       "type": "dashboards"
     },
@@ -411,7 +420,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.time}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -421,7 +429,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd MMM DD HH:mm:ss YYYY"
         },
         "overrides": []
       },
@@ -445,12 +454,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -769,7 +778,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.localTime}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -779,7 +787,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd YYYY-MM-DD HH:mm:ss"
         },
         "overrides": []
       },
@@ -803,12 +812,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2458,7 +2467,7 @@
         "options": [],
         "query": {
           "query": "mqa_info",
-          "refId": "Prometheus-appliance-Variable-Query"
+          "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": "/.*appliance=\"([^\"]*).*/",
@@ -2489,7 +2498,7 @@
         "options": [],
         "query": {
           "query": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
-          "refId": "Prometheus-qm-Variable-Query"
+          "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": "/.*qm=\"([^\"]*).*/",
@@ -2511,5 +2520,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queue Managers",
   "uid": "x8WoNtyMz",
-  "version": 30
+  "version": 36
 }

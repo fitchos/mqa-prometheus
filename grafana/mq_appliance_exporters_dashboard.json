@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 16,
-  "iteration": 1616174057468,
+  "iteration": 1616337644467,
   "links": [
     {
       "icon": "external link",
@@ -34,6 +34,15 @@
       "keepTime": true,
       "tags": [
         "MQA_Queue_Managers"
+      ],
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Queues"
       ],
       "type": "dashboards"
     },
@@ -87,7 +96,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.localTime}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -97,7 +105,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd YYYY-MM-DD HH:mm:ss"
         },
         "overrides": []
       },
@@ -121,12 +130,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -317,7 +326,6 @@
             "mode": "fixed"
           },
           "custom": {},
-          "displayName": "${__field.labels.time}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -327,7 +335,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "time:ddd MMM DD HH:mm:ss YYYY"
         },
         "overrides": []
       },
@@ -351,12 +360,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "expr": "mqa_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -603,7 +612,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 3,
         "x": 3,
         "y": 6
@@ -661,7 +670,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 18,
         "x": 6,
         "y": 6
@@ -811,7 +820,7 @@
     },
     {
       "datasource": null,
-      "description": "Total number of queues for all running queue managers on this appliance",
+      "description": "Total number of LOCAL queues for all running queue managers on this appliance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -867,6 +876,63 @@
       "type": "stat"
     },
     {
+      "datasource": null,
+      "description": "Total number of current channels for all running queue managers on this appliance",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 12
+      },
+      "id": 31,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_queue_managers_current_channels_total{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Channels",
+      "type": "stat"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -886,7 +952,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 14,
@@ -985,6 +1051,13 @@
           "interval": "",
           "legendFormat": "MQA Information",
           "refId": "K"
+        },
+        {
+          "expr": "mqa_exporter_queue_managers_channels_elapsed_time_seconds{appliance=\"$appliance\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "MQ Channels",
+          "refId": "X"
         },
         {
           "expr": "mqa_exporter_queue_managers_queues_elapsed_time_seconds{appliance=\"$appliance\"}",
@@ -1162,12 +1235,12 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 22
+  "version": 33
 }

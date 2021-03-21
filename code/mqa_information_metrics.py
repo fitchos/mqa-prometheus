@@ -18,7 +18,8 @@ import json
 import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import InfoMetricFamily, GaugeMetricFamily
+from mqalib import datetime_to_epoch
+from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily, InfoMetricFamily
 
 class MQAInformationMetrics(object):
     """MQ Appliance information metrics collector"""
@@ -43,12 +44,42 @@ class MQAInformationMetrics(object):
             return
 
         # Update Prometheus metrics
+        c = CounterMetricFamily('mqa_bootcount', 'The number of times the firmware image was restarted through an appliance reboot or a firmware reload. The count is from the initial firmware load on the appliance till the current time. The count is independent of firmware version', labels=['appliance'])
+        c.add_metric([self.appliance], data2['FirmwareStatus']['BootCount'])
+        yield c
+
+        uptime_split = data['DateTimeStatus']['uptime2'].split(' ')
+        days = int(uptime_split[0])
+        hours = int(uptime_split[2][0:2])
+        minutes = int(uptime_split[2][3:5])
+        seconds = int(uptime_split[2][6:])
+        uptime_seconds = days * 86400 + hours * 3600 + minutes * 60 + seconds
+
+        c = CounterMetricFamily('mqa_uptime_seconds', 'The total amount of time in seconds the appliance has been up since the last reload or reboot. Note that a shutdown and reload resets this counter', labels=['appliance'])
+        c.add_metric([self.appliance], uptime_seconds)
+        yield c
+
+        bootuptime_split = data['DateTimeStatus']['bootuptime2'].split(' ')
+        days = int(bootuptime_split[0])
+        hours = int(bootuptime_split[2][0:2])
+        minutes = int(bootuptime_split[2][3:5])
+        seconds = int(bootuptime_split[2][6:])
+        bootuptime_seconds = days * 86400 + hours * 3600 + minutes * 60 + seconds
+
+        c = CounterMetricFamily('mqa_bootuptime_seconds', 'The total amount of time in seconds since the last reboot. Note that this counter is reset by a shutdown and reboot, but not by a shutdown and reload', labels=['appliance'])
+        c.add_metric([self.appliance], bootuptime_seconds)
+        yield c
+
+        c = CounterMetricFamily('mqa_current_datetime_seconds', 'The current date and time of the MQ Appliance in epoch seconds', labels=['appliance'])
+        c.add_metric([self.appliance], datetime_to_epoch(data['DateTimeStatus']['time'], '%a %b %d %H:%M:%S %Y'))
+        yield c
+
         i = InfoMetricFamily('mqa', 'MQ Appliance information')
-        i.add_metric(['appliance', 'time', 'timezone', 'tzspec', 'uptime', 'bootuptime', 'type', 'installdate', 'bootcount', 'serial', 'version', 'level',
+        i.add_metric(['appliance', 'timezone', 'tzspec', 'type', 'installdate', 'serial', 'version', 'level',
                       'build', 'builddate', 'deliverytype', 'watchdogbuild', 'installeddpos', 'runningdpos', 'xmlaccelerator', 'machinetype', 'modeltype'], 
-                      {'appliance': self.appliance, 'time': data['DateTimeStatus']['time'], 'timezone': data['DateTimeStatus']['timezone'],
-                      'tzspec': data['DateTimeStatus']['tzspec'], 'uptime': data['DateTimeStatus']['uptime2'], 'bootuptime': data['DateTimeStatus']['bootuptime2'],
-                      'type': data2['FirmwareStatus']['Type'], 'installdate': data2['FirmwareStatus']['InstallDate'], 'bootcount': str(data2['FirmwareStatus']['BootCount']),
+                      {'appliance': self.appliance, 'timezone': data['DateTimeStatus']['timezone'],
+                      'tzspec': data['DateTimeStatus']['tzspec'], 
+                      'type': data2['FirmwareStatus']['Type'], 'installdate': data2['FirmwareStatus']['InstallDate'],
                      'serial': data3['FirmwareVersion3']['Serial'], 'version': data3['FirmwareVersion3']['Version'], 'level': data3['FirmwareVersion3']['Level'],
                      'build': data3['FirmwareVersion3']['Build'], 'builddate': data3['FirmwareVersion3']['BuildDate'], 'deliverytype': data3['FirmwareVersion3']['DeliveryType'],
                      'watchdogbuild': data3['FirmwareVersion3']['WatchdogBuild'], 'installeddpos': data3['FirmwareVersion3']['InstalledDPOS'],
