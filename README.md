@@ -422,7 +422,7 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 **Raid Battery Module Information**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_raid_battery_module_info | Info | MQ Appliance raid battery module information | appliance, controllerID, batteryType, serial, name, status, voltage, current, temperature, designCapacity, designVoltage |
+| mqa_raid_battery_module_info | Info | MQ Appliance raid battery module information | appliance, controllerID, batteryType, serial, name, status |
 
 
 **Raid Physical Drive**
@@ -432,11 +432,12 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_raid_physical_drive_raw_size_bytes_total | Counter | The exact size of the drive in bytes | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
 | mqa_raid_physical_drive_coerced_size_bytes_total | Counter | The normalized size in megabytes. The value is rounded down to an even multiple, which allows you to swap drives of the same nominal size but might not be the same raw size | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
 | mqa_raid_physical_drive_temperature_celsius | Gauge | The temperature of the hard disk drive in celsius | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
+| | mqa_raid_physical_drive_failure | Gauge | If the hard disk failure state shows Yes, replace this drive as soon as possible to avoid possible data loss | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
 
 **Raid Physical Drive Information**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_raid_physical_drive_info | Info | MQ Appliance raid physical drive information | appliance, controllerID, deviceID, arrayID, logicalDriveID, logicalDriveName, position, state, progressPercent, rawSize, coercedSize, interfaceType, interfaceSpeed, sasAddress, vendorID, productID, revision, specificInfo, failure, temperature |
+| mqa_raid_physical_drive_info | Info | MQ Appliance raid physical drive information | appliance, controllerID, deviceID, arrayID, logicalDriveID, logicalDriveName, position, state, interfaceType, interfaceSpeed, sasAddress, vendorID, productID, revision, specificInfo |
 
 **Raid SSD**
 | Metric | Type | Description | Labels |

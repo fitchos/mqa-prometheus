@@ -61,19 +61,13 @@ class MQARaidBatteryModuleMetrics(object):
         yield g
 
         i = InfoMetricFamily('mqa_raid_battery_module', 'MQ Appliance raid battery module information')
-        i.add_metric(['appliance', 'controllerID', 'batteryType', 'serial', 'name', 'status', 'voltage', 'current',
-                          'temperature', 'designCapacity', 'designVoltage'], 
+        i.add_metric(['appliance', 'controllerID', 'batteryType', 'serial', 'name', 'status'], 
                       {'appliance': self.appliance, 
                       'controllerID': str(data['RaidBatteryModuleStatus']['ControllerID']),
                       'batteryType': data['RaidBatteryModuleStatus']['BatteryType'],
                       'serial': data['RaidBatteryModuleStatus']['Serial'], 
                       'name': data['RaidBatteryModuleStatus']['Name'], 
-                      'status': data['RaidBatteryModuleStatus']['Status'], 
-                      'voltage': str(data['RaidBatteryModuleStatus']['Voltage']), 
-                      'current': str(data['RaidBatteryModuleStatus']['Current']), 
-                      'temperature': str(data['RaidBatteryModuleStatus']['Temperature']), 
-                      'designCapacity': str(data['RaidBatteryModuleStatus']['DesignCapacity']), 
-                      'designVoltage': str(data['RaidBatteryModuleStatus']['DesignVoltage'])})
+                      'status': data['RaidBatteryModuleStatus']['Status']})
 
         g = GaugeMetricFamily('mqa_exporter_raid_battery_module_elapsed_time_seconds', 'Exporter eleapsed time to collect raid battery module metrics', labels=['appliance'])
         g.add_metric([self.appliance], time.time() - start)
