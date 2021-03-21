@@ -41,38 +41,26 @@ class MQAFileSystemMetrics(object):
 
         # Update Prometheus metrics
         g = GaugeMetricFamily('mqa_file_system_encrypted_bytes_free', 'Free, or unused and available, encrypted storage space on the appliance', labels=['appliance'])
-        # Memory in MB not MiB 
-        #g.add_metric([self.appliance], data['FilesystemStatus']['FreeEncrypted'] * 1048576)
         g.add_metric([self.appliance], data['FilesystemStatus']['FreeEncrypted'] * 1000000)
         yield g
 
         c = CounterMetricFamily('mqa_file_system_encrypted_bytes_total', 'Total encrypted storage space on the appliance (the maximum capacity)', labels=['appliance'])
-        # Memory in MB not MiB 
-        #c.add_metric([self.appliance], data['FilesystemStatus']['TotalEncrypted'] * 1048576)
         c.add_metric([self.appliance], data['FilesystemStatus']['TotalEncrypted'] * 1000000)
         yield c
 
         g = GaugeMetricFamily('mqa_file_system_temporary_bytes_free', 'Free, or unused and available, temporary storage space on the appliance', labels=['appliance'])
-        # Memory in MB not MiB 
-        #g.add_metric([self.appliance], data['FilesystemStatus']['FreeTemporary'] * 1048576)
         g.add_metric([self.appliance], data['FilesystemStatus']['FreeTemporary'] * 1000000)
         yield g
 
         c = CounterMetricFamily('mqa_file_system_temporary_bytes_total', 'Total temporary storage space on the appliance', labels=['appliance'])
-        # Memory in MB not MiB 
-        #c.add_metric([self.appliance], data['FilesystemStatus']['TotalTemporary'] * 1048576)
         c.add_metric([self.appliance], data['FilesystemStatus']['TotalTemporary'] * 1000000)
         yield c
 
         g = GaugeMetricFamily('mqa_file_system_internal_bytes_free', 'Free, or unused and available, internal storage space on the appliance', labels=['appliance'])
-        # Memory in MB not MiB 
-        #g.add_metric([self.appliance], data['FilesystemStatus']['FreeInternal'] * 1048576)
         g.add_metric([self.appliance], data['FilesystemStatus']['FreeInternal'] * 1000000)
         yield g
 
         c = CounterMetricFamily('mqa_file_system_internal_bytes_total', 'Total internal storage space on the appliance', labels=['appliance'])
-        # Memory in MB not MiB 
-        #c.add_metric([self.appliance], data['FilesystemStatus']['TotalInternal'] * 1048576)
         c.add_metric([self.appliance], data['FilesystemStatus']['TotalInternal'] * 1000000)
         yield c
 
