@@ -61,17 +61,17 @@ class MQALogTargetsMetrics(object):
             c.add_metric([self.appliance, lt['LogTarget']['value']], lt['EventsPending'])
             yield c
 
+            c = CounterMetricFamily('mqa_log_target_memory_requested_total', 'The requested memory for this log target. This measurement represents the high watermark of memory requested', labels=['appliance', 'name'])
+            c.add_metric([self.appliance, lt['LogTarget']['value']], lt['RequestedMemory'])
+            yield c
+
             i = InfoMetricFamily('mqa_log_target', 'MQ Appliance log target information')
-            i.add_metric(['appliance', 'name', 'href', 'status', 'errorInfo', 'eventsProcessed', 'eventsDropped', 'eventsPending', 'requestedMemory'], 
+            i.add_metric(['appliance', 'name', 'href', 'status', 'errorInfo'], 
                       {'appliance': self.appliance, 
                       'name': lt['LogTarget']['value'],
                       'href': lt['LogTarget']['href'],
                       'status': lt['Status'], 
-                      'errorInfo': lt['ErrorInfo'], 
-                      'eventsProcessed': str(lt['EventsProcessed']), 
-                      'eventsDropped': str(lt['EventsDropped']), 
-                      'eventsPending': str(lt['EventsPending']), 
-                      'requestedMemory': str(lt['RequestedMemory'])})
+                      'errorInfo': lt['ErrorInfo']})
             yield i
 
         g = GaugeMetricFamily('mqa_exporter_log_targets_elapsed_time_seconds', 'Exporter eleapsed time to collect log targets metrics', labels=['appliance'])

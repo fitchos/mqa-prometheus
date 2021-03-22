@@ -339,11 +339,12 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_log_target_events_processed_total | Counter | The number of events that this log target processed | appliance, name |
 | mqa_log_target_events_dropped_total | Counter | The number of events that this log target dropped because there are too many pending events | appliance, name |
 | mqa_log_target_events_pending_total | Counter | The number of pending events for this log target. These events are waiting to be stored at the destination | appliance, name |
+| mqa_log_target_memory_requested_total | Counter | The requested memory for this log target. This measurement represents the high watermark of memory requested | appliance, name |
 
 **Log Targets Information**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_log_target_info | Info | MQ Appliance log target information | appliance, name, status, errorInfo, eventsProcessed, eventsDropped, eventsPending,requestedMemory |
+| mqa_log_target_info | Info | MQ Appliance log target information | appliance, name, status |
 
 **MQ Appliance Information**
 | Metric | Type | Description | Labels |

@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 15,
-  "iteration": 1616363433452,
+  "iteration": 1616415385021,
   "links": [
     {
       "asDropdown": false,
@@ -2464,9 +2464,12 @@
     },
     {
       "datasource": null,
-      "description": "List of log targets currently in use.",
+      "description": "The list of log targets currently defined and in use on this appliance",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "custom": {
             "align": null,
             "filterable": false
@@ -2490,88 +2493,36 @@
           {
             "matcher": {
               "id": "byName",
+              "options": "mqa_log_target_info{appliance=\"MQA2002PROD1\", errorInfo=\"none\", href=\"/mgmt/config/default/LogTarget/default-log\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\", status=\"active\"} · Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 201
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "href"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 381
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
               "options": "Status"
             },
             "properties": [
               {
-                "id": "custom.filterable",
-                "value": true
-              },
-              {
                 "id": "custom.width",
-                "value": 87
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "HA Role"
-            },
-            "properties": [
-              {
-                "id": "custom.filterable",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "HA Status"
-            },
-            "properties": [
-              {
-                "id": "custom.filterable",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "DR Role"
-            },
-            "properties": [
-              {
-                "id": "custom.filterable",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "DR Status"
-            },
-            "properties": [
-              {
-                "id": "custom.filterable",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Name"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 130
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "HRef"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 366
+                "value": 102
               }
             ]
           },
@@ -2583,43 +2534,31 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": null
+                "value": 81
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "requestedMemory"
+              "options": "Events Processed"
             },
             "properties": [
               {
                 "id": "custom.width",
-                "value": 132
+                "value": 129
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Memory "
+              "options": "Events Pending"
             },
             "properties": [
               {
                 "id": "custom.width",
-                "value": 93
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Error"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 116
+                "value": 118
               }
             ]
           },
@@ -2639,6 +2578,22 @@
                   "fixedColor": "light-blue",
                   "mode": "fixed"
                 }
+              },
+              {
+                "id": "custom.width",
+                "value": 128
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Events Dropped"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
               }
             ]
           }
@@ -2650,8 +2605,9 @@
         "x": 0,
         "y": 12
       },
-      "id": 165,
+      "id": 238,
       "options": {
+        "frameIndex": 0,
         "showHeader": true,
         "sortBy": []
       },
@@ -2663,12 +2619,41 @@
           "interval": "",
           "legendFormat": "",
           "refId": "A"
+        },
+        {
+          "expr": "mqa_log_target_events_processed_total{appliance=\"$appliance\"}",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        },
+        {
+          "expr": "mqa_log_target_events_pending_total{appliance=\"$appliance\"}",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "C"
+        },
+        {
+          "expr": "mqa_log_target_events_dropped_total{appliance=\"$appliance\"}",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "D"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Log Targets",
       "transformations": [
+        {
+          "id": "concatenate",
+          "options": {
+            "frameNameLabel": "frame",
+            "frameNameMode": "field"
+          }
+        },
         {
           "id": "labelsToFields",
           "options": {}
@@ -2677,40 +2662,36 @@
           "id": "organize",
           "options": {
             "excludeByName": {
-              "Time": true,
-              "Value": true,
               "appliance": true,
               "instance": true,
-              "job": true
+              "job": true,
+              "mqa_log_target_events_dropped_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"} · Time": true,
+              "mqa_log_target_events_pending_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"} · Time": true,
+              "mqa_log_target_events_processed_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"}": false,
+              "mqa_log_target_events_processed_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"} · Time": true,
+              "mqa_log_target_info{appliance=\"MQA2002PROD1\", errorInfo=\"none\", href=\"/mgmt/config/default/LogTarget/default-log\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\", status=\"active\"}": true,
+              "mqa_log_target_info{appliance=\"MQA2002PROD1\", errorInfo=\"none\", href=\"/mgmt/config/default/LogTarget/default-log\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\", status=\"active\"} · Time": true
             },
             "indexByName": {
-              "Time": 3,
-              "Value": 7,
               "appliance": 4,
-              "errorInfo": 11,
-              "eventsDropped": 10,
-              "eventsPending": 9,
-              "eventsProcessed": 8,
+              "errorInfo": 5,
               "href": 1,
-              "instance": 5,
-              "job": 6,
+              "instance": 6,
+              "job": 7,
+              "mqa_log_target_events_processed_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"}": 10,
+              "mqa_log_target_events_processed_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"} · Time": 9,
+              "mqa_log_target_info{appliance=\"MQA2002PROD1\", errorInfo=\"none\", href=\"/mgmt/config/default/LogTarget/default-log\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\", status=\"active\"}": 8,
+              "mqa_log_target_info{appliance=\"MQA2002PROD1\", errorInfo=\"none\", href=\"/mgmt/config/default/LogTarget/default-log\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\", status=\"active\"} · Time": 3,
               "name": 0,
-              "requestedMemory": 12,
               "status": 2
             },
             "renameByName": {
-              "drRole": "DR Role",
-              "drStatus": "DR Status",
-              "errorInfo": "Error",
-              "eventsDropped": "Events Dropped",
-              "eventsPending": "Events Pending",
-              "eventsProcessed": "Events Processed",
-              "haRole": "HA Role",
-              "haStatus": "HA Status",
-              "href": "HRef",
+              "mqa_log_target_events_dropped_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"}": "Events Dropped",
+              "mqa_log_target_events_dropped_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"} · Time": "",
+              "mqa_log_target_events_pending_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"}": "Events Pending",
+              "mqa_log_target_events_pending_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"} · Time": "",
+              "mqa_log_target_events_processed_total{appliance=\"MQA2002PROD1\", instance=\"localhost:8000\", job=\"mqa2002prod1\", name=\"default-log\"}": "Events Processed",
               "name": "Name",
-              "qm": "Name",
-              "requestedMemory": "Memory ",
               "status": "Status"
             }
           }
@@ -8885,5 +8866,5 @@
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 34
+  "version": 39
 }
