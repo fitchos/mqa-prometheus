@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 18,
-  "iteration": 1616427496425,
+  "iteration": 1616428918691,
   "links": [
     {
       "asDropdown": false,
@@ -813,7 +813,6 @@
             "mode": "thresholds"
           },
           "custom": {},
-          "displayName": "${__field.labels.qTime}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -827,7 +826,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "s"
         },
         "overrides": []
       },
@@ -851,19 +851,27 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_qm_queue_info{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "expr": "mqa_qm_queue_time_small_sample_seconds{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
+        },
+        {
+          "expr": "mqa_qm_queue_time_large_sample_seconds{appliance=\"$appliance\", qm=\"$qm\", queue=\"$queue\"}",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
-      "title": "Q-TIME",
+      "title": "Q-Time",
       "type": "stat"
     },
     {
@@ -1682,7 +1690,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "QM1",
           "value": "QM1"
         },
@@ -1713,7 +1721,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "QUEUE1",
           "value": "QUEUE1"
         },
@@ -1751,5 +1759,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queues",
   "uid": "e_6DCmQMk",
-  "version": 56
+  "version": 60
 }
