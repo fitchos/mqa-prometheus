@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 18,
-  "iteration": 1616363483477,
+  "iteration": 1616427496425,
   "links": [
     {
       "asDropdown": false,
@@ -389,7 +389,16 @@
             "mode": "thresholds"
           },
           "custom": {},
-          "mappings": [],
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "NA",
+              "to": "",
+              "type": 1,
+              "value": "Wed 1969-12-31 18:59:59"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -982,7 +991,16 @@
             "mode": "thresholds"
           },
           "custom": {},
-          "mappings": [],
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "NA",
+              "to": "",
+              "type": 1,
+              "value": "Wed 1969-12-31 18:59:59"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1664,9 +1682,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "QM2",
-          "value": "QM2"
+          "selected": true,
+          "text": "QM1",
+          "value": "QM1"
         },
         "datasource": null,
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
@@ -1695,10 +1713,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
+          "selected": true,
+          "text": "QUEUE1",
+          "value": "QUEUE1"
         },
         "datasource": null,
         "definition": "mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"}",
@@ -1734,5 +1751,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queues",
   "uid": "e_6DCmQMk",
-  "version": 55
+  "version": 56
 }
