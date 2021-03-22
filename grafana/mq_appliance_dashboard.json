@@ -2621,10 +2621,10 @@
             ]
           },
           "gridPos": {
-            "h": 8,
+            "h": 6,
             "w": 14,
             "x": 0,
-            "y": 14
+            "y": 12
           },
           "id": 238,
           "options": {
@@ -2703,10 +2703,10 @@
             "overrides": []
           },
           "gridPos": {
-            "h": 3,
+            "h": 2,
             "w": 4,
-            "x": 14,
-            "y": 14
+            "x": 17,
+            "y": 12
           },
           "id": 243,
           "options": {
@@ -2760,10 +2760,10 @@
             "overrides": []
           },
           "gridPos": {
-            "h": 3,
+            "h": 2,
             "w": 4,
-            "x": 14,
-            "y": 17
+            "x": 17,
+            "y": 14
           },
           "id": 244,
           "options": {
@@ -2819,8 +2819,8 @@
           "gridPos": {
             "h": 2,
             "w": 4,
-            "x": 14,
-            "y": 20
+            "x": 17,
+            "y": 16
           },
           "id": 245,
           "options": {
@@ -2877,7 +2877,7 @@
             "h": 4,
             "w": 14,
             "x": 0,
-            "y": 22
+            "y": 18
           },
           "id": 240,
           "options": {
@@ -2928,7 +2928,7 @@
             "h": 4,
             "w": 10,
             "x": 14,
-            "y": 22
+            "y": 18
           },
           "hiddenSeries": false,
           "id": 167,
@@ -2960,7 +2960,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(mqa_log_target_events_processed_total{appliance=\"$appliance\"}[1m])",
+              "expr": "rate(mqa_log_target_events_processed_total{appliance=\"$appliance\"}[2m])",
               "interval": "",
               "legendFormat": "{{name}}",
               "refId": "A"
@@ -3033,7 +3033,7 @@
             "h": 4,
             "w": 14,
             "x": 0,
-            "y": 26
+            "y": 22
           },
           "id": 241,
           "options": {
@@ -3084,7 +3084,7 @@
             "h": 4,
             "w": 10,
             "x": 14,
-            "y": 26
+            "y": 22
           },
           "hiddenSeries": false,
           "id": 246,
@@ -3116,7 +3116,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(mqa_log_target_events_pending_total{appliance=\"$appliance\"}[1m])",
+              "expr": "rate(mqa_log_target_events_pending_total{appliance=\"$appliance\"}[2m])",
               "interval": "",
               "legendFormat": "{{name}}",
               "refId": "A"
@@ -3189,7 +3189,7 @@
             "h": 4,
             "w": 14,
             "x": 0,
-            "y": 30
+            "y": 26
           },
           "id": 242,
           "options": {
@@ -3240,7 +3240,7 @@
             "h": 4,
             "w": 10,
             "x": 14,
-            "y": 30
+            "y": 26
           },
           "hiddenSeries": false,
           "id": 247,
@@ -3272,7 +3272,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(mqa_log_target_events_dropped_total{appliance=\"$appliance\"}[1m])",
+              "expr": "rate(mqa_log_target_events_dropped_total{appliance=\"$appliance\"}[2m])",
               "interval": "",
               "legendFormat": "{{name}}",
               "refId": "A"
@@ -9394,5 +9394,5 @@
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 45
+  "version": 47
 }
