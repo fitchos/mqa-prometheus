@@ -18,7 +18,8 @@ import json
 import time
 
 from mqalib import call_rest_api
-from prometheus_client.core import GaugeMetricFamily, InfoMetricFamily
+from mqalib import datetime_to_epoch
+from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily, InfoMetricFamily
 
 class MQAQueueManagersChannelsMetrics(object):
     """MQ Appliance queue managers channels metrics collector"""
@@ -68,13 +69,30 @@ class MQAQueueManagersChannelsMetrics(object):
 
                         total_channels += 1
 
-                        g = GaugeMetricFamily('mqa_qm_channel_running_state', 'The current depth of the queue, that is, the number of messages on the queue, including both committed messages and uncommitted messages', labels=['appliance', 'qm', 'channel', 'type', 'jobname'])
+                        g = GaugeMetricFamily('mqa_qm_channel_running_state', 'The current status of the channel, 1 if the channel is in RUNNING state, 0 otherwise', labels=['appliance', 'qm', 'channel', 'chlType', 'jobName'])
                         g.add_metric([self.appliance, qm['name'], channel['parameters']['channel'], channel['parameters']['chltype'], channel['parameters']['jobname']], 1 if channel['parameters']['status'] == 'RUNNING' else 0)
                         yield g
 
+                        c = CounterMetricFamily('mqa_qm_channel_start_datetime_seconds', 'The datetime on which the channel started in epoch seconds', labels=['appliance', 'qm', 'channel', 'chlType', 'jobName'])
+                        c.add_metric([self.appliance, qm['name'], channel['parameters']['channel'], channel['parameters']['chltype'], channel['parameters']['jobname']], datetime_to_epoch(channel['parameters']['chstada'] + ' ' + channel['parameters']['chstati'], '%Y-%m-%d %H.%M.%S'))
+                        yield c
+
+                        c = CounterMetricFamily('mqa_qm_channel_last_message_datetime_seconds', 'The datetime on which the last message was sent on the channel in epoch seconds', labels=['appliance', 'qm', 'channel', 'chlType', 'jobName'])
+                        c.add_metric([self.appliance, qm['name'], channel['parameters']['channel'], channel['parameters']['chltype'], channel['parameters']['jobname']], datetime_to_epoch(channel['parameters']['lstmsgda'] + ' ' + channel['parameters']['lstmsgti'], '%Y-%m-%d %H.%M.%S'))
+                        yield c
+
+                        c = CounterMetricFamily('mqa_qm_channel_messages', 'The number of messages sent on the channel since it started', labels=['appliance', 'qm', 'channel', 'chlType', 'jobName'])
+                        c.add_metric([self.appliance, qm['name'], channel['parameters']['channel'], channel['parameters']['chltype'], channel['parameters']['jobname']], channel['parameters']['msgs'])
+                        yield c
+
+                        try:
+                            remoteQMgr = channel['parameters']['rqmname']
+                        except KeyError:
+                            remoteQMgr = ''
+
                         i = InfoMetricFamily('mqa_qm_channel', 'MQ Appliance channel information')
-                        i.add_metric(['appliance', 'qm', 'channel', 'chlType', 'jobName', 'status', 'conName', 'chlStartDate'
-                                      'chlStartDate', 'lastMsgDate', 'lastMsgTime', 'msgs', 'remoteProduct', 'remoteVersion'], 
+                        i.add_metric(['appliance', 'qm', 'channel', 'chlType', 'jobName', 'status', 'conName', 
+                                      'remoteQMgr', 'remoteProduct', 'remoteVersion'], 
                                     {'appliance': self.appliance, 
                                     'qm': qm['name'], 
                                     'channel': channel['parameters']['channel'],
@@ -82,16 +100,12 @@ class MQAQueueManagersChannelsMetrics(object):
                                     'jobName': channel['parameters']['jobname'],
                                     'status': channel['parameters']['status'],
                                     'conName': channel['parameters']['conname'],
-                                    'chlStartDate': channel['parameters']['chstada'],
-                                    'chlStartTime': channel['parameters']['chstati'],
-                                    'lastMsgDate': channel['parameters']['lstmsgda'],
-                                    'lastMsgTime': channel['parameters']['lstmsgti'],
-                                    'msgs': str(channel['parameters']['msgs']),
+                                    'remoteQMgr': remoteQMgr,
                                     'remoteProduct': channel['parameters']['rproduct'],
                                     'remoteVersion': channel['parameters']['rversion']})
                         yield i
 
-        g = GaugeMetricFamily('mqa_exporter_queue_managers_current_channels_total', 'Exporter total number of current channels for all running queue managers', labels=['appliance'])
+        g = GaugeMetricFamily('mqa_exporter_queue_managers_current_channels_count', 'Exporter total number of current channels for all running queue managers', labels=['appliance'])
         g.add_metric([self.appliance], total_channels)
         yield g
 

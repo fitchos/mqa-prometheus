@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 18,
-  "iteration": 1616428918691,
+  "iteration": 1616551220558,
   "links": [
     {
       "asDropdown": false,
@@ -1691,8 +1691,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "QM1",
-          "value": "QM1"
+          "text": "QM2",
+          "value": "QM2"
         },
         "datasource": null,
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
@@ -1721,9 +1721,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "QUEUE1",
-          "value": "QUEUE1"
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "mqa_qm_queue_current_depth{appliance=\"$appliance\", qm=\"$qm\"}",

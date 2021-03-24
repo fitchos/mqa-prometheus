@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 16,
-  "iteration": 1616363447824,
+  "iteration": 1616551183018,
   "links": [
     {
       "icon": "external link",
@@ -922,7 +922,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_queue_managers_current_channels_total{appliance=\"$appliance\"}",
+          "expr": "mqa_exporter_queue_managers_current_channels_count{appliance=\"$appliance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1242,5 +1242,5 @@
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 36
+  "version": 38
 }
