@@ -17,8 +17,44 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 20,
-  "iteration": 1616551072916,
-  "links": [],
+  "iteration": 1616617726400,
+  "links": [
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Main"
+      ],
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Queue_Managers"
+      ],
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "tags": [
+        "MQA_Queues"
+      ],
+      "type": "dashboards"
+    },
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Exporters"
+      ],
+      "type": "dashboards"
+    }
+  ],
   "panels": [
     {
       "collapsed": false,
@@ -585,7 +621,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(mqa_qm_channel_messages_total{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"}[1m]))",
+          "expr": "sum(rate(mqa_qm_channel_messages_total{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"}[2m]))",
           "interval": "",
           "legendFormat": "All instances",
           "refId": "A"
@@ -1177,7 +1213,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mqa_qm_channel_messages_total{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\", jobName=\"$jobname\"}[1m])",
+          "expr": "rate(mqa_qm_channel_messages_total{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\", jobName=\"$jobname\"}[2m])",
           "interval": "",
           "legendFormat": "{{jobName}}",
           "refId": "A"
@@ -1298,9 +1334,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "SVRCONN",
-          "value": "SVRCONN"
+          "selected": false,
+          "text": "CLUSRCVR",
+          "value": "CLUSRCVR"
         },
         "description": null,
         "error": null,
@@ -1354,9 +1390,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "CLIENT.SVRCONN",
-          "value": "CLIENT.SVRCONN"
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\"}",
@@ -1385,9 +1422,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "00004C09000000BF",
-          "value": "00004C09000000BF"
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"}",
@@ -1437,5 +1475,5 @@
   "timezone": "",
   "title": "MQ Appliance - Channels",
   "uid": "Uy2rW-wGz",
-  "version": 68
+  "version": 73
 }

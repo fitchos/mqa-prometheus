@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 16,
-  "iteration": 1616551183018,
+  "iteration": 1616617710720,
   "links": [
     {
       "icon": "external link",
@@ -42,33 +42,18 @@
       "includeVars": true,
       "keepTime": true,
       "tags": [
-        "MQA_Queues"
+        "MQA_Channels"
       ],
       "type": "dashboards"
     },
     {
       "icon": "external link",
-      "tags": [],
-      "targetBlank": true,
-      "title": "IBM MQ Appliance Knowledge Center",
-      "type": "link",
-      "url": "https://www.ibm.com/support/knowledgecenter/en/SS5K6E_9.2.0/WelcomePage/homepage.html"
-    },
-    {
-      "icon": "external link",
-      "tags": [],
-      "targetBlank": true,
-      "title": "IBM MQ Appliance Lifecycle",
-      "type": "link",
-      "url": "https://www.ibm.com/support/pages/node/6426983"
-    },
-    {
-      "icon": "external link",
-      "tags": [],
-      "targetBlank": true,
-      "title": "IBM MQ Support",
-      "type": "link",
-      "url": "https://www.ibm.com/mysupport/s/topic/0TO5000000024cJGAQ/mq?language=en_US&productId=01t0z000006zdYXAAY"
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "MQA_Queues"
+      ],
+      "type": "dashboards"
     }
   ],
   "panels": [
@@ -284,6 +269,23 @@
         "y": 1
       },
       "id": 10,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "IBM MQ Appliance Knowledge Center",
+          "url": "https://www.ibm.com/support/knowledgecenter/en/SS5K6E_9.2.0/WelcomePage/homepage.html"
+        },
+        {
+          "targetBlank": true,
+          "title": "IBM MQ Appliance Lifecycle",
+          "url": "https://www.ibm.com/support/pages/node/6426983"
+        },
+        {
+          "targetBlank": true,
+          "title": "IBM MQ Support",
+          "url": "https://www.ibm.com/mysupport/s/topic/0TO5000000024cJGAQ/mq?language=en_US&productId=01t0z000006zdYXAAY"
+        }
+      ],
       "options": {
         "bgColor": "rgb(29, 50, 92)",
         "clockType": "24 hour",
@@ -1235,12 +1237,12 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 38
+  "version": 44
 }
