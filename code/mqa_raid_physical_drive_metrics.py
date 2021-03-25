@@ -62,7 +62,7 @@ class MQARaidPhysicalDriveMetrics(object):
             g.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], temperature_celsius)
             yield g
 
-            governing = GaugeMetricFamily('mqa_raid_physical_drive_failure', 'If the hard disk failure state shows Yes, replace this drive as soon as possible to avoid possible data loss', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
+            g = GaugeMetricFamily('mqa_raid_physical_drive_failure', 'If the hard disk failure state shows Yes, replace this drive as soon as possible to avoid possible data loss', labels=['appliance', 'controllerID', 'deviceID', 'arrayID', 'logicalDriveID', 'position'])
             g.add_metric([self.appliance, str(rpd['ControllerID']), str(rpd['DeviceID']), str(rpd['ArrayID']), str(rpd['LogicalDriveID']), rpd['Position']], 0 if rpd['Failure'] == 'No' else 1)
             yield g
 
