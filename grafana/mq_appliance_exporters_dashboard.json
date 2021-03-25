@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 30,
-  "iteration": 1616701906987,
+  "id": 23,
+  "iteration": 1616710954961,
   "links": [
     {
       "icon": "external link",
@@ -1512,8 +1512,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "x0033xn20",
-          "value": "x0033xn20"
+          "text": "MQA2002PROD1",
+          "value": "MQA2002PROD1"
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -1542,12 +1542,12 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 15
+  "version": 2
 }

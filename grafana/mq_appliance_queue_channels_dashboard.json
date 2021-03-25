@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 20,
-  "iteration": 1616617726400,
+  "iteration": 1616710970838,
   "links": [
     {
       "icon": "external link",
@@ -133,63 +133,6 @@
     },
     {
       "datasource": null,
-      "description": "The total number of messages for all current channel instances",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 3,
-        "x": 3,
-        "y": 1
-      },
-      "id": 14,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.4.3",
-      "targets": [
-        {
-          "expr": "sum(mqa_qm_channel_messages_total{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"})",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Total Messages",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
       "description": "The total number of distinct IPs using the current channel instances",
       "fieldConfig": {
         "defaults": {
@@ -217,7 +160,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 6,
+        "x": 3,
         "y": 1
       },
       "id": 18,
@@ -278,7 +221,7 @@
       "gridPos": {
         "h": 2,
         "w": 4,
-        "x": 9,
+        "x": 6,
         "y": 1
       },
       "id": 24,
@@ -312,6 +255,249 @@
     },
     {
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "id": 27,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "IBM MQ Appliance Knowledge Center",
+          "url": "https://www.ibm.com/support/knowledgecenter/en/SS5K6E_9.2.0/WelcomePage/homepage.html"
+        },
+        {
+          "targetBlank": true,
+          "title": "IBM MQ Appliance Lifecycle",
+          "url": "https://www.ibm.com/support/pages/node/6426983"
+        },
+        {
+          "targetBlank": true,
+          "title": "IBM MQ Support",
+          "url": "https://www.ibm.com/mysupport/s/topic/0TO5000000024cJGAQ/mq?language=en_US&productId=01t0z000006zdYXAAY"
+        }
+      ],
+      "options": {
+        "bgColor": "rgb(29, 50, 92)",
+        "clockType": "24 hour",
+        "countdownSettings": {
+          "endCountdownTime": "2021-02-11T22:10:38-05:00",
+          "endText": "00:00:00"
+        },
+        "dateSettings": {
+          "dateFormat": "YYYY-MM-DD",
+          "fontSize": "20px",
+          "fontWeight": "normal",
+          "showDate": true
+        },
+        "mode": "time",
+        "timeSettings": {
+          "fontSize": "28px",
+          "fontWeight": "bold"
+        },
+        "timezone": "",
+        "timezoneSettings": {
+          "fontSize": "12px",
+          "fontWeight": "normal",
+          "showTimezone": true,
+          "zoneFormat": "offsetAbbv"
+        }
+      },
+      "pluginVersion": "7.3.7",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Local Date and Time",
+      "type": "grafana-clock-panel"
+    },
+    {
+      "datasource": null,
+      "description": "The current local date and time on the server running the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "time:ddd MMM DD HH:mm:ss YYYY"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 16,
+        "y": 1
+      },
+      "id": 29,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "max(mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Date/Time",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The current local date and time on the appliance.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "time:ddd MMM DD HH:mm:ss YYYY"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "id": 31,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Date/Time",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The total number of messages for all current channel instances",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 3
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "sum(mqa_qm_channel_messages_total{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Messages",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "description": "The total number of distinct versions using the current channel instances",
       "fieldConfig": {
         "defaults": {
@@ -339,8 +525,8 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 13,
-        "y": 1
+        "x": 3,
+        "y": 3
       },
       "id": 21,
       "options": {
@@ -399,9 +585,9 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 3,
-        "x": 16,
-        "y": 1
+        "w": 4,
+        "x": 6,
+        "y": 3
       },
       "id": 23,
       "options": {
@@ -430,6 +616,128 @@
         }
       ],
       "title": "Total Disctinct Products",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The name of the time zone currently in effect on the server running the Prometheus exporter.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-orange",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.localTimezone}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 16,
+        "y": 3
+      },
+      "id": 33,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "count(mqa_exporter_info{appliance=\"$appliance\"}) by (localTimezone)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter Timezone",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "The name of the time zone currently in effect.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.timezone}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 20,
+        "y": 3
+      },
+      "id": 35,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Appliance Timezone",
       "type": "stat"
     },
     {
@@ -495,7 +803,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 5
       },
       "id": 2,
       "links": [],
@@ -589,7 +897,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 25,
@@ -698,7 +1006,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 20
+        "y": 22
       },
       "id": 5,
       "options": {
@@ -719,7 +1027,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "count(mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"}) by (conName)",
+          "expr": "count(mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"})  by (conName)",
           "instant": true,
           "interval": "",
           "legendFormat": "{{conName}}",
@@ -759,7 +1067,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 20
+        "y": 22
       },
       "id": 22,
       "options": {
@@ -820,7 +1128,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 29
       },
       "id": 19,
       "options": {
@@ -881,7 +1189,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 29
       },
       "id": 20,
       "options": {
@@ -919,7 +1227,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 36
       },
       "id": 9,
       "panels": [],
@@ -957,7 +1265,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 35
+        "y": 37
       },
       "id": 11,
       "options": {
@@ -1015,7 +1323,7 @@
         "h": 2,
         "w": 4,
         "x": 3,
-        "y": 35
+        "y": 37
       },
       "id": 12,
       "options": {
@@ -1073,7 +1381,7 @@
         "h": 2,
         "w": 4,
         "x": 7,
-        "y": 35
+        "y": 37
       },
       "id": 13,
       "options": {
@@ -1130,7 +1438,7 @@
         "h": 2,
         "w": 3,
         "x": 11,
-        "y": 35
+        "y": 37
       },
       "id": 15,
       "options": {
@@ -1182,7 +1490,7 @@
         "h": 8,
         "w": 14,
         "x": 0,
-        "y": 37
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 17,
@@ -1367,7 +1675,7 @@
             "value": "RQSTR"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "SDR",
             "value": "SDR"
           },
@@ -1377,7 +1685,7 @@
             "value": "SVR"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "SVRCONN",
             "value": "SVRCONN"
           }
@@ -1475,5 +1783,5 @@
   "timezone": "",
   "title": "MQ Appliance - Channels",
   "uid": "Uy2rW-wGz",
-  "version": 73
+  "version": 85
 }
