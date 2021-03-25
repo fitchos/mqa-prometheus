@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 16,
-  "iteration": 1616617710720,
+  "id": 30,
+  "iteration": 1616690730007,
   "links": [
     {
       "icon": "external link",
@@ -120,7 +120,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
+          "expr": "max(mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -181,7 +181,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "count(mqa_exporter_info{appliance=\"$appliance\"}) by (localTimezone)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -242,7 +242,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "count(mqa_exporter_info{appliance=\"$appliance\"}) by (version)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -502,13 +502,96 @@
       "type": "stat"
     },
     {
+      "datasource": null,
+      "description": "The list of exporters defined and running for this appliance",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 13,
+        "x": 0,
+        "y": 5
+      },
+      "id": 33,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "List of Exporters Running",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "appliance": true
+            },
+            "indexByName": {
+              "Time": 0,
+              "Value": 6,
+              "appliance": 1,
+              "instance": 3,
+              "job": 2,
+              "localTimezone": 4,
+              "version": 5
+            },
+            "renameByName": {
+              "instance": "Instance",
+              "job": "Job Name",
+              "localTimezone": "Local Time Zone",
+              "version": "Version"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 11
       },
       "id": 12,
       "panels": [],
@@ -549,7 +632,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 6
+        "y": 12
       },
       "id": 30,
       "options": {
@@ -617,7 +700,7 @@
         "h": 8,
         "w": 3,
         "x": 3,
-        "y": 6
+        "y": 12
       },
       "id": 25,
       "options": {
@@ -675,7 +758,7 @@
         "h": 8,
         "w": 18,
         "x": 6,
-        "y": 6
+        "y": 12
       },
       "hiddenSeries": false,
       "id": 26,
@@ -789,7 +872,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 8
+        "y": 14
       },
       "id": 28,
       "options": {
@@ -846,7 +929,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 10
+        "y": 16
       },
       "id": 29,
       "options": {
@@ -903,7 +986,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 12
+        "y": 18
       },
       "id": 31,
       "options": {
@@ -954,7 +1037,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 14,
@@ -1207,8 +1290,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "MQA2002PROD1",
-          "value": "MQA2002PROD1"
+          "text": "x0033wn20",
+          "value": "x0033wn20"
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -1237,12 +1320,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 44
+  "version": 4
 }
