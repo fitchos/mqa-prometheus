@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 30,
-  "iteration": 1616690730007,
+  "iteration": 1616701906987,
   "links": [
     {
       "icon": "external link",
@@ -502,6 +502,20 @@
       "type": "stat"
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "id": 37,
+      "panels": [],
+      "title": "Exporters",
+      "type": "row"
+    },
+    {
       "datasource": null,
       "description": "The list of exporters defined and running for this appliance",
       "fieldConfig": {
@@ -528,17 +542,43 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Version"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 74
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Job Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 221
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 6,
-        "w": 13,
+        "w": 10,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 33,
       "options": {
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": []
       },
       "pluginVersion": "7.4.3",
       "targets": [
@@ -585,13 +625,195 @@
       "type": "table"
     },
     {
+      "datasource": null,
+      "description": "The elapsed times for each individual exporter",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 60,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 30
+              },
+              {
+                "color": "dark-red",
+                "value": 50
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 10,
+        "y": 6
+      },
+      "id": 35,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "sum({__name__=~\"mqa_exporter_.*_elapsed_time_seconds\", appliance=\"$appliance\"}) by (job)",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{job}}",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporters Elapsed Time",
+      "transformations": [],
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "-- Dashboard --",
+      "description": "The elapsed times for each individual exporter",
+      "fieldConfig": {
+        "defaults": {
+          "color": {},
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 20,
+        "x": 0,
+        "y": 12
+      },
+      "hiddenSeries": false,
+      "id": 38,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "panelId": 35,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [
+        {
+          "colorMode": "background6",
+          "fill": true,
+          "fillColor": "rgba(234, 112, 112, 0.12)",
+          "line": false,
+          "lineColor": "rgba(237, 46, 24, 0.60)",
+          "op": "time"
+        }
+      ],
+      "timeShift": null,
+      "title": "Exporters Elapsed Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transformations": [],
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 18
       },
       "id": 12,
       "panels": [],
@@ -632,7 +854,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 12
+        "y": 19
       },
       "id": 30,
       "options": {
@@ -700,7 +922,7 @@
         "h": 8,
         "w": 3,
         "x": 3,
-        "y": 12
+        "y": 19
       },
       "id": 25,
       "options": {
@@ -758,7 +980,7 @@
         "h": 8,
         "w": 18,
         "x": 6,
-        "y": 12
+        "y": 19
       },
       "hiddenSeries": false,
       "id": 26,
@@ -872,7 +1094,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 14
+        "y": 21
       },
       "id": 28,
       "options": {
@@ -929,7 +1151,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 16
+        "y": 23
       },
       "id": 29,
       "options": {
@@ -986,7 +1208,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 18
+        "y": 25
       },
       "id": 31,
       "options": {
@@ -1037,7 +1259,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 14,
@@ -1290,8 +1512,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "x0033wn20",
-          "value": "x0033wn20"
+          "text": "x0033xn20",
+          "value": "x0033xn20"
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -1327,5 +1549,5 @@
   "timezone": "",
   "title": "MQ Appliance - Exporters",
   "uid": "h8ynI78Gk",
-  "version": 4
+  "version": 15
 }
