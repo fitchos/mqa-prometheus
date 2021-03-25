@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1616683589253,
+  "id": 21,
+  "iteration": 1616691736914,
   "links": [
     {
       "asDropdown": false,
@@ -491,7 +491,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
+          "expr": "max(mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -978,7 +978,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "count(mqa_exporter_info{appliance=\"$appliance\"}) by (localTimezone)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1039,7 +1039,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "count(mqa_exporter_info{appliance=\"$appliance\"}) by (version)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -9534,9 +9534,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "x0033sn20",
-          "value": "x0033sn20"
+          "selected": false,
+          "text": "MQA2002PROD1",
+          "value": "MQA2002PROD1"
         },
         "datasource": "Prometheus",
         "definition": "mqa_info",
@@ -9565,12 +9565,12 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "MQ Appliance - Main",
   "uid": "tTNQ95sGk",
-  "version": 19
+  "version": 4
 }

@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 18,
-  "iteration": 1616617761313,
+  "iteration": 1616691771062,
   "links": [
     {
       "asDropdown": false,
@@ -231,7 +231,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000",
+          "expr": "max(mqa_exporter_current_datetime_seconds_total{appliance=\"$appliance\"} * 1000)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -292,7 +292,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "count(mqa_exporter_info{appliance=\"$appliance\"}) by (localTimezone)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -353,7 +353,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "mqa_exporter_info{appliance=\"$appliance\"}",
+          "expr": "count(mqa_exporter_info{appliance=\"$appliance\"}) by (version)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1761,5 +1761,5 @@
   "timezone": "",
   "title": "MQ Appliance - Queues",
   "uid": "e_6DCmQMk",
-  "version": 64
+  "version": 67
 }
