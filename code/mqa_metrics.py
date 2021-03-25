@@ -154,6 +154,8 @@ def main():
             REGISTRY.register(MQANetworkInterfacesMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'other_sensors'):
             REGISTRY.register(MQAOtherSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
+        if args.config == None or config.getboolean('collectors', 'system_cpu'):
+            REGISTRY.register(MQASystemCpuMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'queue_managers'):
             REGISTRY.register(MQAQueueManagersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'queue_managers_channels'):
@@ -166,8 +168,6 @@ def main():
             REGISTRY.register(MQARaidPhysicalDriveMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'raid_ssd'):
             REGISTRY.register(MQARaidSsdMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-        if args.config == None or config.getboolean('collectors', 'system_cpu'):
-            REGISTRY.register(MQASystemCpuMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'system_memory'):
             REGISTRY.register(MQASystemMemoryMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'tcp_summary'):
