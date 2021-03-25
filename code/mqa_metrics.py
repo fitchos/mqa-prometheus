@@ -138,8 +138,6 @@ def main():
             REGISTRY.register(MQAEnvironmentalSensorsMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'ethernet_counters'):
             REGISTRY.register(MQAEthernetCountersMetrics(args.appliance, args.ip, args.port, session, args.timeout))
-        if args.config == None or config.getboolean('collectors', 'exporters_information'):
-            REGISTRY.register(MQAExporterInformationMetrics(args.appliance))
         if args.config == None or config.getboolean('collectors', 'failure_notification'):
             REGISTRY.register(MQAFailureNotificationMetrics(args.appliance, args.ip, args.port, session, args.timeout))
         if args.config == None or config.getboolean('collectors', 'file_system'):
@@ -184,6 +182,8 @@ def main():
         logging.error('Invalid exporter configuration file \'' + args.config + '\', ' + str(err))
         logging.info('Exporter has terminated')
         sys.exit(1)
+
+    REGISTRY.register(MQAExporterInformationMetrics(args.appliance))
 
     # Start the HTTP server serving the metrics
     start_http_server(args.httpPort)
