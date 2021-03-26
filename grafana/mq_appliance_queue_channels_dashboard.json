@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 20,
-  "iteration": 1616710970838,
+  "iteration": 1616757541483,
   "links": [
     {
       "icon": "external link",
@@ -791,7 +791,7 @@
                 "value": [
                   {
                     "title": "Channel Instance details",
-                    "url": "http://192.168.28.210:3000/d/Uy2rW-wGz/mq-appliance-channels?${appliance:queryparam}&${qm:queryparam}&${type:queryparam}&${name:queryparam}&var-jobname=${__data.fields[\"Job Name\"]}"
+                    "url": "/d/Uy2rW-wGz/mq-appliance-channels?${appliance:queryparam}&${qm:queryparam}&${type:queryparam}&${name:queryparam}&var-jobname=${__data.fields[\"Job Name\"]}"
                   }
                 ]
               }
@@ -1581,8 +1581,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "MQA2002PROD1",
-          "value": "MQA2002PROD1"
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -1612,8 +1612,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "QM1",
-          "value": "QM1"
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
@@ -1762,7 +1762,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -1783,5 +1783,5 @@
   "timezone": "",
   "title": "MQ Appliance - Channels",
   "uid": "Uy2rW-wGz",
-  "version": 85
+  "version": 86
 }
