@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 20,
-  "iteration": 1616757541483,
+  "id": 36,
+  "iteration": 1616758368455,
   "links": [
     {
       "icon": "external link",
@@ -994,8 +994,20 @@
                 "value": null
               },
               {
-                "color": "red",
+                "color": "#6ED0E0",
+                "value": 50
+              },
+              {
+                "color": "light-purple",
                 "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 100
+              },
+              {
+                "color": "red",
+                "value": 200
               }
             ]
           }
@@ -1027,7 +1039,7 @@
       "pluginVersion": "7.4.3",
       "targets": [
         {
-          "expr": "count(mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"})  by (conName)",
+          "expr": "sort_desc(count(mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"})  by (conName))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{conName}}",
@@ -1051,12 +1063,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "light-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -1112,12 +1120,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "light-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -1173,12 +1177,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "light-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -1298,6 +1298,68 @@
     },
     {
       "datasource": null,
+      "description": "The connection name the channel is originating from",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "displayName": "${__field.labels.conName}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 3,
+        "y": 37
+      },
+      "id": 36,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\", jobName=\"$jobname\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Connection Name",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "description": "The date and time the channel instance started",
       "fieldConfig": {
         "defaults": {
@@ -1322,7 +1384,7 @@
       "gridPos": {
         "h": 2,
         "w": 4,
-        "x": 3,
+        "x": 6,
         "y": 37
       },
       "id": 12,
@@ -1380,7 +1442,7 @@
       "gridPos": {
         "h": 2,
         "w": 4,
-        "x": 7,
+        "x": 10,
         "y": 37
       },
       "id": 13,
@@ -1437,7 +1499,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 11,
+        "x": 14,
         "y": 37
       },
       "id": 15,
@@ -1488,7 +1550,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 8,
-        "w": 14,
+        "w": 17,
         "x": 0,
         "y": 39
       },
@@ -1581,8 +1643,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "x0033xn10",
+          "value": "x0033xn10"
         },
         "datasource": null,
         "definition": "mqa_info",
@@ -1611,9 +1673,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "None",
-          "value": ""
+          "selected": true,
+          "text": "QQ0051",
+          "value": "QQ0051"
         },
         "datasource": null,
         "definition": "mqa_queue_manager_cpu_usage{appliance=\"$appliance\"}",
@@ -1642,9 +1704,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "CLUSRCVR",
-          "value": "CLUSRCVR"
+          "selected": true,
+          "text": "SVRCONN",
+          "value": "SVRCONN"
         },
         "description": null,
         "error": null,
@@ -1675,7 +1737,7 @@
             "value": "RQSTR"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "SDR",
             "value": "SDR"
           },
@@ -1685,7 +1747,7 @@
             "value": "SVR"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "SVRCONN",
             "value": "SVRCONN"
           }
@@ -1698,10 +1760,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
+          "selected": true,
+          "text": "QQ0051.SGL.SGL.QA",
+          "value": "QQ0051.SGL.SGL.QA"
         },
         "datasource": null,
         "definition": "mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\"}",
@@ -1730,10 +1791,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "000DAD6E00003C7D",
+          "value": "000DAD6E00003C7D"
         },
         "datasource": null,
         "definition": "mqa_qm_channel_info{appliance=\"$appliance\", qm=\"$qm\", chlType=\"$type\", channel=\"$name\"}",
@@ -1762,7 +1822,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -1783,5 +1843,5 @@
   "timezone": "",
   "title": "MQ Appliance - Channels",
   "uid": "Uy2rW-wGz",
-  "version": 86
+  "version": 8
 }
