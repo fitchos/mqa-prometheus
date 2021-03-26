@@ -33,7 +33,7 @@ across exporters to lessen the collection times and meet specific Prometheus scr
 
 Certain collectors, like the MQ queues and channels collectors may take some time to run depending
 on the number of queue managers running on an MQ Appliance, and the number of queues and channels in
-use on each queue manager. These two collectors may benefit to run in their own separate exporter.
+use on each queue manager. These two collectors may benefit to run in their own separate exporter(s).
 
 mqa_metrics.py is the name of the module to run an exporter. Only basic authentication is
 currently supported.
@@ -115,6 +115,10 @@ mq_system_resources = true
 network_interfaces = true
 other_sensors = true
 queue_managers = true
+queue_managers_channels = true
+queue_managers_queues = true
+raid_battery_module = true
+raid_physical_drive = true
 raid_ssd = true
 system_cpu = true
 system_memory = true
