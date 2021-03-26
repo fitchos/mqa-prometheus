@@ -27,7 +27,13 @@ The following are prerequisites to run the exporter:
 7. MQ Appliance REST API must be enabled
 
 ## Getting Started
-You must run a separate exporter for each MQ Appliance you want to collect metrics for.
+You must run a separate exporter for each MQ Appliance you want to collect metrics for, but it
+is possible to run more than one exporter against an MQ Appliance if you want to split collectors
+across exporters to lessen the collection times and meet specific Prometheus scrape times. 
+
+Certain collectors, like the MQ queues and channels collectors may take some time to run depending
+on the number of queue managers running on an MQ Appliance, and the number of queues and channels in
+use on each queue manager. These two collectors may benefit to run in their own separate exporter.
 
 mqa_metrics.py is the name of the module to run an exporter. Only basic authentication is
 currently supported.
@@ -35,7 +41,9 @@ currently supported.
 **Note: if you use Python 2 and log to a file, you need to use an external mechanism to rotate the logs**
 
 ```
-Usage: mqa_metrics.py [-h] -a APPLIANCE [-c CONFIG] -i IP [-hp HTTPPORT] [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] -p PORT [-t TIMEOUT] -u USER [-x PW]
+Usage: mqa_metrics.py [-h] -a APPLIANCE [-c CONFIG] -i IP [-hp HTTPPORT]
+                      [-l LOG] [-ln LOGNUMBERS] [-ls LOGSIZE] [-p PORT]
+                      [-t TIMEOUT] -u USER [-x PW]
 
 MQ Appliance Prometheus Exporter - vx.x
 
@@ -47,15 +55,17 @@ optional arguments:
                         Name of the exporter configuration file (INI)
   -i IP, --ip IP        IP address or DNS of the appliance REST API
   -hp HTTPPORT, --httpPort HTTPPORT
-                        Port number of the exported HTTP server (default: 8000)
+                        Port number of the exported HTTP server (default:
+                        8000)
   -l LOG, --log LOG     Name of the log file (defaults to STDOUT)
   -ln LOGNUMBERS, --lognumbers LOGNUMBERS
                         Number of logs in a rotation (defaults to 10)
   -ls LOGSIZE, --logsize LOGSIZE
                         Size of logs in bytes (defaults to 10MB - 10485760)
-  -p PORT, --port PORT  Port number of the appliance REST API
+  -p PORT, --port PORT  Port number of the appliance REST API (default: 5554)
   -t TIMEOUT, --timeout TIMEOUT
-                        Timeout in seconds to perform the REST API call (default: 15)
+                        Timeout in seconds to perform the REST API call
+                        (default: 15)
   -u USER, --user USER  User to login to the appliance
   -x PW, --pw PW        Password to login to the appliance
 ```
@@ -91,6 +101,7 @@ The configuration looks like this:
 
 # List of available metrics collectors - set to true or false to run or not run a collector
 [collectors]
+appliance_information = true
 active_users = true
 current_sensors = false
 environmental_fan_sensors = true
@@ -114,7 +125,15 @@ voltage_sensors = false
 
 When no configuration file is specified, all metric collectors run by default.
 
-### Utilities to manage exporters
+**IMPORTANT:** If you run multiple exporters for an appliance to split the number of
+collectors across more than one exporter, ensure that the configuration files used do
+not duplicate the collectors run, otherwise this will lead to duplicate metrics series
+in Prometheus.
+
+### Utilities to manage the operation of the exporters
+Please take note that as of the latest release, the utilities can only be used to 
+manage exporters when ONLY one (1) exporter is used per appliance. 
+
 Three utilities are available to:
 
 1. Start multiple exporters using a CSV file
@@ -303,8 +322,10 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_exporter_network_interfaces_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect network interfaces metrics | appliance |
 | mqa_exporter_other_sensors_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect other sensors metrics | appliance |
 | mqa_exporter_queue_managers_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect queue managers metrics | appliance |
+| mqa_exporter_queue_managers_channels_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect queue managers channels metrics | appliance |
 | mqa_exporter_queue_managers_queues_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect queue managers queues metrics | appliance |
 | mqa_exporter_queue_managers_total | Gauge | Exporter total number of running queue managers | appliance |
+| mqa_exporter_queue_managers_current_channels_count | Gauge | Exporter total number of current channels for all running queue managers | appliance |
 | mqa_exporter_queue_managers_queues_total | Gauge | Exporter total number of queues for all running queue managers | appliance |
 | mqa_exporter_raid_ssd_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect raid ssd metrics | appliance |
 | mqa_exporter_system_cpu_elapsed_time_seconds | Gauge | Exporter eleapsed time to collect system cpu metrics | appliance |
@@ -336,29 +357,21 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 **Log Targets**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_log_target_info | Info | MQ Appliance log target information | appliance, name, status |
 | mqa_log_target_events_processed_total | Counter | The number of events that this log target processed | appliance, name |
 | mqa_log_target_events_dropped_total | Counter | The number of events that this log target dropped because there are too many pending events | appliance, name |
 | mqa_log_target_events_pending_total | Counter | The number of pending events for this log target. These events are waiting to be stored at the destination | appliance, name |
 | mqa_log_target_memory_requested_total | Counter | The requested memory for this log target. This measurement represents the high watermark of memory requested | appliance, name |
-
-**Log Targets Information**
-| Metric | Type | Description | Labels |
-|------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_log_target_info | Info | MQ Appliance log target information | appliance, name, status |
 
 **MQ Appliance Information**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
 | mqa_info | Info | MQ Appliance information | appliance, bootcount, bootuptime, build, builddate, deliverytype, installdate, installeddpos, level, machinetype, modeltype, runningdpos, serial, time, timezone, type, tzspec, uptime, version, watchdogbuild, xmlaccelerator |
 
-**MQ Resources Information**
-| Metric | Type | Description | Labels |
-|------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_mq_resources_info | Info | MQ Appliance MQ resources information | appliance, haStatus, haPartner |
-
 **MQ Resources**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_mq_resources_info | Info | MQ Appliance MQ resources information | appliance, haStatus, haPartner |
 | mqa_mq_resources_storage_bytes_total | Counter | The total storage in bytes available for IBM MQ data | appliance |
 | mqa_mq_resources_storage_bytes_used | Gauge | The amount of IBM MQ storage in use in bytes | appliance |
 | mqa_mq_resources_errors_storage_bytes_total | Counter | The total storage in bytes available for IBM MQ error logs | appliance |
@@ -371,6 +384,7 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 **Network Interfaces**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_network_interface_info | Info | MQ Appliance network interface information | appliance, interfaceIndex, interfaceType, name, adminStatus, operStatus, ipType, ip, prefixLength, macAddress, mtu |
 | mqa_network_interface_rx_bytes_total | Counter | The amount of data successfully received on the interface, which includes MAC framing overhead | appliance, adminStatus, name, operStatus |
 | mqa_network_interface_rx_packets_total | Counter | The number of packets successfully received on the interface that were passed up to the network layer for processing | appliance, adminStatus, name, operStatus |
 | mqa_network_interface_rx_errors_total | Counter | The number of packets that could not be received due to errors in the packet or in the hardware | appliance, adminStatus, name, operStatus |
@@ -379,11 +393,6 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_network_interface_tx_packets_total | Counter | The number of packets successfully transmitted on the interface | appliance, adminStatus, name, operStatus |
 | mqa_network_interface_tx_errors_total | Counter | The number of packets that were not successfully transmitted due to errors on the network or in the hardware | appliance, adminStatus, name, operStatus |
 | mqa_network_interface_tx_drops_total | Counter | The number of packets that were not transmitted because the network layer was generating packets faster than the physical network could accept them | appliance, adminStatus, name, operStatus |
-
-**Network Interface Information**
-| Metric | Type | Description | Labels |
-|------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_network_interface_info | Info | MQ Appliance network interface information | appliance, interfaceIndex, interfaceType, name, adminStatus, operStatus, ipType, ip, prefixLength, macAddress, mtu |
 
 **Other Sensors**
 | Metric | Type | Description | Labels |
@@ -401,44 +410,55 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 **Queue Managers**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_queue_manager_info | Info | MQ Appliance queue manager information | appliance, qm, status, haRole, haStatus, drRole, drStatus |
 | mqa_queue_manager_cpu_usage | Gauge | The instantaneous CPU usage by the queue manager as a percentage of the CPU load | appliance, qm, status |
 | mqa_queue_manager_memory_bytes_used | Gauge | The amount of memory in bytes that is currently in use by the queue manager | appliance, qm, status |
 | mqa_queue_manager_fs_bytes_used | Gauge | The amount of file system in bytes that is currently in use by the queue manager | appliance, qm, status |
 | mqa_queue_manager_fs_bytes_allocated | Gauge | The amount of file system in bytes allocated for the queue manager | appliance, qm, status |
 
-**Queue Manager Information**
+**Queue Managers Channels**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_queue_manager_info | Info | MQ Appliance queue manager information | appliance, qm, status, haRole, haStatus, drRole, drStatus |
+| mqa_qm_channel_info | Info | MQ Appliance channel information | appliance, qm, channel, chlType, jobName, status, conName, remoteQMgr, remoteProduct, remoteVersion |
+| mqa_qm_channel_last_message_datetime_seconds | Counter | The datetime on which the last message was sent on the channel in epoch seconds | appliance, qm, channel, chlType, jobName |
+| mqa_qm_channel_messages_total | Counter | The number of messages sent on the channel since it started | appliance, qm, channel, chlType, jobName |
+| mqa_qm_channel_running_state | Gauge | The current status of the channel, 1 if the channel is in RUNNING state, 0 otherwise | appliance, qm, channel, chlType, jobName |
+| mqa_qm_channel_start_datetime_seconds | Counter | The datetime on which the channel started in epoch seconds | appliance, qm, channel, chlType, jobName |
+
+**Queue Managers Queues**
+| Metric | Type | Description | Labels |
+|------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_qm_queue_current_depth | Gauge | The current depth of the queue, that is, the number of messages on the queue, including both committed messages and uncommitted messages | appliance, qm , queue |
+| mqa_qm_queue_input_procs | Gauge | The number of handles that are currently open for input for the queue (either input-shared or input-exclusive) | appliance, qm , queue |
+| mqa_qm_queue_output_procs | Gauge | The number of handles that are currently open for output for the queue | appliance, qm , queue |
+| mqa_qm_queue_message_age_seconds | Gauge | Age, in seconds, of the oldest message on the queue | appliance, qm , queue |
+| mqa_qm_queue_uncommitted_messages | Gauge | The number of uncommitted changes (puts and gets) pending for the queue | appliance, qm , queue |
+| mqa_qm_queue_time_small_sample_seconds | Gauge | Interval, in seconds, between messages being put on the queue and then being destructively read. A value based on the last few messages processed | appliance, qm , queue |
+| mqa_qm_queue_time_large_sample_seconds | Gauge | Interval, in seconds, between messages being put on the queue and then being destructively read. A value based on a larger sample of the recently processed messages | appliance, qm , queue |
+| mqa_qm_queue_current_file_size_bytes | Gauge | The current size of the queue file in bytes, rounded up to the nearest megabyte | appliance, qm , queue |
+| mqa_qm_queue_current_max_file_size_bytes | Gauge | The current maximum size in bytes the queue file can grow to, rounded up to the nearest megabyte, given the current block size in use on a queue | appliance, qm , queue |
+| mqa_qm_queue_last_get_datetime_seconds_total | Counter | The datetime on which the last message was retrieved from the queue since the queue manager started in epoch seconds | appliance, qm , queue |
+| mqa_qm_queue_last_put_datetime_seconds_total | Counter | The datetime on which the last message was put to the queue since the queue manager started in epoch seconds | appliance, qm , queue |
 
 **Raid Battery Module**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_raid_battery_module_info | Info | MQ Appliance raid battery module information | appliance, controllerID, batteryType, serial, name, status |
 | mqa_raid_battery_module_voltage_volts | Gauge | The actual voltage of the battery in volts | appliance, controllerID, status |
 | mqa_raid_battery_module_current_amperes | Gauge | The current that flows through the battery terminals in amperes | appliance, controllerID, status |
 | mqa_raid_battery_module_temperature_celsius | Gauge | The temperature of the battery in degrees celsius | appliance, controllerID, status |
 | mqa_raid_battery_module_design_capacity_amperes_hour | Gauge | The designed capacity of the battery in ampere-hour | appliance, controllerID, status |
 | mqa_raid_battery_module_design_voltage_volts | Gauge | The designed voltage of the battery in volts | appliance, controllerID, status |
 
-**Raid Battery Module Information**
-| Metric | Type | Description | Labels |
-|------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_raid_battery_module_info | Info | MQ Appliance raid battery module information | appliance, controllerID, batteryType, serial, name, status |
-
-
 **Raid Physical Drive**
 | Metric | Type | Description | Labels |
 |------------------------|-------| ----------------------------------------------| ----------------------|
+| mqa_raid_physical_drive_info | Info | MQ Appliance raid physical drive information | appliance, controllerID, deviceID, arrayID, logicalDriveID, logicalDriveName, position, state, interfaceType, interfaceSpeed, sasAddress, vendorID, productID, revision, specificInfo |
 | mqa_raid_physical_drive_progress_percent_total | Counter | The current progress percentage of the operation on the physical drive. Operations can be rebuild, copyback, patrol, or clear | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
 | mqa_raid_physical_drive_raw_size_bytes_total | Counter | The exact size of the drive in bytes | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
 | mqa_raid_physical_drive_coerced_size_bytes_total | Counter | The normalized size in megabytes. The value is rounded down to an even multiple, which allows you to swap drives of the same nominal size but might not be the same raw size | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
 | mqa_raid_physical_drive_temperature_celsius | Gauge | The temperature of the hard disk drive in celsius | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
 | | mqa_raid_physical_drive_failure | Gauge | If the hard disk failure state shows Yes, replace this drive as soon as possible to avoid possible data loss | appliance, controllerID, deviceID, arrayID, logicalDriveID, position |
-
-**Raid Physical Drive Information**
-| Metric | Type | Description | Labels |
-|------------------------|-------| ----------------------------------------------| ----------------------|
-| mqa_raid_physical_drive_info | Info | MQ Appliance raid physical drive information | appliance, controllerID, deviceID, arrayID, logicalDriveID, logicalDriveName, position, state, interfaceType, interfaceSpeed, sasAddress, vendorID, productID, revision, specificInfo |
 
 **Raid SSD**
 | Metric | Type | Description | Labels |
@@ -611,5 +631,3 @@ mqa_stop_exporters.py -d \temp -f my_exporters_list.csv -a my_appliance
 | mqa_voltage_sensor_voltage_cpu_2_core_volts | Gauge | Voltage CPU 2 core in volts | appliance, readingStatus |
 | mqa_voltage_sensor_voltage_cpu_2_core_lower_critical_thereshold_voltage_volts | Gauge | Lower critical threshold of CPU 2 core voltage in volts | appliance, readingStatus |
 | mqa_voltage_sensor_voltage_cpu_2_core_upper_critical_thereshold_voltage_volts | Gauge | Upper critical threshold of CPU 2 core voltage in volts | appliance, readingStatus |
-
-

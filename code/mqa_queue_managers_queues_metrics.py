@@ -92,7 +92,7 @@ class MQAQueueManagersQueuesMetrics(object):
                         else:
                             uncommitted_messages = queue['parameters']['uncom']
 
-                        g = GaugeMetricFamily('mqa_qm_queue_uncommitted_messages', 'Number of uncommitted changes (puts and gets) pending for the queue', labels=['appliance', 'qm', 'queue'])
+                        g = GaugeMetricFamily('mqa_qm_queue_uncommitted_messages', 'The number of uncommitted changes (puts and gets) pending for the queue', labels=['appliance', 'qm', 'queue'])
                         g.add_metric([self.appliance, qm['name'], queue['parameters']['queue']], uncommitted_messages)
                         yield g
 
