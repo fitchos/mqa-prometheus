@@ -69,7 +69,7 @@ def main():
     parser.add_argument('-a', '--appliance',  type=str, required=True, help = 'Name of the appliance')
     parser.add_argument('-c', '--config',  type=str, required=False, help = 'Name of the exporter configuration file (INI)') 
     parser.add_argument('-i', '--ip', type=str, required=True, help = 'IP address or DNS of the appliance REST API')
-    parser.add_argument('-hp', '--httpPort', type=int, default=8000, help = 'Port number of the exported HTTP server (default: 8000)')
+    parser.add_argument('-hp', '--httpPort', type=int, default=9813, help = 'Port number of the exported HTTP server (default: 9813)')
     parser.add_argument('-l', '--log', type=str, help = 'Name of the log file (defaults to STDOUT)')
     parser.add_argument('-ln', '--lognumbers', type=int, default=10, help = 'Number of logs in a rotation (defaults to 10)')
     parser.add_argument('-ls', '--logsize', type=int, default=10485760, help = 'Size of logs in bytes (defaults to 10MB - 10485760)')
