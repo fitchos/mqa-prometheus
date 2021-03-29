@@ -56,7 +56,7 @@ optional arguments:
   -i IP, --ip IP        IP address or DNS of the appliance REST API
   -hp HTTPPORT, --httpPort HTTPPORT
                         Port number of the exported HTTP server (default:
-                        8000)
+                        9813)
   -l LOG, --log LOG     Name of the log file (defaults to STDOUT)
   -ln LOGNUMBERS, --lognumbers LOGNUMBERS
                         Number of logs in a rotation (defaults to 10)
@@ -74,25 +74,25 @@ optional arguments:
 Run an exporter with logging output to STDOUT and password being prompted on the command line
 
 ```
-mqa_metrics.py -a MQAPROD1 -i 192.168.28.250 -p 5554 -u admin -hp 8000
+mqa_metrics.py -a MQAPROD1 -i 192.168.28.250 -p 5554 -u admin -hp 9813
 ```
 
 Run an exporter with logging output to a file using all logging defaults
 
 ```
-mqa_metrics.py -a MQAPROD1 -i 192.168.28.250 -p 5554 -u admin -x mypassword -hp 8000 -l mqaprod1.log 
+mqa_metrics.py -a MQAPROD1 -i 192.168.28.250 -p 5554 -u admin -x mypassword -hp 9813 -l mqaprod1.log 
 ```
 
 Run a second exporter (note: the HTTPPORT must be different)
 
 ```
-mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 8001 -l mqaprod2.log
+mqa_metrics.py -a MQAPROD2 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 9814 -l mqaprod2.log
 ```
 
 Run an exporter with a configuration file to select which metric collectors are running
 
 ```
-mqa_metrics.py -a MQAPROD3 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 8003 -c exporters.cfg
+mqa_metrics.py -a MQAPROD3 -i 192.168.28.210 -p 5554 -u admin -x mypassword -hp 9815 -c exporters.cfg
 ```
 
 The configuration looks like this:
